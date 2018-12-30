@@ -130,6 +130,14 @@ Full code can be seen at [singleton.ctt](./singleton_fiber_equivalence/singleton
 
 ## Fiber
 
+$$
+f^{-1}(y) := \Sigma_{(x:X)}Id_{(f(x),y)}
+$$
+
+To understand a fiber and later equivalence best, I've came up with a function where domain is split in two, and both halves are projected to full codomain range. Here's how it looks like:
+
+![halfsplit_function](./singleton_fiber_equivalence/img/halfsplit_function.jpg)
+
 TODO
 
 ## Equivalence
