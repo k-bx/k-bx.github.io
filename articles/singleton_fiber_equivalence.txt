@@ -1,0 +1,138 @@
+# Singleton, Fiber and Equivalence
+
+I am reading a beautiful paper called ["A self-contained, brief and complete formulation of Voevodsky’s Univalence Axiom" by Mart ́ın H ̈otzel Escard ́o](https://arxiv.org/abs/1803.02294), and it really takes time to understand some of the formulas. In fact, it takes so much time, that I've spent an hour on the airplane from Frankfurt to Kyiv gazing at just the first three of them. Intention of this article is not to create any new knowledge, but to extend available explanations with specific examples that helped me understand these formulas better, when they finally "clicked" this morning.
+
+The formulas I am focusing on are Singleton, Fiber and Equivalence:
+$$
+isSingleton(X) := \Sigma_{(c:X)}\Pi_{(x:X)}Id_{(c,x)}
+$$
+
+$$
+f^{-1}(y) := \Sigma_{(x:X)}Id_{(f(x),y)}
+$$
+
+$$
+isEquiv(f):=\Pi_{(y:Y)}isSingleton(f^{-1}(y))
+$$
+
+## Quick reminder on $\Pi$ (Pi) and $\Sigma$ (Sigma) for programmers
+
+Just a quick reminder that $${\Pi}​$$ is read as "dependant function" (or "for all") and $$\Sigma​$$ as "dependent tuple" ("there exist"). So, whenever you see:
+$$
+somefunc : \Pi_{(x:X)} \text{<rest>}
+$$
+you can mentally replace it with:
+$$
+id : X \to \text{<rest>}
+$$
+where `<rest>` can mention `x` in its type. And when you see:
+$$
+somefunc : \Sigma_{(x:X)}\text{<rest>}
+$$
+you think
+$$
+somefunc:(X,\text{<rest>})
+$$
+where `<rest>` can mention `x` in its type.
+
+## Singleton
+
+$$
+isSingleton(X) := \Sigma_{(c:X)}\Pi_{(x:X)}Id_{(c,x)}
+$$
+
+So, first question I had was: what **is** that `isSingleton` exactly? Is that a type? A function? A theorem?
+
+Singleton can be understood easily in terms of its implementation in code. I'll use [cubicaltt](https://github.com/mortberg/cubicaltt) as the implementation language which is very minimal but powerful Haskell-like language and compiler. I'll make a type which has only one constructor and derive `isSingleton` for it.
+
+```
+data One = MkOne
+```
+
+Intuitively, `One` should be put instead of an `X` in the formula, so if we put it there, it becomes:
+$$
+isSingleton(One) := \Sigma_{(c:One)}\Pi_{(x:One)}Id_{(c,x)}
+$$
+So, after we apply `isSingleton` to our type `One`, it becomes just a type for a dependent pair of this element and a function from any element of `One` to its equality to that element `c`. Or, in code, something like:
+
+```haskell
+isSingletonOne = (c, \x -> <proof that x is equal to c>)
+```
+
+As can be seen, implementation consists of making a tuple of specific element `c` and a function proving its equality to any given `x`. Nice!
+
+Due to [cubicaltt readme](https://github.com/mortberg/cubicaltt/blob/master/lectures/lecture1.ctt), to make a Pi you just use syntax `(x : A) -> B` where `B` can refer to `x`, and for Sigma you use syntax `(x : A) * B` where `*` builds a tuple and `B` can refer to `x` in it. Full code looks like this:
+
+```haskell
+-- Copy from prelude.ctt, just read as "equality of two elements of
+-- type A between a0 and a1"
+Path (A : U) (a0 a1 : A) : U = PathP (<i> A) a0 a1
+
+IsSingleton (X : U) : U
+  = (c : X) * ((x : X) -> Path X c x)
+```
+
+Interestingly, `IsSingleton` returns a **type**, not a value. Well, values and types are all mixed in this dependent world, but it's important to get that a result of `IsSingleton` will be used in a type signature of our specialization for `One`. Let's use type holes to graduately derive our implementation:
+
+```haskell
+IsSingletonOne : IsSingleton One
+  = ?
+```
+
+gives:
+
+```
+Hole at (14,5) in singleton:
+
+--------------------------------------------------------------------------------
+Sigma One (\(c : One) -> (x : One) -> PathP (<!0> One) c x)
+```
+
+Perfect! So, we've got our first answers:
+
+- IsSingleton is sort of a type-level function, or type alias! You use it like `IsSingleton YourType` and get a type signature.
+- It's also a theorem that you can prove by constructing a value, once you specialize it to some type, like `One`
+
+We now need to choose `c`. Not a lot of options to choose from:
+
+```hasklell
+IsSingletonOne : IsSingleton One
+  = let c : One = MkOne
+    in (c, (\(x:One) -> ?))
+```
+
+This gives:
+
+```
+Hole at (15,25) in singleton:
+
+x : One
+--------------------------------------------------------------------------------
+PathP (<!0> One) MkOne x
+```
+
+Ok, in now in order to implement that last `?` we need to case-split. Case-splitting is best done at top-level in cubicaltt, so let's add a helper function and split there:
+
+```haskell
+isSingletonOneInnerEq : (x:One) -> Path One MkOne x
+  = split
+  MkOne -> refl One MkOne
+
+IsSingletonOne : IsSingleton One
+  = let c : One = MkOne
+    in (c, (\(x:One) -> isSingletonOneInnerEq x))
+```
+
+Allright! We've implemented a value of `IsSingleton One`, in other words, we've **proven that One is a singleton type**.
+
+## Fiber
+
+TODO
+
+## Equivalence
+
+TODO
+
+TODO:
+
+- 
