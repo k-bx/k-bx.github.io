@@ -186,7 +186,7 @@ But now, instead of imagining $$X$$ to be some specific type, we need to imagine
 $$
 isSingleton(f^{-1}(y)) := \Sigma_{(c:f^{-1}(y))}\Pi_{(x:f^{-1}(y))}Id_{(c,x)}
 $$
-In other words, **to prove that a fiber is singleton, I will give you a pair of some specific fiber, and a proof that for all fibers you give me in that point y, it will be equal to it**. Something like:
+In other words, **to prove that a fiber is singleton, I will give you a pair of some specific fiber, and a proof that for all fibers you give me in that point y, it will be equal to it**.
 
 Let's define the function we've seen on the drawing earlier like this:
 
