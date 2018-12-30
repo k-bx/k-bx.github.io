@@ -134,16 +134,114 @@ $$
 f^{-1}(y) := \Sigma_{(x:X)}Id_{(f(x),y)}
 $$
 
-To understand a fiber and later equivalence best, I've came up with a function where domain is split in two, and both halves are projected to full codomain range. Here's how it looks like:
+To understand a fiber and later equivalence best, I came up with a function where domain is split in two, and both halves are projected to full codomain range. Here's how it looks like:
 
 ![halfsplit_function](./singleton_fiber_equivalence/img/halfsplit_function.jpg)
 
-TODO
+So, a Fiber would be a type, which, after some specific $$y_0$$ will be chosen, will look like this:
+$$
+f^{-1}(y_0) := \Sigma_{(x:X)}Id_{(f(x),y_0)}
+$$
+and to implement it, you'd need to provide a tuple of whatever `x` you like such that $$f(x)$$ will be equal to $$y_0$$.
+
+In other words, both $$x_0$$ and $$x_1$$ would be ok as a first tuple's element:
+
+![halfsplit_function](./singleton_fiber_equivalence/img/halfsplit_function_x0_x1.jpg)
+$$
+f^{-1}(y_0)_0 = (x_0,Id_{(f(x_0),y_0)})\\
+f^{-1}(y_0)_1 = (x_1,Id_{(f(x_1),y_0)})\\
+$$
+
+```haskell
+Fiber (X Y : U) (f : X -> Y) (y : Y) : U
+  = (x : X) * Path Y (f x) y
+```
+
+[fiber.ctt](./singleton_fiber_equivalence/fiber.ctt)
+
+Implementation of specific fibers in cubicaltt is left to reader as an exercise :)
+
+These are two fibers, both legit! But what is equivalence, now?
 
 ## Equivalence
 
-TODO
+$$
+isEquiv(f):=\Pi_{(y:Y)}isSingleton(f^{-1}(y))
+$$
 
-TODO:
+> The function f is called an equivalence if its fibers are all singletons
 
-- 
+First, let's think for a moment, what does it mean that a fiber is a singleton or not?
+
+Recall the formulas:
+$$
+isSingleton(X) := \Sigma_{(c:X)}\Pi_{(x:X)}Id_{(c,x)}
+$$
+
+$$
+f^{-1}(y) := \Sigma_{(x:X)}Id_{(f(x),y)}
+$$
+
+But now, instead of imagining $$X$$ to be some specific type, we need to imagine it to be a Fiber!
+$$
+isSingleton(f^{-1}(y)) := \Sigma_{(c:f^{-1}(y))}\Pi_{(x:f^{-1}(y))}Id_{(c,x)}
+$$
+In other words, **to prove that a fiber is singleton, I will give you a pair of some specific fiber, and a proof that for all fibers you give me in that point y, it will be equal to it**. Something like:
+
+Let's define the function we've seen on the drawing earlier like this:
+
+```haskell
+halfsplit : (X Y : U) -> (X -> Y)
+  = undefined
+```
+
+You can imagine actual implementation by making real types for `X` and `Y` with some fixed set of points, but let's skip this for brevity.
+
+Fiber for this function in some specific `y` (think $$y_0$$) would look like this:
+
+```haskell
+halfsplitFiber : (X Y : U) (y : Y) -> Fiber X Y (halfsplit X Y) y
+  = undefined
+```
+
+So, what would it look like, to prove that this fiber is a singleton?
+
+```haskell
+halfsplitFiberIsSingleton : (X Y : U) (y : Y)
+  -> IsSingleton (Fiber X Y (halfsplit X Y) y)
+  = undefined
+```
+
+Put `IsSingleton` definition in:
+
+```haskell
+halfsplitFiberIsSingleton : (X Y : U) (y : Y)
+  -> (c : Fiber X Y (halfsplit X Y) y)
+     * ((x : Fiber X Y (halfsplit X Y) y)
+        -> Path (Fiber X Y (halfsplit X Y) y) c x)
+  = undefined
+```
+
+Let's add some annotation:
+
+```haskell
+-- In order to prove that our halpsplit function's fiber is a singleton:
+halfsplitFiberIsSingleton : (X Y : U) (y : Y)
+  -> (c : Fiber X Y (halfsplit X Y) y)
+--   ^
+--   \--- we need to provide some specific fiber in y0
+     * ((x : Fiber X Y (halfsplit X Y) y)
+--     ^
+--      \--- and a function, which, given any other fiber to y0
+        -> Path (Fiber X Y (halfsplit X Y) y) c x)
+--      ^
+--       \--- will prove that this given fiber is idential
+--            to the one in tuple's fst element
+  = undefined
+```
+
+Now, think about the two fibers in question ($$x_0 \to y_0$$ and $$x_1 \to y_0$$), and you will understand, why this function will not have the Equivalence property:
+
+> The function f is called an equivalence if its fibers are all singletons 
+
+Thank you for your time. Please send your feedback in Issues or PRs in [this blog's repo](https://github.com/k-bx/k-bx.github.io).

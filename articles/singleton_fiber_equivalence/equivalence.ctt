@@ -1,0 +1,40 @@
+module equivalence where
+
+Path (A : U) (a0 a1 : A) : U = PathP (<i> A) a0 a1
+refl (A : U) (a : A) : Path A a a = <i> a
+
+IsSingleton (X : U) : U
+  = (c : X) * ((x : X) -> Path X c x)
+
+Fiber (X Y : U) (f : X -> Y) (y : Y) : U
+  = (x : X) * Path Y (f x) y
+
+halfsplit : (X Y : U) -> (X -> Y)
+  = undefined
+
+halfsplitFiber : (X Y : U) (y : Y) -> Fiber X Y (halfsplit X Y) y
+  = undefined
+
+-- halfsplitFiberIsSingleton : (X Y : U) (y : Y)
+--   -> IsSingleton (Fiber X Y (halfsplit X Y) y)
+--   = undefined
+
+-- halfsplitFiberIsSingleton : (X Y : U) (y : Y)
+--   -> (c : Fiber X Y (halfsplit X Y) y)
+--      * ((x : Fiber X Y (halfsplit X Y) y)
+--         -> Path (Fiber X Y (halfsplit X Y) y) c x)
+--   = undefined
+
+-- In order to prove that our halpsplit function's fiber is a singleton:
+halfsplitFiberIsSingleton : (X Y : U) (y : Y)
+  -> (c : Fiber X Y (halfsplit X Y) y)
+--   ^
+--   \--- we need to provide some specific fiber in y0
+     * ((x : Fiber X Y (halfsplit X Y) y)
+--     ^
+--      \--- and a function, which, given any other fiber to y0
+        -> Path (Fiber X Y (halfsplit X Y) y) c x)
+--      ^
+--       \--- will prove that this given fiber is idential
+--            to the one in tuple's fst element
+  = undefined
