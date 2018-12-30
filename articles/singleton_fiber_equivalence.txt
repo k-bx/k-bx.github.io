@@ -1,5 +1,7 @@
 # Singleton, Fiber and Equivalence
 
+UPDATE: this article was posted on Groupoid Space, fonts are probably better there. Thanks, Maxim! http://groupoid.space/mltt/equiv/
+
 I am reading a beautiful paper called ["A self-contained, brief and complete formulation of Voevodsky’s Univalence Axiom" by Martín Hötzel Escardó](https://arxiv.org/abs/1803.02294), and it really takes time to understand some of the formulas. In fact, it takes so much time, that I've spent an hour on an airplane from Frankfurt to Kyiv gazing at just the first three of them. Intention of this article is not to create any new knowledge, but to extend available explanations with specific examples that helped me understand these formulas better, when they finally "clicked" this morning.
 
 The formulas I am focusing on are Singleton, Fiber and Equivalence:
