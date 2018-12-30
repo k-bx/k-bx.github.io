@@ -64,9 +64,10 @@ As can be seen, implementation consists of making a tuple of specific element `c
 Due to [cubicaltt readme](https://github.com/mortberg/cubicaltt/blob/master/lectures/lecture1.ctt), to make a Pi you just use syntax `(x : A) -> B` where `B` can refer to `x`, and for Sigma you use syntax `(x : A) * B` where `*` builds a tuple and `B` can refer to `x` in it. Full code looks like this:
 
 ```haskell
--- Copy from prelude.ctt, just read as "equality of two elements of
--- type A between a0 and a1"
+-- Copied from prelude.ctt, just read Path as "equality of two elements of
+-- type A between a0 and a1", and refl is the way to make a Path
 Path (A : U) (a0 a1 : A) : U = PathP (<i> A) a0 a1
+refl (A : U) (a : A) : Path A a a = <i> a
 
 IsSingleton (X : U) : U
   = (c : X) * ((x : X) -> Path X c x)
@@ -124,6 +125,8 @@ IsSingletonOne : IsSingleton One
 ```
 
 Allright! We've implemented a value of `IsSingleton One`, in other words, we've **proven that One is a singleton type**.
+
+Full code can be seen at [singleton.ctt](./articles/singleton_fiber_equivalence/singleton.ctt)
 
 ## Fiber
 

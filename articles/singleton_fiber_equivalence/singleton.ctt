@@ -1,0 +1,19 @@
+module singleton where
+
+data One = MkOne
+
+-- Copied from prelude.ctt, just read Path as "equality of two elements of
+-- type A between a0 and a1", and refl is the way to make a Path
+Path (A : U) (a0 a1 : A) : U = PathP (<i> A) a0 a1
+refl (A : U) (a : A) : Path A a a = <i> a
+
+IsSingleton (X : U) : U
+  = (c : X) * ((x : X) -> Path X c x)
+
+isSingletonOneInnerEq : (x:One) -> Path One MkOne x
+  = split
+  MkOne -> refl One MkOne
+
+IsSingletonOne : IsSingleton One
+  = let c : One = MkOne
+    in (c, (\(x:One) -> isSingletonOneInnerEq x))
