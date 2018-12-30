@@ -6,22 +6,22 @@ I am reading a beautiful paper called ["A self-contained, brief and complete for
 
 The formulas I am focusing on are Singleton, Fiber and Equivalence:
 $$
-isSingleton(X) := \Sigma_{(c:X)}\Pi_{(x:X)}Id_{(c,x)}
+isSingleton(X) := \sum_{(c:X)}\prod_{(x:X)}Id_{(c,x)}
 $$
 
 $$
-f^{-1}(y) := \Sigma_{(x:X)}Id_{(f(x),y)}
+f^{-1}(y) := \sum_{(x:X)}Id_{(f(x),y)}
 $$
 
 $$
-isEquiv(f):=\Pi_{(y:Y)}isSingleton(f^{-1}(y))
+isEquiv(f):=\prod_{(y:Y)}isSingleton(f^{-1}(y))
 $$
 
-## Quick reminder on $\Pi$ (Pi) and $\Sigma$ (Sigma) for programmers
+## Quick reminder on $\prod$ (Pi) and $\sum$ (Sigma) for programmers
 
-Just a quick reminder that $${\Pi}$$ is read as "dependent function" (or "for all") and $$\Sigma$$ as "dependent tuple" ("there exist"). So, whenever you see:
+Just a quick reminder that $${\prod}$$ is read as "dependent function" (or "for all") and $$\sum$$ as "dependent tuple" ("there exist"). So, whenever you see:
 $$
-somefunc : \Pi_{(x:X)} \text{<rest>}
+somefunc : \prod_{(x:X)} \text{<rest>}
 $$
 you can mentally replace it with:
 $$
@@ -29,7 +29,7 @@ somefunc : X \to \text{<rest>}
 $$
 where `<rest>` can mention `x` in its type. And when you see:
 $$
-somefunc : \Sigma_{(x:X)}\text{<rest>}
+somefunc : \sum_{(x:X)}\text{<rest>}
 $$
 you think
 $$
@@ -40,7 +40,7 @@ where `<rest>` can mention `x` in its type.
 ## Singleton
 
 $$
-isSingleton(X) := \Sigma_{(c:X)}\Pi_{(x:X)}Id_{(c,x)}
+isSingleton(X) := \sum_{(c:X)}\prod_{(x:X)}Id_{(c,x)}
 $$
 
 So, first question I had was: what **is** that `isSingleton` exactly? Is that a type? A function? A theorem?
@@ -53,7 +53,7 @@ data One = MkOne
 
 Intuitively, `One` should be put instead of an `X` in the formula, so if we put it there, it becomes:
 $$
-isSingleton(One) := \Sigma_{(c:One)}\Pi_{(x:One)}Id_{(c,x)}
+isSingleton(One) := \sum_{(c:One)}\prod_{(x:One)}Id_{(c,x)}
 $$
 So, after we apply `isSingleton` to our type `One`, it becomes just a type for a dependent pair of this element and a function from any element of `One` to its equality to that element `c`. Or, in code, something like:
 
@@ -133,7 +133,7 @@ Full code can be seen at [singleton.ctt](./singleton_fiber_equivalence/singleton
 ## Fiber
 
 $$
-f^{-1}(y) := \Sigma_{(x:X)}Id_{(f(x),y)}
+f^{-1}(y) := \sum_{(x:X)}Id_{(f(x),y)}
 $$
 
 To understand a fiber and later equivalence best, I came up with a function where domain is split in two, and both halves are projected to full codomain range. Here's how it looks like:
@@ -142,7 +142,7 @@ To understand a fiber and later equivalence best, I came up with a function wher
 
 So, a Fiber would be a type, which, after some specific $$y_0$$ will be chosen, will look like this:
 $$
-f^{-1}(y_0) := \Sigma_{(x:X)}Id_{(f(x),y_0)}
+f^{-1}(y_0) := \sum_{(x:X)}Id_{(f(x),y_0)}
 $$
 and to implement it, you'd need to provide a tuple of whatever `x` you like such that $$f(x)$$ will be equal to $$y_0$$.
 
@@ -168,7 +168,7 @@ These are two fibers, both legit! But what is equivalence, now?
 ## Equivalence
 
 $$
-isEquiv(f):=\Pi_{(y:Y)}isSingleton(f^{-1}(y))
+isEquiv(f):=\prod_{(y:Y)}isSingleton(f^{-1}(y))
 $$
 
 > The function f is called an equivalence if its fibers are all singletons
@@ -177,16 +177,16 @@ First, let's think for a moment, what does it mean that a fiber is a singleton o
 
 Recall the formulas:
 $$
-isSingleton(X) := \Sigma_{(c:X)}\Pi_{(x:X)}Id_{(c,x)}
+isSingleton(X) := \sum_{(c:X)}\prod_{(x:X)}Id_{(c,x)}
 $$
 
 $$
-f^{-1}(y) := \Sigma_{(x:X)}Id_{(f(x),y)}
+f^{-1}(y) := \sum_{(x:X)}Id_{(f(x),y)}
 $$
 
 But now, instead of imagining $$X$$ to be some specific type, we need to imagine it to be a Fiber!
 $$
-isSingleton(f^{-1}(y)) := \Sigma_{(c:f^{-1}(y))}\Pi_{(x:f^{-1}(y))}Id_{(c,x)}
+isSingleton(f^{-1}(y)) := \sum_{(c:f^{-1}(y))}\prod_{(x:f^{-1}(y))}Id_{(c,x)}
 $$
 In other words, **to prove that a fiber is singleton, I will give you a pair of some specific fiber, and a proof that for all fibers you give me in that point y, it will be equal to it**.
 
