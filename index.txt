@@ -2,5 +2,5 @@
 
 Articles:
 
-- [Singleton, Fiber and Equivalence](./articles/singleton_fiber_equivalence.txt)
-- 
+- [Singleton, Fiber and Equivalence](./articles/singleton_fiber_equivalence.html)
+
