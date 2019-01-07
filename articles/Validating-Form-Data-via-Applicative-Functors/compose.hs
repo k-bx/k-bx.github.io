@@ -5,7 +5,7 @@
 import Data.Functor.Compose
 import qualified Data.Text as T
 import Data.Text (Text)
-import Data.Validation
+import Data.Either.Validation
 
 newtype ValidUrl =
   ValidUrl Text
