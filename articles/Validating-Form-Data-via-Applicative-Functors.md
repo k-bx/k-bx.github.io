@@ -166,4 +166,44 @@ Failure ["Length must be between 4 and 20","Invalid URL"]
 
 All right, I've learned few new things, I hope you have as well, this was fun!
 
+## Addition 1: newtype vs Compose
+
+Now, after having some usage in real world, I wanted to add few more things. First, turns out that using `Compose` without a newtype might not be the best thing to do. Type errors become hard to interpret, because you use type alias in your annotations, but you get unwrapped types in your errors. Here's how to do the newtype (ful code [newtype.hs](./Validating-Form-Data-via-Applicative-Functors/newtype.hs)):
+
+```haskell
+newtype ValidateT err m a = ValidateT (Compose m (Validation err) a)
+  deriving (Functor, Applicative)
+
+runValidateT :: Applicative m => ValidateT err m a -> m (Validation err a)
+runValidateT (ValidateT c) = getCompose c
+```
+
+You can now just replace your `Compose m (Validation err) a` with `ValidateT err m a` everywhere.
+
+## Addition 2: ApplicativeDo and thoughts on using a Monad
+
+I have.some very big forms to validate, and using `Applicative` syntax isn't a very nice looking thing, so I've  decided to try the `ApplicativeDo` extension. Here's how it looks ([applicativedo.hs](./Validating-Form-Data-via-Applicative-Functors/applicativedo.hs)):
+
+```haskell
+    runValidateT $ do
+      l <- lengthBetween 4 20 (inpUsername inpForm)
+      url <- validateUrl (inpHomepage inpForm)
+      pure (OutputForm l url)
+```
+
+Looks fantastic, doesn't it? Well, in real life, turns out there are few limitations. First, this code won't work:
+
+```haskell
+    runValidateT $ do
+      l <- lengthBetween 4 20 (inpUsername inpForm)
+      url <- validateUrl (inpHomepage inpForm)
+      -- this breaks:
+      let res = OutputForm l url
+      pure res
+```
+
+You can't use let-expressions in `ApplicativeDo` blocks. It's hard to see why this is slightly annoying, but when your form is really big, it makes a difference.
+
+Another thing is, as it turns out, there are more dependencies that I have in my form logic than I expected. So, maybe I *do* want it to just be a Monad which lets you do `Writer`-like accumulation of form errors. I think I might switch to one. Again, the [reddit topic](https://www.reddit.com/r/haskell/comments/ad65gz/is_there_a_validationt_like_this_somewhere_or/) mentions few interesting ones.
+
 Please send your feedback in Issues or PRs in [this blog's repo](https://github.com/k-bx/k-bx.github.io).
