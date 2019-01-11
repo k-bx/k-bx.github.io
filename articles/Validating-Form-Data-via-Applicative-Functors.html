@@ -2,21 +2,21 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>Validating Form Data via Applicative Functors</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+<title>Validating Form Data via Applicative Functors</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
 iframe { margin: auto; }
 a.url { word-break: break-all; }
 a:active, a:hover { outline: 0px; }
 .in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
 #write.first-line-indent p { text-indent: 2em; }
 #write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
 #write.first-line-indent li { margin-left: 2em; }
 .for-image #write { padding-left: 8px; padding-right: 8px; }
 body.typora-export { padding-left: 30px; padding-right: 30px; }
-.typora-export .footnote-line, .typora-export p { white-space: pre-wrap; }
-@media screen and (max-width: 500px) {
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) { 
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   .CodeMirror-sizer { margin-left: 0px !important; }
   .CodeMirror-gutters { display: none !important; }
@@ -24,7 +24,7 @@ body.typora-export { padding-left: 30px; padding-right: 30px; }
 #write li > figure:first-child { margin-top: -20px; }
 #write ol, #write ul { position: relative; }
 img { max-width: 100%; vertical-align: middle; }
-button, input, select, textarea { color: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
 input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
 *, ::after, ::before { box-sizing: border-box; }
 #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
@@ -41,7 +41,7 @@ h6 { font-size: 1rem; }
 .hidden { display: none; }
 .md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
 a { cursor: pointer; }
-sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
 sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
@@ -49,8 +49,8 @@ figure > table { margin: 0px !important; }
 tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
-table.md-table td { min-width: 80px; }
-.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
 .CodeMirror { text-align: left; }
 .CodeMirror-placeholder { opacity: 0.3; }
 .CodeMirror pre { padding: 0px 4px; }
@@ -60,7 +60,7 @@ div.hr:focus { cursor: none; }
 #write.fences-no-line-wrapping pre { white-space: pre; }
 #write pre.ty-contain-cm { white-space: normal; }
 .CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
 .md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
 #write .md-fences.mock-cm { white-space: pre-wrap; }
 .md-fences.md-fences-with-lineno { padding-left: 0px; }
@@ -69,7 +69,7 @@ div.hr:focus { cursor: none; }
 .CodeMirror-line, twitterwidget { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
 .footnotes + .footnotes { margin-top: 0px; }
-.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
 li div { padding-top: 0px; }
 blockquote { margin: 1rem 0px; }
 li .mathjax-block, li p { margin: 0.5rem 0px; }
@@ -78,20 +78,20 @@ blockquote > :last-child { margin-bottom: 0px; }
 blockquote > :first-child, li > :first-child { margin-top: 0px; }
 .footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
 #write .footnote-line { white-space: pre-wrap; }
-@media print {
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
-  #write { margin-top: 0px; border-color: transparent !important; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
   .typora-export * { -webkit-print-color-adjust: exact; }
   html.blink-to-pdf { font-size: 13px; }
-  .typora-export #write { padding-left: 1cm; padding-right: 1cm; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid-page; }
   .typora-export #write::after { height: 0px; }
   @page { margin: 20mm 0px; }
 }
 .footnote-line { margin-top: 0.714em; font-size: 0.7em; }
 a img, img a { cursor: pointer; }
-pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
-p > img:only-child { display: block; margin: auto; }
-p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
 #write .MathJax_Display { margin: 0.8em 0px 0px; }
 .md-math-block { width: 100%; }
 .md-math-block:not(:empty)::after { display: none; }
@@ -100,7 +100,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; text-align: cente
 .task-list-item.md-task-list-item { padding-left: 0px; }
 .md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); }
 .math { font-size: 1rem; }
-.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
 .md-toc-content { position: relative; margin-left: 0px; }
 .md-toc-content::after, .md-toc::after { display: none; }
 .md-toc-item { display: block; color: rgb(65, 131, 196); }
@@ -113,7 +113,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; text-align: cente
 .md-toc-h4 .md-toc-inner { margin-left: 6em; }
 .md-toc-h5 .md-toc-inner { margin-left: 8em; }
 .md-toc-h6 .md-toc-inner { margin-left: 10em; }
-@media screen and (max-width: 48em) {
+@media screen and (max-width: 48em) { 
   .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
   .md-toc-h4 .md-toc-inner { margin-left: 5em; }
   .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
@@ -124,11 +124,12 @@ a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; 
 .md-attr { display: none; }
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
-kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
 .md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
-code { text-align: left; vertical-align: initial; }
-a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
 .md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
 .md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
 .MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
 .MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
@@ -140,17 +141,17 @@ a.md-print-anchor { white-space: pre !important; border-width: initial !importan
 .md-diagram-panel > svg { max-width: 100%; }
 [lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; }
 [lang="mermaid"] .node text { font-size: 1rem; }
-table tr th { border-bottom: 0px; }
+table tr th { border-bottom-width: 0px; }
 video { max-width: 100%; display: block; margin: 0px auto; }
 iframe { max-width: 100%; width: 100%; border: none; }
 .highlight td, .highlight tr { border: 0px; }
 
 
 .CodeMirror { height: auto; }
-.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror.cm-s-inner { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
 .CodeMirror-scroll { overflow-y: hidden; overflow-x: auto; z-index: 3; }
 .CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
-.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; white-space: nowrap; background-position: inherit inherit; background-repeat: inherit inherit; }
 .CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
 .cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
 .cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
@@ -186,9 +187,9 @@ iframe { max-width: 100%; width: 100%; border: none; }
 .cm-defined { color: rgb(181, 137, 0); }
 div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
 div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
-.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
 .CodeMirror { position: relative; overflow: hidden; }
-.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
 .CodeMirror-sizer { position: relative; }
 .CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
 .CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
@@ -197,136 +198,560 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
 .CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
 .CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
 .CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
-.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; border: none !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
 .CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
 .CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
 .CodeMirror-lines { cursor: text; }
-.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror pre { border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-width: 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: 0px 0px; background-repeat: initial initial; }
 .CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
-.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
-.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
 .CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
 .CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
 .CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
 .CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
 .CodeMirror-measure pre { position: static; }
-.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
 .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
 .CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
-.cm-searching { background: rgba(255, 255, 0, 0.4); }
-@media print {
+.cm-searching { background-color: rgba(255, 255, 0, 0.4); background-position: initial initial; background-repeat: initial initial; }
+@media print { 
   .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
 }
 
 
-:root { --active-file-bg-color: rgba(32, 43, 51, 0.63); --active-file-text-color: white; --bg-color: #f9f5ed; --text-color: #6e4832; --side-bar-bg-color: #f5f5f5; --control-text-color: #666; --primary-color: #6e4832; }
-html { color: rgb(110, 72, 50); background: rgb(249, 245, 237); text-size-adjust: 100%; text-rendering: optimizeLegibility; font-size: 16px; -webkit-font-smoothing: initial; }
-content { background: rgb(249, 245, 237); }
-#write { max-width: 960px; padding-top: 2em; padding-left: 60px; padding-right: 60px; min-height: calc(100vh - 6em); -webkit-font-smoothing: antialiased; font-size: 16px; }
-.typora-node #write { min-height: calc(100% - 6em); }
-pre.md-meta-block { color: rgba(146, 115, 91, 0.81); padding: 1em; border-radius: 2px; font-size: 14px; background: rgba(251, 246, 222, 0.5); }
+@charset "utf-8";
+
+/* techo-typora style */
+:root {
+    --active-file-bg-color: #dadada;
+    --active-file-bg-color: rgba(32, 43, 51, 0.63);
+    --active-file-text-color: white;
+    --bg-color: #f9f5ed;
+    --text-color: #6e4832;
+    --side-bar-bg-color: #f5f5f5;
+    --control-text-color: #666;
+    --primary-color: #6e4832;
+}
+
+html {
+    color: #6e4832;
+    background: #f9f5ed;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizelegibility;
+    font-size: 16px;
+    -webkit-font-smoothing: initial;
+}
+
+content {
+    background: #f9f5ed;
+}
+
+/* input mode  */
+#write {
+    max-width: 960px;
+    padding-top: 2em;
+    padding-left: 60px;
+    padding-right: 60px;
+    min-height: calc(100vh - 6em);
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+}
+
+.typora-node #write {
+    min-height: calc(100% - 6em);
+}
+
+/* meta - message - block */
+pre.md-meta-block {
+    color: rgba(146, 115, 91, 0.81);
+    padding: 1em;
+    border-radius: 2px;
+    font-size: 14px;
+    background: rgba(251, 246, 222, 0.5);
+}
+
 @media screen and (max-width: 800px) {
-  html { font-size: 14px; }
-  #write { padding-left: 30px; background: rgb(249, 245, 237); padding-right: 30px; font-size: 14px; }
+    html {
+        font-size: 14px;
+    }
+
+    #write {
+        padding-left: 30px;
+        background: #f9f5ed;
+        padding-right: 30px;
+        font-size: 14px;
+    }
 }
+
 @media screen and (min-width: 1100px) {
-  body, #footer-word-count-info { background: rgb(245, 245, 245); }
-  body.pin-outline, .pin-outline #footer-word-count-info, .pin-outline footer { background: rgb(249, 245, 237); }
-  #write { max-width: 1000px; padding: 40px 60px; background: rgb(249, 245, 237); margin: 3em auto; }
-  .pin-outline #write { max-width: 1000px; background: rgb(249, 245, 237); margin: 0px; border: 0px; padding-left: 60px; padding-right: 60px; }
-  footer { background-color: transparent; }
+    body, #footer-word-count-info {
+        background: #f5f5f5;
+    }
+
+    body.pin-outline,
+    .pin-outline #footer-word-count-info,
+    .pin-outline footer {
+        background: #f9f5ed;
+    }
+
+    #write {
+        max-width: 1000px;
+        padding: 40px 60px;
+        background: #f9f5ed;
+        margin: 3em auto 3em;
+    }
+
+    /* paper outline */
+    .pin-outline #write {
+        max-width: 1000px;
+        background: #f9f5ed;
+        margin: 0 0 0;
+        border: 0;
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+    footer {
+        background-color: transparent;
+    }
 }
+
 @media screen and (min-width: 1300px) {
-  body.pin-outline, .pin-outline #footer-word-count-info, .pin-outline footer { background: rgb(249, 245, 237); }
-  .pin-outline #write { max-width: 1000px; padding: 40px 60px; background: rgb(249, 245, 237); margin: 3em auto; }
-  .pin-outline footer { background-color: transparent; }
-  #footer-word-count-info { background: rgb(245, 245, 245); }
+    body.pin-outline,
+    .pin-outline #footer-word-count-info,
+    .pin-outline footer {
+        background: #f9f5ed;
+    }
+
+    .pin-outline #write {
+        max-width: 1000px;
+        padding: 40px 60px;
+        background: #f9f5ed;
+        margin: 3em auto 3em;
+    }
+
+    .pin-outline footer {
+        background-color: transparent;
+    }
+
+    #footer-word-count-info {
+        background: #f5f5f5;
+    }
 }
-body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, menu, nav, section { margin: 0px; padding: 0px; }
-article, aside, details, figcaption, figure, footer, header, menu, nav, section { display: block; }
-audio, canvas, video { display: inline-block; }
-body, button, input, select, textarea { font-style: normal; font-variant: normal; font-weight: 400; font-stretch: normal; font-size: 1em; line-height: 1.8; font-family: "font/han.otf", "PingFang SC", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans; }
-body { font-family: "font/han.otf", "PingFang SC", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans; }
-h1, h2, h3, h4, h5, h6 { font-family: "font/han.otf", "PingFang SC", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans; -webkit-font-smoothing: initial; font-weight: 100; color: var(--text-color); line-height: 1.35; font-variant-numeric: lining-nums; margin-bottom: 1em; }
-em { font-family: "font/han.otf", Georgia-Italic, STSongti-SC-Light, serif; }
-strong em, em strong { font-family: "font/han.otf", Georgia-BoldItalic, STSongti-SC-Regular, serif; }
-table { border-collapse: collapse; border-spacing: 0px; }
-fieldset, img { border: 0px; }
-img { background: white; border-radius: 0.2rem; padding: 0.3rem; box-shadow: gray 1px 2px 4px; text-align: center; }
-blockquote { position: relative; color: rgba(146, 115, 91, 0.81); font-weight: 400; border-left: 2px solid rgb(110, 72, 50); padding-left: 1rem; margin: 1em 3em 1em 1em; }
-@media only screen and (max-width: 640px) {
-  blockquote { margin: 1em 0px; }
+
+/* clear margin and padding */
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+    margin: 0;
+    padding: 0;
 }
-acronym, abbr { border-bottom: 1px dotted; font-variant: normal; }
-abbr { cursor: help; }
-address, caption, cite, code, dfn, th, var { font-style: normal; font-weight: 400; }
-ul, ol { list-style: none; }
-caption, th { text-align: left; }
-q::before, q::after { content: ""; }
-sub, sup { font-size: 75%; line-height: 0; position: relative; }
-:root sub, :root sup { vertical-align: baseline; }
-sup { top: -0.5em; }
-sub { bottom: -0.25em; }
-a { color: rgb(68, 132, 194); }
-a:hover { text-decoration: underline; }
-#write a { font-weight: normal; }
-#write a:hover { text-decoration: none; border-bottom: 1px solid rgb(68, 132, 194); }
-ins, a { text-decoration: none; }
-mark { background: rgb(255, 253, 209); border-bottom: 1px solid rgb(255, 237, 206); padding: 2px; margin: 0px 5px; }
-pre, code, pre tt { font-family: Courier, "Courier New", monospace; }
-#write .md-fences { border: 1px solid rgb(221, 221, 221); padding: 1em 0.5em; display: block; }
-hr { border-top: none; border-right: none; border-left: none; border-image: initial; border-bottom: 1px solid rgb(207, 207, 207); margin-bottom: 0.8em; height: 10px; }
-strong, b { font-weight: 700; }
-#write p, #write .md-fences, #write ul, #write ol, #write dl, #write form, #write hr, #write figure, #write-p, #write-pre, #write-ul, #write-ol, #write-dl, #write-form, #write-hr, #write-table, blockquote { margin-bottom: 1.2em; }
-html { font-family: "font/han.otf", "PingFang SC", Verdana, "Helvetica Neue", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write-h1, #write-h2, #write-h3, #write-h4, #write-h5, #write-h6 { margin-bottom: 0.6em; line-height: 1.35; color: rgb(110, 72, 50); font-weight: bolder; }
-#write h1, #write-h1 { font-size: 2.4em; padding-bottom: 0.3em; border-bottom: 3px double rgb(238, 238, 238); }
-#write h2, #write-h2 { font-size: 1.8em; }
-#write h3, #write-h3 { font-size: 1.6em; }
-#write h4, #write-h4 { font-size: 1.4em; }
-#write h5, #write h6, #write-h5, #write-h6 { font-size: 1.2em; }
-#write ul, #write-ul { margin-left: 1.3em; list-style: disc; }
-#write ol, #write-ol { list-style: decimal; margin-left: 1.9em; }
-#write li ul, #write li ol, #write-ul ul, #write-ul ol, #write-ol ul, #write-ol ol { margin-bottom: 0.8em; margin-left: 2em; }
-#write li ul, #write-ul ul, #write-ol ul { list-style: circle; }
-[mdtype="table_row"] > th, [mdtype="table_row"] > td { border: 1px solid rgb(221, 221, 221); padding: 0.5em 1em; color: rgba(110, 72, 50, 0.74); }
-#write table th, #write-table th { background: rgb(251, 251, 251); }
-#write table thead th, #write-table thead th { background: rgba(251, 240, 211, 0.76); }
-#write table caption { border-bottom: none; }
-#write em { font-weight: inherit; font-style: inherit; }
-li > p { margin-bottom: 0px !important; }
-#write img { max-width: 100%; }
-a.md-toc-inner { border-bottom: 0px !important; }
-.md-toc-h1:first-of-type:last-of-type { display: none; }
-.md-toc { font-size: inherit; }
-.md-toc-h1 .md-toc-inner { font-weight: normal; }
-.md-table-edit th { padding: 0px !important; border: 0px !important; }
-.mac-seamless-mode #write { min-height: calc((100vh - 6em) - 20px); }
-.typora-quick-open-item.active { color: var(--active-file-text-color); }
-.in-text-selection, ::selection { background: var(--active-file-bg-color); text-shadow: none; color: white; }
-.btn-primary { background-color: rgb(45, 45, 45); border-color: rgb(2, 2, 2); }
-.btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary { background-color: rgb(78, 76, 78); border: rgb(78, 76, 78); }
-#preference-dialog .modal-content { background: rgb(110, 117, 122); --bg-color: #6e757a; --text-color: #f1f1f1; color: rgb(241, 241, 241); }
-sup.md-footnote { color: rgb(110, 72, 50); }
-.task-list { list-style: none !important; }
-.task-list-item input { width: 1.25rem; height: 1.25rem; display: block; -webkit-appearance: initial; left: -18px; }
-.task-list-item input:focus { outline: none; box-shadow: none; }
-.task-list-item input::before { border: 2px solid rgb(110, 72, 50); border-radius: 1.2rem; width: 1.2rem; height: 1.2rem; content: " "; transition: background-color 200ms ease-in-out; display: block; }
-.task-list-item input:checked::before, .task-list-item input[checked]::before { -webkit-appearance: initial; background: rgb(110, 72, 50); border-width: 2px; display: inline-block; transition: background-color 200ms ease-in-out; }
-.task-list-item input:checked::after, .task-list-item input[checked]::after { opacity: 1; }
-.task-list-item input::after { transition: opacity 0.05s ease-in-out; transform: rotate(-45deg); position: absolute; top: 0.325rem; left: 0.28125rem; width: 0.6375rem; height: 0.4rem; border-width: 0px 0px 3px 3px; border-bottom-style: solid; border-left-style: solid; border-bottom-color: rgb(249, 245, 237); border-left-color: rgb(249, 245, 237); border-image: initial; border-top-style: initial; border-top-color: initial; border-right-style: initial; border-right-color: initial; content: " "; opacity: 0; }
-.task-list-done { text-decoration: line-through; }
-.md-grid-board a:hover, .md-grid-board a.md-active { border-color: rgb(161, 161, 161); background: rgb(249, 237, 197); }
-.md-grid-board tr[row="1"] a:hover, .md-grid-board tr[row="1"] a.md-active { background: rgb(94, 62, 43); }
+
+article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+    display: block;
+}
+
+audio, canvas, video {
+    display: inline-block;
+}
+
+body, button, input, select, textarea {
+    font: 400 1em/1.8 "font/han.otf", "PingFang SC", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans;
+}
+
+body {
+    font-family: "font/han.otf", "PingFang SC", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "font/han.otf", "PingFang SC", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans;
+    /*font-family: "PingFang SC", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans;*/
+    -webkit-font-smoothing: initial;
+    font-weight: 100;
+    color: var(--text-color);
+    line-height: 1.35;
+    font-variant-numeric: lining-nums;
+    margin-bottom: 1em;
+}
+
+em {
+    font-family: "font/han.otf", Georgia-Italic, STSongti-SC-Light, serif;
+}
+
+strong em,
+em strong {
+    font-family: "font/han.otf", Georgia-BoldItalic, STSongti-SC-Regular, serif;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+/* img 添加边框 */
+img {
+    background: white;
+    border-radius: .2rem;
+    padding: 0.3rem;
+    box-shadow: 1px 2px 4px gray;
+    text-align: center;
+}
+
+blockquote {
+    position: relative;
+    color: rgba(146, 115, 91, 0.81);
+    font-weight: 400;
+    border-left: 2px solid #6e4832;
+    padding-left: 1rem;
+    margin: 1em 3em 1em 1em;
+}
+
+@media only screen and ( max-width: 640px ) {
+    blockquote {
+        margin: 1em 0;
+    }
+}
+
+acronym, abbr {
+    border-bottom: 1px dotted;
+    font-variant: normal;
+}
+
+abbr {
+    cursor: help;
+}
+
+address, caption, cite, code, dfn, th, var {
+    font-style: normal;
+    font-weight: 400;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+caption, th {
+    text-align: left;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+}
+
+:root sub, :root sup {
+    vertical-align: baseline; /* for ie9 and other modern browsers */
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* a border bottom styles */
+a {
+    color: #4484c2;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#write a {
+    font-weight: normal;
+}
+
+#write a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid #4484c2;
+}
+
+ins, a {
+    text-decoration: none;
+}
+
+/* mark */
+mark {
+    background: #fffdd1;
+    border-bottom: 1px solid #ffedce;
+    padding: 2px;
+    margin: 0 5px;
+}
+
+pre, code, pre tt {
+    font-family: Courier, 'Courier New', monospace;
+}
+
+#write .md-fences {
+    border: 1px solid #ddd;
+    padding: 1em 0.5em;
+    display: block;
+    -webkit-overflow-scrolling: touch;
+}
+
+hr {
+    border: none;
+    border-bottom: 1px solid #cfcfcf;
+    margin-bottom: 0.8em;
+    height: 10px;
+}
+
+strong, b {
+    font-weight: 700;
+    /*color: #000;*/
+}
+
+/* 段落之间的间隔 */
+#write p, #write .md-fences, #write ul, #write ol, #write dl, #write form, #write hr, #write figure,
+#write-p, #write-pre, #write-ul, #write-ol, #write-dl, #write-form, #write-hr, #write-table, blockquote {
+    margin-bottom: 1.2em
+}
+
+html {
+    font-family: "font/han.otf", PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+}
+
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6,
+#write-h1, #write-h2, #write-h3, #write-h4, #write-h5, #write-h6 {
+    margin-bottom: 0.6em;
+    line-height: 1.35;
+    color: #6e4832;
+    font-weight: bolder;
+}
+
+#write h1, #write-h1 {
+    font-size: 2.4em;
+    padding-bottom: 0.3em;
+    border-bottom: 3px double #eee;
+}
+
+#write h2, #write-h2 {
+    font-size: 1.8em;
+}
+
+#write h3, #write-h3 {
+    font-size: 1.6em;
+}
+
+#write h4, #write-h4 {
+    font-size: 1.4em;
+}
+
+#write h5, #write h6, #write-h5, #write-h6 {
+    font-size: 1.2em;
+}
+
+/* 在文章中的 ul 和 ol 的样式 */
+#write ul, #write-ul {
+    margin-left: 1.3em;
+    list-style: disc;
+}
+
+#write ol, #write-ol {
+    list-style: decimal;
+    margin-left: 1.9em;
+}
+
+#write li ul, #write li ol, #write-ul ul, #write-ul ol, #write-ol ul, #write-ol ol {
+    margin-bottom: 0.8em;
+    margin-left: 2em;
+}
+
+#write li ul, #write-ul ul, #write-ol ul {
+    list-style: circle;
+}
+
+[mdtype="table_row"] > th,
+[mdtype="table_row"] > td {
+    border: 1px solid #ddd;
+    padding: 0.5em 1em;
+    color: rgba(110, 72, 50, 0.74);
+}
+
+#write table th, #write-table th {
+    background: #fbfbfb;
+}
+
+#write table thead th, #write-table thead th {
+    background: rgba(251, 240, 211, 0.76);
+}
+
+#write table caption {
+    border-bottom: none;
+}
+
+#write em {
+    font-weight: inherit;
+    font-style: inherit;
+}
+
+li > p {
+    margin-bottom: 0 !important;
+}
+
+/* Responsive images */
+#write img {
+    max-width: 100%;
+}
+
+a.md-toc-inner {
+    border-bottom: 0 !important;
+}
+
+.md-toc-h1:first-of-type:last-of-type {
+    display: none;
+}
+
+.md-toc {
+    font-size: inherit;
+}
+
+.md-toc-h1 .md-toc-inner {
+    font-weight: normal;
+}
+
+.md-table-edit th {
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+.mac-seamless-mode #write {
+    min-height: calc(100vh - 6em - 20px);
+}
+
+.typora-quick-open-item.active {
+    color: var(--active-file-text-color);
+}
+
+*.in-text-selection, ::selection {
+    background: var(--active-file-bg-color);
+    text-shadow: none;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #2d2d2d;
+    border-color: #020202;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background-color: #4e4c4e;
+    border: #4e4c4e;
+}
+
+#preference-dialog .modal-content {
+    background: #6e757a;
+    --bg-color: #6e757a;
+    --text-color: #f1f1f1;
+    color: #f1f1f1;
+}
+
+/* 角标颜色 */
+sup.md-footnote {
+    color: #6e4832;
+}
+
+.task-list {
+    list-style: none !important;
+}
+
+/* checked box 效果 */
+.task-list-item input {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: block;
+    -webkit-appearance: initial;
+    left: -18px;
+}
+
+.task-list-item input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.task-list-item input:before {
+    border: 2px solid #6e4832;
+    border-radius: 1.2rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    content: ' ';
+    transition: background-color 200ms ease-in-out;
+    display: block;
+}
+
+.task-list-item input:checked:before,
+.task-list-item input[checked]:before {
+    -webkit-appearance: initial;
+    background: #6e4832;
+    border-width: 2px;
+    display: inline-block;
+    transition: background-color 200ms ease-in-out;
+}
+
+.task-list-item input:checked:after,
+.task-list-item input[checked]:after {
+    opacity: 1;
+}
+
+.task-list-item input:after {
+    opacity: 1;
+    -webkit-transition: opacity 0.05s ease-in-out;
+    -moz-transition: opacity 0.05s ease-in-out;
+    transition: opacity 0.05s ease-in-out;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 0.325rem;
+    left: 0.28125rem;
+    width: 0.6375rem;
+    height: 0.4rem;
+    border: 3px solid #f9f5ed;
+    border-top: 0;
+    border-right: 0;
+    content: ' ';
+    opacity: 0;
+}
+
+.task-list-done {
+    text-decoration: line-through;
+}
+
+.md-grid-board a:hover,
+.md-grid-board a.md-active {
+    border-color: #a1a1a1;
+    background: #f9edc5;
+}
+
+.md-grid-board tr[row='1'] a:hover,
+.md-grid-board tr[row='1'] a.md-active {
+    background: #5e3e2b;
+}
 
 
 
-
-
- .typora-export p, .typora-export .footnote-line {white-space: normal;} 
+ .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
 </style>
 </head>
 <body class='typora-export' >
-<div  id='write'  class = 'is-node'><h1><a name='header-n0' class='md-header-anchor '></a>Validating Form Data via Applicative Functors</h1><p>I&#39;ve had an interesting mini-journey while I was in search of a way to validate input data in Haskell recently, and ended up implementing one myself, and then got an interesting <a href='https://www.reddit.com/r/haskell/comments/ad65gz/is_there_a_validationt_like_this_somewhere_or/eddyxvb/'>comment on reddit</a>, which I will unwrap in this post.</p><h2><a name='header-n3' class='md-header-anchor '></a>Initial goal</h2><p>At first, all I wanted to get was a way to validate my input data structure into another, resulting one. Something which can be done via <code>ExceptT</code> like this (<a href='./Validating-Form-Data-via-Applicative-Functors/exceptt.hs'>exceptt.hs</a>):</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="haskell" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="haskell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">#!/usr</span><span class="cm-builtin">/</span><span class="cm-variable">bin</span><span class="cm-builtin">/</span><span class="cm-variable">env</span> <span class="cm-variable">stack</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">-- stack --resolver=lts-13.1 script</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">{-# LANGUAGE OverloadedStrings #-}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-qualifier">Control.Monad.Trans.</span><span class="cm-variable-2">Except</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">qualified</span> <span class="cm-qualifier">Data.</span><span class="cm-variable-2">Text</span> <span class="cm-variable">as</span> <span class="cm-variable-2">T</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-qualifier">Data.</span><span class="cm-variable-2">Text</span> (<span class="cm-variable-2">Text</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">newtype</span> <span class="cm-variable-2">ValidUrl</span> <span class="cm-keyword">=</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable-2">ValidUrl</span> <span class="cm-variable-2">Text</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">deriving</span> (<span class="cm-builtin">Show</span>, <span class="cm-builtin">Eq</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">data</span> <span class="cm-variable-2">InputForm</span> <span class="cm-keyword">=</span> <span class="cm-variable-2">InputForm</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  { <span class="cm-variable">inpUsername</span> <span class="cm-keyword">::</span> <span class="cm-variable-2">Text</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  , <span class="cm-variable">inpHomepage</span> <span class="cm-keyword">::</span> <span class="cm-variable-2">Text</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  } <span class="cm-keyword">deriving</span> (<span class="cm-builtin">Show</span>, <span class="cm-builtin">Eq</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">data</span> <span class="cm-variable-2">OutputForm</span> <span class="cm-keyword">=</span> <span class="cm-variable-2">OutputForm</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  { <span class="cm-variable">outUsername</span> <span class="cm-keyword">::</span> <span class="cm-variable-2">Text</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  , <span class="cm-variable">outPassword</span> <span class="cm-keyword">::</span> <span class="cm-variable-2">ValidUrl</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  } <span class="cm-keyword">deriving</span> (<span class="cm-builtin">Show</span>, <span class="cm-builtin">Eq</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">lengthBetween</span> <span class="cm-keyword">::</span> <span class="cm-builtin">Monad</span> <span class="cm-variable">m</span> <span class="cm-keyword">=&gt;</span> <span class="cm-builtin">Int</span> <span class="cm-keyword">-&gt;</span> <span class="cm-builtin">Int</span> <span class="cm-keyword">-&gt;</span> <span class="cm-variable-2">Text</span> <span class="cm-keyword">-&gt;</span> <span class="cm-variable-2">ExceptT</span> <span class="cm-variable-2">Text</span> <span class="cm-variable">m</span> <span class="cm-variable-2">Text</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">lengthBetween</span> <span class="cm-variable">n</span> <span class="cm-variable">m</span> <span class="cm-variable">txt</span> <span class="cm-keyword">=</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">if</span> <span class="cm-qualifier">T.</span><span class="cm-builtin">length</span> <span class="cm-variable">txt</span> <span class="cm-builtin">&lt;</span> <span class="cm-variable">n</span> <span class="cm-builtin">||</span> <span class="cm-qualifier">T.</span><span class="cm-builtin">length</span> <span class="cm-variable">txt</span> <span class="cm-builtin">&gt;</span> <span class="cm-variable">m</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">then</span> <span class="cm-variable">throwE</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (<span class="cm-string">"Length must be between "</span> <span class="cm-variable">&lt;&gt;</span> <span class="cm-qualifier">T.</span><span class="cm-variable">pack</span> (<span class="cm-builtin">show</span> <span class="cm-variable">n</span>) <span class="cm-variable">&lt;&gt;</span> <span class="cm-string">" and "</span> <span class="cm-variable">&lt;&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-qualifier">T.</span><span class="cm-variable">pack</span> (<span class="cm-builtin">show</span> <span class="cm-variable">m</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">else</span> <span class="cm-builtin">return</span> <span class="cm-variable">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">validateUrl</span> <span class="cm-keyword">::</span> <span class="cm-builtin">Monad</span> <span class="cm-variable">m</span> <span class="cm-keyword">=&gt;</span> <span class="cm-variable-2">Text</span> <span class="cm-keyword">-&gt;</span> <span class="cm-variable-2">ExceptT</span> <span class="cm-variable-2">Text</span> <span class="cm-variable">m</span> <span class="cm-variable-2">ValidUrl</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">validateUrl</span> <span class="cm-variable">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">-- exercise to a reader</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-keyword">=</span> <span class="cm-variable">throwE</span> <span class="cm-string">"Invalid URL"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">main</span> <span class="cm-keyword">::</span> <span class="cm-builtin">IO</span> ()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">main</span> <span class="cm-keyword">=</span> <span class="cm-keyword">do</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">let</span> <span class="cm-variable">inpForm</span> <span class="cm-keyword">=</span> <span class="cm-variable-2">InputForm</span> <span class="cm-string">"usr"</span> <span class="cm-string">"httpbadurl"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">outForm</span> <span class="cm-keyword">&lt;-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">runExceptT</span> <span class="cm-builtin">$</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable-2">OutputForm</span> <span class="cm-variable">&lt;$&gt;</span> <span class="cm-variable">lengthBetween</span> <span class="cm-number">4</span> <span class="cm-number">20</span> (<span class="cm-variable">inpUsername</span> <span class="cm-variable">inpForm</span>) <span class="cm-variable">&lt;*&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">validateUrl</span> (<span class="cm-variable">inpHomepage</span> <span class="cm-variable">inpForm</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-builtin">print</span> <span class="cm-variable">outForm</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 1097px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1097px;"></div></div></div></pre><p>The problem here is that <code>ExceptT</code> exits quickly, as soon as it encounters the first error:</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">$ ./exceptt.hs</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Left "Length must be between 4 and 20"</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 51px;"></div><div class="CodeMirror-gutters" style="display: none; height: 51px;"></div></div></div></pre><p>What I want instead is to gather all the error messages with their field names, so that my front-end could show them all nicely.</p><h2><a name='header-n9' class='md-header-anchor '></a>The search</h2><p>I was looking for a type that is similar to <code>ExceptT</code>, I would assume the name to be <code>ValidateT</code>, so this was what I hoogled for. Surprisingly, all I could find was the <code>Validation</code> type, but not its transformer version.</p><p>So, at first I&#39;ve implemented my own <code>ValidationT</code> and made <a href='https://github.com/ekmett/either/pull/58/files'>a PR</a> which I encourage you to read. I won&#39;t quote the implementation, only the test case scenario:</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="haskell"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="haskell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">..</span><span class="cm-builtin">.</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  , <span class="cm-variable">testCase</span> <span class="cm-string">"combine two ValidateT"</span> <span class="cm-builtin">$</span> <span class="cm-keyword">do</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">v1</span> <span class="cm-keyword">&lt;-</span> <span class="cm-variable">runValidationT</span> <span class="cm-builtin">$</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ((,) <span class="cm-variable">&lt;$&gt;</span> <span class="cm-variable-2">ValidationT</span> (<span class="cm-variable">pure</span> (<span class="cm-variable-2">Failure</span> [<span class="cm-string">"first"</span>]))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">&lt;*&gt;</span> <span class="cm-variable-2">ValidationT</span> (<span class="cm-variable">pure</span> (<span class="cm-variable-2">Failure</span> [<span class="cm-string">"second"</span>])))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">::</span> <span class="cm-builtin">IO</span> (<span class="cm-variable-2">Validation</span> [<span class="cm-builtin">String</span>] ((), ()))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">assertEqual</span> <span class="cm-string">"errors get accumulated"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">v1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;  (<span class="cm-variable-2">Failure</span> [<span class="cm-string">"first"</span>, <span class="cm-string">"second"</span>])</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">..</span><span class="cm-builtin">.</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 255px;"></div><div class="CodeMirror-gutters" style="display: none; height: 255px;"></div></div></div></pre><p>As you can see, it does what I want. So, what could be the problem? I had a gut feeling that there must be one, so I&#39;ve asked reddit about it!</p><h2><a name='header-n14' class='md-header-anchor '></a>The problem</h2><p>That&#39;s where the wonderful comment by Samuel Gélineau came in:</p><blockquote><p>Notice that <a href='http://hackage.haskell.org/package/validation-1/docs/Data-Validation.html#t:Validation'><code>Validation</code></a> intentionally doesn&#39;t have a Monad instance! For this reason, it doesn&#39;t make much sense to make it into a Monad transformer. An Applicative transformer would make more sense, but since Applicatives compose using <a href='https://hackage.haskell.org/package/base-4.12.0.0/docs/Data-Functor-Compose.html#t:Compose'><code>Compose</code></a>, there is no need to define both a regular and a transformer version of <code>Validation</code>.</p></blockquote><p>Ok, there are few things to unpack here!</p><h2><a name='header-n19' class='md-header-anchor '></a>No Monad instance</h2><ul><li><code>Validation</code> intentionally has no <code>Monad</code> instance</li></ul><p>I missed that, because I used <code>ExceptT</code> as the base for my implementation, which indeed has one. So, why exactly does it not have one? The docs mention it, actually:</p><blockquote><p>An <code>Validation</code> is either a value of the type <code>err</code> or <code>a</code>, similar to <code>Either</code>. However, the <code>Applicative</code> instance for <code>Validation</code> <em>accumulates</em> errors using a <code>Semigroup</code> on <code>err</code>. In contrast, the <code>Applicative</code> for <code>Either</code> returns only the first error.</p><p>A consequence of this is that <code>Validation</code> has no <code>Bind</code> or <code>Monad</code> instance. This is because such an instance would violate the law that a Monad&#39;s <code>ap</code> must equal the <code>Applicative</code>&#39;s <code>&lt;*&gt;</code></p><p>An example of typical usage can be found <a href='https://github.com/qfpl/validation/blob/master/examples/src/Email.hs'>here</a>.</p></blockquote><p>Interesting. I&#39;ve never seen the <code>Bind</code> class before. <a href='http://hackage.haskell.org/package/semigroupoids-5.3.1/docs/Data-Functor-Bind.html#v:Bind'><code>Data.Functor.Bind</code></a> has not only this <code>Bind</code>, but also <code>Apply</code> (which is similar to <code>Bind</code> but for <code>Applicative</code>&#39;s <code>&lt;*&gt;</code>). Good to know :)</p><p>So, the <code>ValidationT</code> type I&#39;ve implemented in my PR violates the law that its <code>&lt;*&gt;</code> must be the same as the <code>ap</code> from <code>Monad</code>. But what if I were to only implement an <code>Applicative</code> instance? Turns out there is no need to do so! That&#39;s what the second part of the comment is telling:</p><h2><a name='header-n30' class='md-header-anchor '></a>Compose</h2><ul><li>An Applicative transformer would make more sense, but since Applicatives compose using <a href='https://hackage.haskell.org/package/base-4.12.0.0/docs/Data-Functor-Compose.html#t:Compose'><code>Compose</code></a>, there is no need to define both a regular and a transformer version of <code>Validation</code>.</li></ul><p>Right, so let&#39;s try it out and see if we can just use an existing thing called <code>Compose</code> to build our <code>ValidationT</code>-like functionality. Compose looks like this:</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="haskell"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="haskell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">newtype</span> <span class="cm-variable-2">Compose</span> <span class="cm-variable">f</span> <span class="cm-variable">g</span> <span class="cm-variable">a</span> <span class="cm-keyword">=</span> </span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable-2">Compose</span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">getCompose</span> <span class="cm-keyword">::</span> <span class="cm-variable">f</span> (<span class="cm-variable">g</span> <span class="cm-variable">a</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 102px;"></div><div class="CodeMirror-gutters" style="display: none; height: 102px;"></div></div></div></pre><p>Compare it with <code>ExceptT</code>:</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="haskell"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="haskell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">newtype</span> <span class="cm-variable-2">ExceptT</span> <span class="cm-variable">e</span> <span class="cm-variable">m</span> <span class="cm-variable">a</span> <span class="cm-keyword">=</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable-2">ExceptT</span> (<span class="cm-variable">m</span> (<span class="cm-builtin">Either</span> <span class="cm-variable">e</span> <span class="cm-variable">a</span>))</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 51px;"></div><div class="CodeMirror-gutters" style="display: none; height: 51px;"></div></div></div></pre><p>In our usage, we will put <code>IO</code> under <code>f</code>, and <code>Validation</code> under <code>g</code>. Here are the new relevant parts of our code. I&#39;ve kept <code>throwE</code> reimplemented under the same name outside for clarity. Full code is at <a href='./Validating-Form-Data-via-Applicative-Functors/compose.hs'>compose.hs</a>:</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="haskell" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="haskell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">throwE</span> <span class="cm-keyword">::</span> <span class="cm-variable-2">Applicative</span> <span class="cm-variable">m</span> <span class="cm-keyword">=&gt;</span> <span class="cm-variable">err</span> <span class="cm-keyword">-&gt;</span> <span class="cm-variable-2">Compose</span> <span class="cm-variable">m</span> (<span class="cm-variable-2">Validation</span> <span class="cm-variable">err</span>) <span class="cm-variable">a</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">throwE</span> <span class="cm-variable">err</span> <span class="cm-keyword">=</span> <span class="cm-variable-2">Compose</span> (<span class="cm-variable">pure</span> (<span class="cm-variable-2">Failure</span> <span class="cm-variable">err</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">lengthBetween</span> <span class="cm-keyword">::</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-variable-2">Applicative</span> <span class="cm-variable">m</span> <span class="cm-keyword">=&gt;</span> <span class="cm-builtin">Int</span> <span class="cm-keyword">-&gt;</span> <span class="cm-builtin">Int</span> <span class="cm-keyword">-&gt;</span> <span class="cm-variable-2">Text</span> <span class="cm-keyword">-&gt;</span> <span class="cm-variable-2">Compose</span> <span class="cm-variable">m</span> (<span class="cm-variable-2">Validation</span> [<span class="cm-variable-2">Text</span>]) <span class="cm-variable-2">Text</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">lengthBetween</span> <span class="cm-variable">n</span> <span class="cm-variable">m</span> <span class="cm-variable">txt</span> <span class="cm-keyword">=</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">if</span> <span class="cm-qualifier">T.</span><span class="cm-builtin">length</span> <span class="cm-variable">txt</span> <span class="cm-builtin">&lt;</span> <span class="cm-variable">n</span> <span class="cm-builtin">||</span> <span class="cm-qualifier">T.</span><span class="cm-builtin">length</span> <span class="cm-variable">txt</span> <span class="cm-builtin">&gt;</span> <span class="cm-variable">m</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">then</span> <span class="cm-variable">throwE</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ <span class="cm-string">"Length must be between "</span> <span class="cm-variable">&lt;&gt;</span> <span class="cm-qualifier">T.</span><span class="cm-variable">pack</span> (<span class="cm-builtin">show</span> <span class="cm-variable">n</span>) <span class="cm-variable">&lt;&gt;</span> <span class="cm-string">" and "</span> <span class="cm-variable">&lt;&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-qualifier">T.</span><span class="cm-variable">pack</span> (<span class="cm-builtin">show</span> <span class="cm-variable">m</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">else</span> <span class="cm-variable">pure</span> <span class="cm-variable">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">validateUrl</span> <span class="cm-keyword">::</span> <span class="cm-variable-2">Applicative</span> <span class="cm-variable">m</span> <span class="cm-keyword">=&gt;</span> <span class="cm-variable-2">Text</span> <span class="cm-keyword">-&gt;</span> <span class="cm-variable-2">Compose</span> <span class="cm-variable">m</span> (<span class="cm-variable-2">Validation</span> [<span class="cm-variable-2">Text</span>]) <span class="cm-variable-2">ValidUrl</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">validateUrl</span> <span class="cm-variable">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">-- exercise to a reader</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-keyword">=</span> <span class="cm-variable">throwE</span> [<span class="cm-string">"Invalid URL"</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">main</span> <span class="cm-keyword">::</span> <span class="cm-builtin">IO</span> ()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">main</span> <span class="cm-keyword">=</span> <span class="cm-keyword">do</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">let</span> <span class="cm-variable">inpForm</span> <span class="cm-keyword">=</span> <span class="cm-variable-2">InputForm</span> <span class="cm-string">"usr"</span> <span class="cm-string">"httpbadurl"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">outForm</span> <span class="cm-keyword">&lt;-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">getCompose</span> <span class="cm-builtin">$</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable-2">OutputForm</span> <span class="cm-variable">&lt;$&gt;</span> <span class="cm-variable">lengthBetween</span> <span class="cm-number">4</span> <span class="cm-number">20</span> (<span class="cm-variable">inpUsername</span> <span class="cm-variable">inpForm</span>) <span class="cm-variable">&lt;*&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">validateUrl</span> (<span class="cm-variable">inpHomepage</span> <span class="cm-variable">inpForm</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-builtin">print</span> <span class="cm-variable">outForm</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 714px;"></div><div class="CodeMirror-gutters" style="display: none; height: 714px;"></div></div></div></pre><p>It outputs this:</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">./compose.hs</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Failure ["Length must be between 4 and 20","Invalid URL"]</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 51px;"></div><div class="CodeMirror-gutters" style="display: none; height: 51px;"></div></div></div></pre><p>All right, I&#39;ve learned few new things, I hope you have as well, this was fun!</p><p>Please send your feedback in Issues or PRs in <a href='https://github.com/k-bx/k-bx.github.io'>this blog&#39;s repo</a>.</p></div>
+<div  id='write'  class = 'is-mac'><h1><a name='header-n0' class='md-header-anchor '></a>Validating Form Data via Applicative Functors</h1><p>I&#39;ve had an interesting mini-journey while I was in search of a way to validate input data in Haskell recently, and ended up implementing one myself, and then got an interesting <a href='https://www.reddit.com/r/haskell/comments/ad65gz/is_there_a_validationt_like_this_somewhere_or/eddyxvb/'>comment on reddit</a>, which I will unwrap in this post.</p><h2><a name='header-n3' class='md-header-anchor '></a>Initial goal</h2><p>At first, all I wanted to get was a way to validate my input data structure into another, resulting one. Something which can be done via <code>ExceptT</code> like this (<a href='./Validating-Form-Data-via-Applicative-Functors/exceptt.hs'>exceptt.hs</a>):</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="haskell" style="page-break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="haskell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">#!/usr</span><span class="cm-builtin">/</span><span class="cm-variable">bin</span><span class="cm-builtin">/</span><span class="cm-variable">env</span> <span class="cm-variable">stack</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">-- stack --resolver=lts-13.1 script --package text,transformers</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">{-# LANGUAGE OverloadedStrings #-}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-qualifier">Control.Monad.Trans.</span><span class="cm-variable-2">Except</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">qualified</span> <span class="cm-qualifier">Data.</span><span class="cm-variable-2">Text</span> <span class="cm-variable">as</span> <span class="cm-variable-2">T</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-qualifier">Data.</span><span class="cm-variable-2">Text</span> (<span class="cm-variable-2">Text</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">newtype</span> <span class="cm-variable-2">ValidUrl</span> <span class="cm-keyword">=</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable-2">ValidUrl</span> <span class="cm-variable-2">Text</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">deriving</span> (<span class="cm-builtin">Show</span>, <span class="cm-builtin">Eq</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">data</span> <span class="cm-variable-2">InputForm</span> <span class="cm-keyword">=</span> <span class="cm-variable-2">InputForm</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  { <span class="cm-variable">inpUsername</span> <span class="cm-keyword">::</span> <span class="cm-variable-2">Text</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  , <span class="cm-variable">inpHomepage</span> <span class="cm-keyword">::</span> <span class="cm-variable-2">Text</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  } <span class="cm-keyword">deriving</span> (<span class="cm-builtin">Show</span>, <span class="cm-builtin">Eq</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">data</span> <span class="cm-variable-2">OutputForm</span> <span class="cm-keyword">=</span> <span class="cm-variable-2">OutputForm</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  { <span class="cm-variable">outUsername</span> <span class="cm-keyword">::</span> <span class="cm-variable-2">Text</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  , <span class="cm-variable">outPassword</span> <span class="cm-keyword">::</span> <span class="cm-variable-2">ValidUrl</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  } <span class="cm-keyword">deriving</span> (<span class="cm-builtin">Show</span>, <span class="cm-builtin">Eq</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">lengthBetween</span> <span class="cm-keyword">::</span> <span class="cm-builtin">Monad</span> <span class="cm-variable">m</span> <span class="cm-keyword">=&gt;</span> <span class="cm-builtin">Int</span> <span class="cm-keyword">-&gt;</span> <span class="cm-builtin">Int</span> <span class="cm-keyword">-&gt;</span> <span class="cm-variable-2">Text</span> <span class="cm-keyword">-&gt;</span> <span class="cm-variable-2">ExceptT</span> <span class="cm-variable-2">Text</span> <span class="cm-variable">m</span> <span class="cm-variable-2">Text</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">lengthBetween</span> <span class="cm-variable">n</span> <span class="cm-variable">m</span> <span class="cm-variable">txt</span> <span class="cm-keyword">=</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">if</span> <span class="cm-qualifier">T.</span><span class="cm-builtin">length</span> <span class="cm-variable">txt</span> <span class="cm-builtin">&lt;</span> <span class="cm-variable">n</span> <span class="cm-builtin">||</span> <span class="cm-qualifier">T.</span><span class="cm-builtin">length</span> <span class="cm-variable">txt</span> <span class="cm-builtin">&gt;</span> <span class="cm-variable">m</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">then</span> <span class="cm-variable">throwE</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (<span class="cm-string">"Length must be between "</span> <span class="cm-variable">&lt;&gt;</span> <span class="cm-qualifier">T.</span><span class="cm-variable">pack</span> (<span class="cm-builtin">show</span> <span class="cm-variable">n</span>) <span class="cm-variable">&lt;&gt;</span> <span class="cm-string">" and "</span> <span class="cm-variable">&lt;&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-qualifier">T.</span><span class="cm-variable">pack</span> (<span class="cm-builtin">show</span> <span class="cm-variable">m</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">else</span> <span class="cm-builtin">return</span> <span class="cm-variable">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">validateUrl</span> <span class="cm-keyword">::</span> <span class="cm-builtin">Monad</span> <span class="cm-variable">m</span> <span class="cm-keyword">=&gt;</span> <span class="cm-variable-2">Text</span> <span class="cm-keyword">-&gt;</span> <span class="cm-variable-2">ExceptT</span> <span class="cm-variable-2">Text</span> <span class="cm-variable">m</span> <span class="cm-variable-2">ValidUrl</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">validateUrl</span> <span class="cm-variable">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">-- exercise to a reader</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-keyword">=</span> <span class="cm-variable">throwE</span> <span class="cm-string">"Invalid URL"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">main</span> <span class="cm-keyword">::</span> <span class="cm-builtin">IO</span> ()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">main</span> <span class="cm-keyword">=</span> <span class="cm-keyword">do</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">let</span> <span class="cm-variable">inpForm</span> <span class="cm-keyword">=</span> <span class="cm-variable-2">InputForm</span> <span class="cm-string">"usr"</span> <span class="cm-string">"httpbadurl"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">outForm</span> <span class="cm-keyword">&lt;-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">runExceptT</span> <span class="cm-builtin">$</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable-2">OutputForm</span> <span class="cm-variable">&lt;$&gt;</span> <span class="cm-variable">lengthBetween</span> <span class="cm-number">4</span> <span class="cm-number">20</span> (<span class="cm-variable">inpUsername</span> <span class="cm-variable">inpForm</span>) <span class="cm-variable">&lt;*&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">validateUrl</span> (<span class="cm-variable">inpHomepage</span> <span class="cm-variable">inpForm</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-builtin">print</span> <span class="cm-variable">outForm</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 1075px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1075px;"></div></div></div></pre><p>The problem here is that <code>ExceptT</code> exits quickly, as soon as it encounters the first error:</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">$ ./exceptt.hs</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Left "Length must be between 4 and 20"</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 50px;"></div><div class="CodeMirror-gutters" style="display: none; height: 50px;"></div></div></div></pre><p>What I want instead is to gather all the error messages with their field names, so that my front-end could show them all nicely.</p><h2><a name='header-n9' class='md-header-anchor '></a>The search</h2><p>I was looking for a type that is similar to <code>ExceptT</code>, I would assume the name to be <code>ValidateT</code>, so this was what I hoogled for. Surprisingly, all I could find was the <code>Validation</code> type, but not its transformer version.</p><p>So, at first I&#39;ve implemented my own <code>ValidationT</code> and made <a href='https://github.com/ekmett/either/pull/58/files'>a PR</a> which I encourage you to read. I won&#39;t quote the implementation, only the test case scenario:</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="haskell"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="haskell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">..</span><span class="cm-builtin">.</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  , <span class="cm-variable">testCase</span> <span class="cm-string">"combine two ValidateT"</span> <span class="cm-builtin">$</span> <span class="cm-keyword">do</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">v1</span> <span class="cm-keyword">&lt;-</span> <span class="cm-variable">runValidationT</span> <span class="cm-builtin">$</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ((,) <span class="cm-variable">&lt;$&gt;</span> <span class="cm-variable-2">ValidationT</span> (<span class="cm-variable">pure</span> (<span class="cm-variable-2">Failure</span> [<span class="cm-string">"first"</span>]))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">&lt;*&gt;</span> <span class="cm-variable-2">ValidationT</span> (<span class="cm-variable">pure</span> (<span class="cm-variable-2">Failure</span> [<span class="cm-string">"second"</span>])))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">::</span> <span class="cm-builtin">IO</span> (<span class="cm-variable-2">Validation</span> [<span class="cm-builtin">String</span>] ((), ()))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">assertEqual</span> <span class="cm-string">"errors get accumulated"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">v1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;  (<span class="cm-variable-2">Failure</span> [<span class="cm-string">"first"</span>, <span class="cm-string">"second"</span>])</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">..</span><span class="cm-builtin">.</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 250px;"></div><div class="CodeMirror-gutters" style="display: none; height: 250px;"></div></div></div></pre><p>As you can see, it does what I want. So, what could be the problem? I had a gut feeling that there must be one, so I&#39;ve asked reddit about it!</p><h2><a name='header-n14' class='md-header-anchor '></a>The problem</h2><p>That&#39;s where the wonderful comment by Samuel Gélineau came in:</p><blockquote><p>Notice that <a href='http://hackage.haskell.org/package/validation-1/docs/Data-Validation.html#t:Validation'><code>Validation</code></a> intentionally doesn&#39;t have a Monad instance! For this reason, it doesn&#39;t make much sense to make it into a Monad transformer. An Applicative transformer would make more sense, but since Applicatives compose using <a href='https://hackage.haskell.org/package/base-4.12.0.0/docs/Data-Functor-Compose.html#t:Compose'><code>Compose</code></a>, there is no need to define both a regular and a transformer version of <code>Validation</code>.</p></blockquote><p>Ok, there are few things to unpack here!</p><h2><a name='header-n19' class='md-header-anchor '></a>No Monad instance</h2><ul><li><code>Validation</code> intentionally has no <code>Monad</code> instance</li></ul><p>I missed that, because I used <code>ExceptT</code> as the base for my implementation, which indeed has one. So, why exactly does it not have one? The docs mention it, actually:</p><blockquote><p>An <code>Validation</code> is either a value of the type <code>err</code> or <code>a</code>, similar to <code>Either</code>. However, the <code>Applicative</code> instance for <code>Validation</code> <em>accumulates</em> errors using a <code>Semigroup</code> on <code>err</code>. In contrast, the <code>Applicative</code> for <code>Either</code> returns only the first error.</p><p>A consequence of this is that <code>Validation</code> has no <code>Bind</code> or <code>Monad</code> instance. This is because such an instance would violate the law that a Monad&#39;s <code>ap</code> must equal the <code>Applicative</code>&#39;s <code>&lt;*&gt;</code></p><p>An example of typical usage can be found <a href='https://github.com/qfpl/validation/blob/master/examples/src/Email.hs'>here</a>.</p></blockquote><p>Interesting. I&#39;ve never seen the <code>Bind</code> class before. <a href='http://hackage.haskell.org/package/semigroupoids-5.3.1/docs/Data-Functor-Bind.html#v:Bind'><code>Data.Functor.Bind</code></a> has not only this <code>Bind</code>, but also <code>Apply</code> (which is similar to <code>Bind</code> but for <code>Applicative</code>&#39;s <code>&lt;*&gt;</code>). Good to know :)</p><p>So, the <code>ValidationT</code> type I&#39;ve implemented in my PR violates the law that its <code>&lt;*&gt;</code> must be the same as the <code>ap</code> from <code>Monad</code>. But what if I were to only implement an <code>Applicative</code> instance? Turns out there is no need to do so! That&#39;s what the second part of the comment is telling:</p><h2><a name='header-n30' class='md-header-anchor '></a>Compose</h2><ul><li>An Applicative transformer would make more sense, but since Applicatives compose using <a href='https://hackage.haskell.org/package/base-4.12.0.0/docs/Data-Functor-Compose.html#t:Compose'><code>Compose</code></a>, there is no need to define both a regular and a transformer version of <code>Validation</code>.</li></ul><p>Right, so let&#39;s try it out and see if we can just use an existing thing called <code>Compose</code> to build our <code>ValidationT</code>-like functionality. Compose looks like this:</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="haskell"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="haskell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">newtype</span> <span class="cm-variable-2">Compose</span> <span class="cm-variable">f</span> <span class="cm-variable">g</span> <span class="cm-variable">a</span> <span class="cm-keyword">=</span> </span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable-2">Compose</span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">getCompose</span> <span class="cm-keyword">::</span> <span class="cm-variable">f</span> (<span class="cm-variable">g</span> <span class="cm-variable">a</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 100px;"></div><div class="CodeMirror-gutters" style="display: none; height: 100px;"></div></div></div></pre><p>Compare it with <code>ExceptT</code>:</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="haskell"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="haskell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">newtype</span> <span class="cm-variable-2">ExceptT</span> <span class="cm-variable">e</span> <span class="cm-variable">m</span> <span class="cm-variable">a</span> <span class="cm-keyword">=</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable-2">ExceptT</span> (<span class="cm-variable">m</span> (<span class="cm-builtin">Either</span> <span class="cm-variable">e</span> <span class="cm-variable">a</span>))</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 50px;"></div><div class="CodeMirror-gutters" style="display: none; height: 50px;"></div></div></div></pre><p>In our usage, we will put <code>IO</code> under <code>f</code>, and <code>Validation</code> under <code>g</code>. Here are the new relevant parts of our code. I&#39;ve kept <code>throwE</code> reimplemented under the same name outside for clarity. Full code is at <a href='./Validating-Form-Data-via-Applicative-Functors/compose.hs'>compose.hs</a>:</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="haskell" style="page-break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="haskell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">throwE</span> <span class="cm-keyword">::</span> <span class="cm-variable-2">Applicative</span> <span class="cm-variable">m</span> <span class="cm-keyword">=&gt;</span> <span class="cm-variable">err</span> <span class="cm-keyword">-&gt;</span> <span class="cm-variable-2">Compose</span> <span class="cm-variable">m</span> (<span class="cm-variable-2">Validation</span> <span class="cm-variable">err</span>) <span class="cm-variable">a</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">throwE</span> <span class="cm-variable">err</span> <span class="cm-keyword">=</span> <span class="cm-variable-2">Compose</span> (<span class="cm-variable">pure</span> (<span class="cm-variable-2">Failure</span> <span class="cm-variable">err</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">lengthBetween</span> <span class="cm-keyword">::</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-variable-2">Applicative</span> <span class="cm-variable">m</span> <span class="cm-keyword">=&gt;</span> <span class="cm-builtin">Int</span> <span class="cm-keyword">-&gt;</span> <span class="cm-builtin">Int</span> <span class="cm-keyword">-&gt;</span> <span class="cm-variable-2">Text</span> <span class="cm-keyword">-&gt;</span> <span class="cm-variable-2">Compose</span> <span class="cm-variable">m</span> (<span class="cm-variable-2">Validation</span> [<span class="cm-variable-2">Text</span>]) <span class="cm-variable-2">Text</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">lengthBetween</span> <span class="cm-variable">n</span> <span class="cm-variable">m</span> <span class="cm-variable">txt</span> <span class="cm-keyword">=</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">if</span> <span class="cm-qualifier">T.</span><span class="cm-builtin">length</span> <span class="cm-variable">txt</span> <span class="cm-builtin">&lt;</span> <span class="cm-variable">n</span> <span class="cm-builtin">||</span> <span class="cm-qualifier">T.</span><span class="cm-builtin">length</span> <span class="cm-variable">txt</span> <span class="cm-builtin">&gt;</span> <span class="cm-variable">m</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">then</span> <span class="cm-variable">throwE</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ <span class="cm-string">"Length must be between "</span> <span class="cm-variable">&lt;&gt;</span> <span class="cm-qualifier">T.</span><span class="cm-variable">pack</span> (<span class="cm-builtin">show</span> <span class="cm-variable">n</span>) <span class="cm-variable">&lt;&gt;</span> <span class="cm-string">" and "</span> <span class="cm-variable">&lt;&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-qualifier">T.</span><span class="cm-variable">pack</span> (<span class="cm-builtin">show</span> <span class="cm-variable">m</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">else</span> <span class="cm-variable">pure</span> <span class="cm-variable">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">validateUrl</span> <span class="cm-keyword">::</span> <span class="cm-variable-2">Applicative</span> <span class="cm-variable">m</span> <span class="cm-keyword">=&gt;</span> <span class="cm-variable-2">Text</span> <span class="cm-keyword">-&gt;</span> <span class="cm-variable-2">Compose</span> <span class="cm-variable">m</span> (<span class="cm-variable-2">Validation</span> [<span class="cm-variable-2">Text</span>]) <span class="cm-variable-2">ValidUrl</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">validateUrl</span> <span class="cm-variable">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">-- exercise to a reader</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-keyword">=</span> <span class="cm-variable">throwE</span> [<span class="cm-string">"Invalid URL"</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">main</span> <span class="cm-keyword">::</span> <span class="cm-builtin">IO</span> ()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">main</span> <span class="cm-keyword">=</span> <span class="cm-keyword">do</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">let</span> <span class="cm-variable">inpForm</span> <span class="cm-keyword">=</span> <span class="cm-variable-2">InputForm</span> <span class="cm-string">"usr"</span> <span class="cm-string">"httpbadurl"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">outForm</span> <span class="cm-keyword">&lt;-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">getCompose</span> <span class="cm-builtin">$</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable-2">OutputForm</span> <span class="cm-variable">&lt;$&gt;</span> <span class="cm-variable">lengthBetween</span> <span class="cm-number">4</span> <span class="cm-number">20</span> (<span class="cm-variable">inpUsername</span> <span class="cm-variable">inpForm</span>) <span class="cm-variable">&lt;*&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">validateUrl</span> (<span class="cm-variable">inpHomepage</span> <span class="cm-variable">inpForm</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-builtin">print</span> <span class="cm-variable">outForm</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 650px;"></div><div class="CodeMirror-gutters" style="display: none; height: 650px;"></div></div></div></pre><p>It outputs this:</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">./compose.hs</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Failure ["Length must be between 4 and 20","Invalid URL"]</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 50px;"></div><div class="CodeMirror-gutters" style="display: none; height: 50px;"></div></div></div></pre><p>All right, I&#39;ve learned few new things, I hope you have as well, this was fun!</p><p>Please send your feedback in Issues or PRs in <a href='https://github.com/k-bx/k-bx.github.io'>this blog&#39;s repo</a>.</p></div>
 </body>
 </html>
