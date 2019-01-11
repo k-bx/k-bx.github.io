@@ -1,5 +1,5 @@
 #!/usr/bin/env stack
--- stack --resolver=lts-13.1 script
+-- stack --resolver=lts-13.1 script --package either,text
 {-# LANGUAGE OverloadedStrings #-}
 
 import Data.Functor.Compose

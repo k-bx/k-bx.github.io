@@ -8,7 +8,7 @@ At first, all I wanted to get was a way to validate my input data structure into
 
 ```haskell
 #!/usr/bin/env stack
--- stack --resolver=lts-13.1 script
+-- stack --resolver=lts-13.1 script --package text,transformers
 {-# LANGUAGE OverloadedStrings #-}
 
 import Control.Monad.Trans.Except
