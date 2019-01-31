@@ -19,6 +19,21 @@ In this post, I will:
 
 There are few peculiar things about this paradox. First, it isn't really a paradox, there's only a paradox-ish part about it. The part is that linguistically, it seems like the person is causing everyone else to drink somehow, whereas in reality, what is stated is that you can always find a person, such that it just so happens that everyone else is drinking along. To make a similar statement not involving conscious agents: "every day, I can find a person, such that, if that person is up, then the sun is up". This doesn't mean that the sun follows some person's actions. What we see is a principle named [Correlation does not imply causation](https://en.wikipedia.org/wiki/Correlation_does_not_imply_causation).
 
+## Proving it constructively
 
+Let's start with the hardest part, getting the theorem statement precisely and correctly:
+
+```haskell
+drinker (A : U) (D : A -> U) (x : A)
+  : ((x : A) * ((y : D x) -> (z : A) -> D z))
+  = undefined
+```
+
+Notes:
+
+- `A` is the type of all drinkers
+- `D` is the property meaning "is drinking"
+- I didn't have the `x : A` present at first, it was needed later as I went along, but it makes total sense, since we need the bar to have at least one person, otherwise the theorem wouldn't make sense. In other words, our type must be **inhabited**
+- 
 
 Please send your feedback in Issues or PRs in [this blog's repo](https://github.com/k-bx/k-bx.github.io).
