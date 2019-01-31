@@ -1,0 +1,81 @@
+module drinker where
+
+data N0 =
+
+neg (A : U) : U = A -> N0
+
+data or (A B : U)
+  = inl (a : A)
+  | inr (b : B)
+
+deMorgan
+  (A : U)
+  (D : A -> U)
+  : (neg ((x : A) -> D x))
+    -> ( (x : A)
+       * (neg (D x)))
+  = undefined
+
+lem (A : U)
+  : or A (neg A)
+  = undefined
+
+allOrCounterexC1
+  (A : U)
+  (D : A -> U)
+  : (lem : or ((x : A) -> D x)
+              (neg ((x : A) -> D x)))
+  -> (or ((x : A) -> D x)
+         ((x : A) * (neg (D x))))
+  = split
+  inl f -> inl f
+  inr f -> inr (deMorgan A D f)
+
+allOrCounterex
+  (A : U)
+  (D : A -> U)
+  : (or ((x : A) -> D x)
+        ((x : A) * (neg (D x)))
+    )
+  = allOrCounterexC1 A D
+      (lem ((x : A) -> D x))
+
+efq (A : U) : N0 -> A = split {}
+
+drinkerC1
+  (A : U)
+  (D : A -> U)
+  (x : A)
+  : (or ((q : A) -> D q)
+        ((q : A) * (neg (D q))))
+    ->
+    ( (x : A)
+    * ((y : D x)
+       -> (z : A)
+       -> D z
+      )
+    )
+  = split
+  inl allD ->
+    ( x
+    , (\(_ : D x) ->
+         \(z : A) ->
+           allD z))
+  inr pair ->
+    ( pair.1
+    , \(y : D pair.1) ->
+        \(z : A) ->
+          efq (D z) (pair.2 y))
+
+drinker
+  (A : U)
+  (D : A -> U)
+  (x : A)
+  : ( (x : A)
+    * ((y : D x)
+       -> (z : A)
+       -> D z
+      )
+    )
+  = drinkerC1 A D x (allOrCounterex A D)
+
