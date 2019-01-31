@@ -1,6 +1,6 @@
 # Struggling With My Drinker's Problem
 
-I've recently stumbled upon the [Drinker's Problem](https://en.wikipedia.org/wiki/Drinker_paradox) accidentally:
+I've recently stumbled upon the [Drinker's Problem](https://en.wikipedia.org/wiki/Drinker_paradox):
 
 > The **drinker paradox** (also known as the **drinker's theorem**, the **drinker's principle**, or the **drinking principle**) is a [theorem](https://en.wikipedia.org/wiki/Theorem) of [classical](https://en.wikipedia.org/wiki/Classical_logic) [predicate logic](https://en.wikipedia.org/wiki/Predicate_logic) which can be stated as "There is someone in the pub such that, if he is drinking, then everyone in the pub is drinking." It was popularised by the [mathematical logician](https://en.wikipedia.org/wiki/Mathematical_logician) [Raymond Smullyan](https://en.wikipedia.org/wiki/Raymond_Smullyan), who called it the "drinking principle" in his 1978 book *What Is the Name of this Book?*
 
