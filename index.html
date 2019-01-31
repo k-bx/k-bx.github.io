@@ -2,20 +2,20 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>index</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+<title>index</title><link href='https://fonts.loli.net/css?family=Ubuntu:400,700,400italic,700italic' rel='stylesheet' type='text/css' /><link href='https://fonts.loli.net/css?family=Raleway:600,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
 iframe { margin: auto; }
 a.url { word-break: break-all; }
 a:active, a:hover { outline: 0px; }
 .in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
 #write.first-line-indent p { text-indent: 2em; }
 #write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
 #write.first-line-indent li { margin-left: 2em; }
 .for-image #write { padding-left: 8px; padding-right: 8px; }
 body.typora-export { padding-left: 30px; padding-right: 30px; }
-.typora-export .footnote-line, .typora-export p { white-space: pre-wrap; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
 @media screen and (max-width: 500px) { 
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   .CodeMirror-sizer { margin-left: 0px !important; }
@@ -49,7 +49,7 @@ figure > table { margin: 0px !important; }
 tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
-table.md-table td { min-width: 80px; }
+table.md-table td { min-width: 32px; }
 .CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
 .CodeMirror { text-align: left; }
 .CodeMirror-placeholder { opacity: 0.3; }
@@ -80,10 +80,10 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print { 
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
-  #write { margin-top: 0px; border-color: transparent !important; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
   .typora-export * { -webkit-print-color-adjust: exact; }
   html.blink-to-pdf { font-size: 13px; }
-  .typora-export #write { padding-left: 1cm; padding-right: 1cm; padding-bottom: 0px; break-after: avoid-page; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid-page; }
   .typora-export #write::after { height: 0px; }
   @page { margin: 20mm 0px; }
 }
@@ -129,6 +129,7 @@ kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 
 code { text-align: left; }
 a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
 .md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
 .md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
 .MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
 .MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
@@ -146,538 +147,370 @@ iframe { max-width: 100%; width: 100%; border: none; }
 .highlight td, .highlight tr { border: 0px; }
 
 
-@charset "utf-8";
-
-/* techo-typora style */
+@include-when-export url(https://fonts.loli.net/css?family=Ubuntu:400,700,400italic,700italic);
+@include-when-export url(https://fonts.loli.net/css?family=Raleway:600,400&subset=latin,latin-ext);
 :root {
-    --active-file-bg-color: #dadada;
-    --active-file-bg-color: rgba(32, 43, 51, 0.63);
-    --active-file-text-color: white;
-    --bg-color: #f9f5ed;
-    --text-color: #6e4832;
-    --side-bar-bg-color: #f5f5f5;
-    --control-text-color: #666;
-    --primary-color: #6e4832;
+	--window-border: none;
+	--typora-center-window-title: true;
+	--active-file-bg-color: #f3f3f3;
+	--bg-color: #fcfcfc;
+	--control-text-color: #777;
+}
+
+.mac-seamless-mode #typora-sidebar {
+	top: 20px;
+	padding-top: 0;
+	height: auto;
+}
+
+html,
+body,
+#write{
+	background: #fcfcfc;
+	background: var(--bg-color);
+	font-family: 'TeXGyreAdventor', "Century Gothic", 'Yu Gothic', 'Raleway', sans-serif;
+	font-weight: 300;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: #111;
+	font-family: 'TeXGyreAdventor', "Century Gothic", 'Yu Gothic', 'Ubuntu', sans-serif;
 }
 
 html {
-    color: #6e4832;
-    background: #f9f5ed;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    text-rendering: optimizelegibility;
-    font-size: 16px;
-    -webkit-font-smoothing: initial;
+	font-size:16px;
 }
 
-content {
-    background: #f9f5ed;
-}
-
-/* input mode  */
 #write {
-    max-width: 960px;
-    padding-top: 2em;
-    padding-left: 60px;
-    padding-right: 60px;
-    min-height: calc(100vh - 6em);
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
+	max-width: 914px;
+	text-align: justify;
 }
 
-.typora-node #write {
-    min-height: calc(100% - 6em);
+#write>h1:first-child {
+	margin-top: 2.75rem;
 }
-
-/* meta - message - block */
-pre.md-meta-block {
-    color: rgba(146, 115, 91, 0.81);
-    padding: 1em;
-    border-radius: 2px;
-    font-size: 14px;
-    background: rgba(251, 246, 222, 0.5);
+#write>h2:first-child {
+	margin-top: 1.75rem;
 }
-
-@media screen and (max-width: 800px) {
-    html {
-        font-size: 14px;
-    }
-
-    #write {
-        padding-left: 30px;
-        background: #f9f5ed;
-        padding-right: 30px;
-        font-size: 14px;
-    }
+#write>h3:first-child {
+	margin-top: 1rem;
 }
-
-@media screen and (min-width: 1100px) {
-    body, #footer-word-count-info {
-        background: #f5f5f5;
-    }
-
-    body.pin-outline,
-    .pin-outline #footer-word-count-info,
-    .pin-outline footer {
-        background: #f9f5ed;
-    }
-
-    #write {
-        max-width: 1000px;
-        padding: 40px 60px;
-        background: #f9f5ed;
-        margin: 3em auto 3em;
-    }
-
-    /* paper outline */
-    .pin-outline #write {
-        max-width: 1000px;
-        background: #f9f5ed;
-        margin: 0 0 0;
-        border: 0;
-        padding-left: 60px;
-        padding-right: 60px;
-    }
-
-    footer {
-        background-color: transparent;
-    }
+#write>h4:first-child {
+	margin-top: 0.5rem;
 }
-
-@media screen and (min-width: 1300px) {
-    body.pin-outline,
-    .pin-outline #footer-word-count-info,
-    .pin-outline footer {
-        background: #f9f5ed;
-    }
-
-    .pin-outline #write {
-        max-width: 1000px;
-        padding: 40px 60px;
-        background: #f9f5ed;
-        margin: 3em auto 3em;
-    }
-
-    .pin-outline footer {
-        background-color: transparent;
-    }
-
-    #footer-word-count-info {
-        background: #f5f5f5;
-    }
+h1 {
+	font-weight: normal;
+	line-height: 4rem;
+	margin: 0 0 1.75rem;
+	padding: 20px 30px;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 4rem;
 }
-
-/* clear margin and padding */
-body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, menu, nav, section {
-    margin: 0;
-    padding: 0;
+h2 {
+	font-weight: normal;
+	line-height: 3rem;
+	margin: 0 0 1.9375rem;
+	padding: 0 30px;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 3rem
 }
-
-article, aside, details, figcaption, figure, footer, header, menu, nav, section {
-    display: block;
+h3 {
+	font-weight: normal;
 }
-
-audio, canvas, video {
-    display: inline-block;
+h4 {
+	font-weight: normal;
 }
-
-body, button, input, select, textarea {
-    font: 400 1em/1.8 "font/han.otf", "PingFang SC", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans;
+h5 {
+	font-size: 1.125rem;
+	font-weight: normal;
 }
-
-body {
-    font-family: "font/han.otf", "PingFang SC", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans;
+h6 {
+	font-size: 1rem;
+	font-weight: bold;
 }
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: "font/han.otf", "PingFang SC", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans;
-    /*font-family: "PingFang SC", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans;*/
-    -webkit-font-smoothing: initial;
-    font-weight: 100;
-    color: var(--text-color);
-    line-height: 1.35;
-    font-variant-numeric: lining-nums;
-    margin-bottom: 1em;
+p {
+	color: #111;
+	font-size: 1rem;
+	line-height: 1.75rem;
+	margin: 0 0 1.25rem;
 }
-
-em {
-    font-family: "font/han.otf", Georgia-Italic, STSongti-SC-Light, serif;
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
 }
-
-strong em,
-em strong {
-    font-family: "font/han.otf", Georgia-BoldItalic, STSongti-SC-Regular, serif;
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
 }
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-    padding: 0;
-    border: 0;
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
 }
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
 }
-
-fieldset, img {
-    border: 0;
+@media screen and (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
 }
-
-/* img 添加边框 */
-img {
-    background: white;
-    border-radius: .2rem;
-    padding: 0.3rem;
-    box-shadow: 1px 2px 4px gray;
-    text-align: center;
+a,
+.md-def-url {
+	color: #990000;
+	text-decoration: none;
 }
-
-blockquote {
-    position: relative;
-    color: rgba(146, 115, 91, 0.81);
-    font-weight: 400;
-    border-left: 2px solid #6e4832;
-    padding-left: 1rem;
-    margin: 1em 3em 1em 1em;
-}
-
-@media only screen and ( max-width: 640px ) {
-    blockquote {
-        margin: 1em 0;
-    }
-}
-
-acronym, abbr {
-    border-bottom: 1px dotted;
-    font-variant: normal;
-}
-
-abbr {
-    cursor: help;
-}
-
-address, caption, cite, code, dfn, th, var {
-    font-style: normal;
-    font-weight: 400;
-}
-
-ul, ol {
-    list-style: none;
-}
-
-caption, th {
-    text-align: left;
-}
-
-q:before, q:after {
-    content: '';
-}
-
-sub, sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-}
-
-:root sub, :root sup {
-    vertical-align: baseline; /* for ie9 and other modern browsers */
-}
-
-sup {
-    top: -0.5em;
-}
-
-sub {
-    bottom: -0.25em;
-}
-
-/* a border bottom styles */
-a {
-    color: #4484c2;
-}
-
 a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
+}
+table {
+	margin-bottom: 20px
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.25rem;
+	vertical-align: top;
+	border-top: 1px solid #ddd
+}
+table th {
+	font-weight: bold
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	/*background: #f0f0f0;*/
+	border: 1px solid #ccc;
+	padding: .1em;
+	font-size: 0.9em;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
 }
 
-#write a {
-    font-weight: normal;
+.task-list-item {
+	padding-left:2.125rem;
 }
 
-#write a:hover {
-    text-decoration: none;
-    border-bottom: 1px solid #4484c2;
+input {
+	border-style: ridge;
 }
 
-ins, a {
-    text-decoration: none;
-}
-
-/* mark */
-mark {
-    background: #fffdd1;
-    border-bottom: 1px solid #ffedce;
-    padding: 2px;
-    margin: 0 5px;
-}
-
-pre, code, pre tt {
-    font-family: Courier, 'Courier New', monospace;
-}
-
-#write .md-fences {
-    border: 1px solid #ddd;
-    padding: 1em 0.5em;
-    display: block;
-    -webkit-overflow-scrolling: touch;
-}
-
-hr {
-    border: none;
-    border-bottom: 1px solid #cfcfcf;
-    margin-bottom: 0.8em;
-    height: 10px;
-}
-
-strong, b {
-    font-weight: 700;
-    /*color: #000;*/
-}
-
-/* 段落之间的间隔 */
-#write p, #write .md-fences, #write ul, #write ol, #write dl, #write form, #write hr, #write figure,
-#write-p, #write-pre, #write-ul, #write-ol, #write-dl, #write-form, #write-hr, #write-table, blockquote {
-    margin-bottom: 1.2em
-}
-
-html {
-    font-family: "font/han.otf", PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
-}
-
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6,
-#write-h1, #write-h2, #write-h3, #write-h4, #write-h5, #write-h6 {
-    margin-bottom: 0.6em;
-    line-height: 1.35;
-    color: #6e4832;
-    font-weight: bolder;
-}
-
-#write h1, #write-h1 {
-    font-size: 2.4em;
-    padding-bottom: 0.3em;
-    border-bottom: 3px double #eee;
-}
-
-#write h2, #write-h2 {
-    font-size: 1.8em;
-}
-
-#write h3, #write-h3 {
-    font-size: 1.6em;
-}
-
-#write h4, #write-h4 {
-    font-size: 1.4em;
-}
-
-#write h5, #write h6, #write-h5, #write-h6 {
-    font-size: 1.2em;
-}
-
-/* 在文章中的 ul 和 ol 的样式 */
-#write ul, #write-ul {
-    margin-left: 1.3em;
-    list-style: disc;
-}
-
-#write ol, #write-ol {
-    list-style: decimal;
-    margin-left: 1.9em;
-}
-
-#write li ul, #write li ol, #write-ul ul, #write-ul ol, #write-ol ul, #write-ol ol {
-    margin-bottom: 0.8em;
-    margin-left: 2em;
-}
-
-#write li ul, #write-ul ul, #write-ol ul {
-    list-style: circle;
-}
-
-[mdtype="table_row"] > th,
-[mdtype="table_row"] > td {
-    border: 1px solid #ddd;
-    padding: 0.5em 1em;
-    color: rgba(110, 72, 50, 0.74);
-}
-
-#write table th, #write-table th {
-    background: #fbfbfb;
-}
-
-#write table thead th, #write-table thead th {
-    background: rgba(251, 240, 211, 0.76);
-}
-
-#write table caption {
-    border-bottom: none;
-}
-
-#write em {
-    font-weight: inherit;
-    font-style: inherit;
-}
-
-li > p {
-    margin-bottom: 0 !important;
-}
-
-/* Responsive images */
-#write img {
-    max-width: 100%;
-}
-
-a.md-toc-inner {
-    border-bottom: 0 !important;
-}
-
-.md-toc-h1:first-of-type:last-of-type {
-    display: none;
-}
-
-.md-toc {
-    font-size: inherit;
-}
-
-.md-toc-h1 .md-toc-inner {
-    font-weight: normal;
-}
-
-.md-table-edit th {
-    padding: 0 !important;
-    border: 0 !important;
-}
-
-.mac-seamless-mode #write {
-    min-height: calc(100vh - 6em - 20px);
-}
-
-.typora-quick-open-item.active {
-    color: var(--active-file-text-color);
-}
-
-*.in-text-selection, ::selection {
-    background: var(--active-file-bg-color);
-    text-shadow: none;
-    color: white;
-}
-
-.btn-primary {
-    background-color: #2d2d2d;
-    border-color: #020202;
-}
-
-.btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
-    background-color: #4e4c4e;
-    border: #4e4c4e;
-}
-
-#preference-dialog .modal-content {
-    background: #6e757a;
-    --bg-color: #6e757a;
-    --text-color: #f1f1f1;
-    color: #f1f1f1;
-}
-
-/* 角标颜色 */
-sup.md-footnote {
-    color: #6e4832;
-}
-
-.task-list {
-    list-style: none !important;
-}
-
-/* checked box 效果 */
 .task-list-item input {
-    width: 1.25rem;
-    height: 1.25rem;
-    display: block;
-    -webkit-appearance: initial;
-    left: -18px;
+	top: 3px;
 }
 
-.task-list-item input:focus {
-    outline: none;
-    box-shadow: none;
+.md-task-list-item input {
+	margin-left: -1.5em;
 }
 
 .task-list-item input:before {
-    border: 2px solid #6e4832;
-    border-radius: 1.2rem;
-    width: 1.2rem;
-    height: 1.2rem;
-    content: ' ';
-    transition: background-color 200ms ease-in-out;
-    display: block;
+	content: "";
+	display: inline-block;
+	width: 1rem;
+	height: 1rem;
+	vertical-align: middle;
+	text-align: center;
+	border: 1px solid gray;
+	background-color: #fdfdfd;
+	margin-left: 0;
+	-webkit-appearance: none;
+	margin-top: -1rem;
+}
+
+.typora-node .task-list-item input:before {
+	top: 0.3ex;
+	position: absolute;
 }
 
 .task-list-item input:checked:before,
-.task-list-item input[checked]:before {
-    -webkit-appearance: initial;
-    background: #6e4832;
-    border-width: 2px;
-    display: inline-block;
-    transition: background-color 200ms ease-in-out;
+.task-list-item input[checked]:before{
+	content: '\25FC';
+	/*◘*/
+	font-size: 0.8125rem;
+	line-height: 0.9375rem;
 }
 
-.task-list-item input:checked:after,
-.task-list-item input[checked]:after {
-    opacity: 1;
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
+    }
+
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
 }
 
-.task-list-item input:after {
-    opacity: 1;
-    -webkit-transition: opacity 0.05s ease-in-out;
-    -moz-transition: opacity 0.05s ease-in-out;
-    transition: opacity 0.05s ease-in-out;
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    position: absolute;
-    top: 0.325rem;
-    left: 0.28125rem;
-    width: 0.6375rem;
-    height: 0.4rem;
-    border: 3px solid #f9f5ed;
-    border-top: 0;
-    border-right: 0;
-    content: ' ';
-    opacity: 0;
+blockquote {
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 1px solid gray;
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #6f6f6f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	
+	width: 100vw;
+	max-width: calc(100% + 60px);
+	margin-left: -30px;
+	border-left: 30px #f8f8f8 solid;
+	border-right: 30px #f8f8f8 solid;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
 }
 
-.task-list-done {
-    text-decoration: line-through;
+#typora-source {
+	color: #555;
 }
 
-.md-grid-board a:hover,
-.md-grid-board a.md-active {
-    border-color: #a1a1a1;
-    background: #f9edc5;
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
 }
 
-.md-grid-board tr[row='1'] a:hover,
-.md-grid-board tr[row='1'] a.md-active {
-    background: #5e3e2b;
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+	top: 14px;
+}
+
+#md-notification {
+	background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
+}
+
+#typora-sidebar {
+	box-shadow: none;
+}
+
+.file-list-item ,
+.show-folder-name .file-list-item {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	line-height: 20px;
+}
+
+.file-list-item-summary {
+	height: 40px;
+	line-height: 20px;
+}
+
+.ty-table-edit {
+	background: #ededed;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+}
+
+body.typora-export {	
+	padding-left: 20px !important;
+	padding-right: 20px !important;
 }
 
 
-
- .typora-export p, .typora-export .footnote-line {white-space: normal;} 
+ .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
 </style>
 </head>
 <body class='typora-export' >
-<div  id='write'  class = 'is-mac'><h1><a name='header-n0' class='md-header-anchor '></a>Kostiantyn Rybnikov&#39;s Blog</h1><p>Twitter <a href='https://twitter.com/ko_bx'>ko_bx</a> Github <a href='https://github.com/k-bx'>k-bx</a></p><p>Articles:</p><ul><li><a href='./articles/Validating-Form-Data-via-Applicative-Functors.html'>Validating Form Data via Applicative Functors</a> (2019-01-06)</li><li><a href='./articles/singleton_fiber_equivalence.html'>Singleton, Fiber and Equivalence</a> (2018-30-12)</li><li><a href='./articles/Kyiv-Haskell-Study-Group-Experience-Report.html'>Kyiv Haskell Study Group Experience Report</a> (2018-04-09)</li></ul><p>&nbsp;</p></div>
+<div  id='write'  class = 'is-mac'><h1><a name='header-n0' class='md-header-anchor '></a>Kostiantyn Rybnikov&#39;s Blog</h1><p>Twitter <a href='https://twitter.com/ko_bx'>ko_bx</a> Github <a href='https://github.com/k-bx'>k-bx</a></p><p>Articles:</p><ul><li><a href='./articles/drinker.html'>Struggling With My Drinker&#39;s Problem</a> (2019-01-31)</li><li><a href='./articles/Validating-Form-Data-via-Applicative-Functors.html'>Validating Form Data via Applicative Functors</a> (2019-01-06)</li><li><a href='./articles/singleton_fiber_equivalence.html'>Singleton, Fiber and Equivalence</a> (2018-30-12)</li><li><a href='./articles/Kyiv-Haskell-Study-Group-Experience-Report.html'>Kyiv Haskell Study Group Experience Report</a> (2018-04-09)</li></ul><p>&nbsp;</p></div>
 </body>
 </html>
