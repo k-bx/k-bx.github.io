@@ -19,14 +19,14 @@ The non-formal verbal proof is remarkably simple to understand. Here's the quote
 In this post, I will:
 
 - articulate a bit on the "paradoxical" part of the problem
-- describe my way of proving it constructively in [cubicaltt](https://github.com/mortberg/cubicaltt)
+- describe my way of proving it with Curry–Howard correspondence (or [Brouwer-Heyting-Kolmogorov interpretation](https://ncatlab.org/nlab/show/Brouwer-Heyting-Kolmogorov+interpretation), if you like) in [cubicaltt](https://github.com/mortberg/cubicaltt)
 - mention few things which were discovered as a pleasant surprise as I went along
 
 ## Paradoxiness
 
 There are few peculiar things about this paradox. First, it isn't really a paradox, there's only a paradox-ish part about it. The part is that linguistically, it seems like the person is causing everyone else to drink somehow, whereas in reality, what is stated is that you can always find a person, such that it just so happens that everyone else is drinking along. To make a similar statement not involving conscious agents: "every day, I can find a person, such that, if that person is up, then the sun is up". This doesn't mean that the sun follows some person's actions. What we see is a principle named [Correlation does not imply causation](https://en.wikipedia.org/wiki/Correlation_does_not_imply_causation).
 
-## Stating it constructively
+## Stating it via Propositions-as-Types
 
 Let's start with the hardest part, getting the theorem statement precisely and correctly:
 
@@ -78,7 +78,7 @@ allOrCounterex
 ```
 
 - **[1]**: the "impossible", or "absurd" type, we cannot construct its value. Copied from prelude.ctt
-- **[2]**: negation in constructive mathematics is done via giving a function that returns absurd given that value. Copied from prelude.ctt
+- **[2]**: negation in "propositions-as-types" mathematics is done via giving a function that returns absurd given that value. Copied from prelude.ctt
 - **[3]**: good old `Either` type. Copied from prelude.ctt
 - **[4]**: notice how all this function needs is the type and the property, no "real values" (it should work for non-inhabited types)
 - **[5]** you either get `inl` with "for all `x:A`, I'll prove they're drinking"
@@ -217,7 +217,7 @@ In this post:
 - we've seen the usage of absurd type `N0`, the notion of negation (`neg`), "prove by absurdity" (`efq`), good old `or` type
 - introduced an explicit use of LEM only when we needed it
 - introduced De Morgan's law for quantifiers, jumping from "forall" statement to "there exists" one
-- had an exercise in proving things constructively and formally
+- had an exercise in proving things via "propositions as types" concept, formally
 
 Well, that's one drinking problem less in my life. Pass that scotch&beer, let's celebrate! 🥃🍺
 
