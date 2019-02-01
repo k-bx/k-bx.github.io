@@ -13,7 +13,7 @@ The non-formal verbal proof is remarkably simple to understand. Here's the quote
 
 > The proof begins by recognizing it is true that either everyone in the pub is drinking, or at least one person in the pub is not drinking. Consequently, there are two cases to consider:[[1\]](https://en.wikipedia.org/wiki/Drinker_paradox#cite_note-Smullyan-1)[[2\]](https://en.wikipedia.org/wiki/Drinker_paradox#cite_note-Images_of_SMC_Research_1996-2)
 >
-> 1. Suppose everyone is drinking. For any particular person, it cannot be wrong to say that *if that particular person is drinking, then everyone in the pub is drinking* — because everyone is drinking. Because everyone is drinking, then that one person must drink because when *that person* drinks *everybody*drinks, everybody includes that person.
+> 1. Suppose everyone is drinking. For any particular person, it cannot be wrong to say that *if that particular person is drinking, then everyone in the pub is drinking* — because everyone is drinking. Because everyone is drinking, then that one person must drink because when *that person* drinks *everybody* drinks, everybody includes that person.
 > 2. Otherwise at least one person is not drinking. For any nondrinking person, the statement *if that particular person is drinking, then everyone in the pub is drinking* is formally true: its [antecedent](https://en.wikipedia.org/wiki/Antecedent_(logic)) ("that particular person is drinking") is false, therefore the statement is true due to the nature of [material implication](https://en.wikipedia.org/wiki/Material_conditional#Definition) in formal logic, which states that "If P, then Q" is always true if P is false.[[1\]](https://en.wikipedia.org/wiki/Drinker_paradox#cite_note-Smullyan-1)[[2\]](https://en.wikipedia.org/wiki/Drinker_paradox#cite_note-Images_of_SMC_Research_1996-2) (These kinds of statements are said to be [vacuously true](https://en.wikipedia.org/wiki/Vacuous_truth).)
 
 In this post, I will:
@@ -123,7 +123,7 @@ drinkerC1
 drinker ... = drinkerC1 A D x (allOrCounterex A D)
 ```
 
-- **[1]**: We'll need this in our proof. Given an absurd value (which can never be constructed!), I can prove anything. This is akin to saying "which is impossible becuase earlier we've shown the opposite xyz, leading to contradiction" in your verbal proof. Copied from prelude.ctt
+- **[1]**: We'll need this in our proof. Given an absurd value (which can never be constructed!), I can prove anything. This is akin to saying "which is impossible because earlier we've shown the opposite xyz, leading to contradiction" in your verbal proof. Copied from prelude.ctt
 - **[2]**: function's signature is copied from `drinker`, and we only add the first parameter in its return type
 - **[3]**: here's that parameter, which is an alpha-renamed result from `allOrConterex`
 - **[4]**: branch when everybody's drinking
@@ -132,13 +132,13 @@ drinker ... = drinkerC1 A D x (allOrCounterex A D)
 - **[7]**: we're just passing the `allD` to prove that everyone's drinking
 - **[8]**: in "not everyone's drinking" case, where we get a specific person and a proof they're not drinking
 - **[9]**: we return that person as "the answer"
-- **[10]**: most interesting part. We need to prove "if that person's drinking, everybody else does", but we've got our "they are not drinking" value, so we pass "that person is drinking" (`y`) to the "that person is **not** drinking" function (`pair.2`), and get an absurd, from which we can prove anything (via `efq`)
+- **[10]**: the most interesting part. We need to prove "if that person's drinking, everybody else does", but we've got our "they are not drinking" value, so we pass "that person is drinking" (`y`) to the "that person is **not** drinking" function (`pair.2`), and get an absurd, from which we can prove anything (via `efq`)
 
 ## De Morgan
 
 This was satisfying already, but now there is another problem that's bugging: the whole "either everyone is drinking, or somebody is not" sounds terrifically obvious to the listener, but is this a fundamental claim? Doesn't sound like an axiom or a law to me, it feels like we can break this down a bit more.
 
-I started searching for the drinker's solution on the internet, and came up to the post called [Seemingly impossible constructive proofs](http://math.andrej.com/2014/05/08/seemingly-impossible-proofs/), which had another one, called [Seemingly impossible functional programs](http://math.andrej.com/2007/09/28/seemingly-impossible-functional-programs/) before it. It seemed unrelated at first, but I decided to give the "functional programs" one a go before I switch to the main thing. It turned out rewarding, indeed.
+I started searching for the drinker's solution on the internet and came up to the post called [Seemingly impossible constructive proofs](http://math.andrej.com/2014/05/08/seemingly-impossible-proofs/), which had another one, called [Seemingly impossible functional programs](http://math.andrej.com/2007/09/28/seemingly-impossible-functional-programs/) before it. It seemed unrelated at first, but I decided to give the "functional programs" one a go before I switch to the main thing. It turned out rewarding, indeed.
 
 In that post, something that caught my eye was this:
 
@@ -148,7 +148,7 @@ In that post, something that caught my eye was this:
 
 An implementation of "for every", using "for some". It also explicitly links the [De Morgan's Laws](https://en.wikipedia.org/wiki/De_Morgan's_laws) page.
 
-Now, I was aware of the whole De Morgan thing related to conjunctions, disjunctions and negations, but completely forgot (or did I not know?) about its use for the quantifiers! Here are the laws for conjunction and disjunction:
+Now, I was aware of the whole De Morgan thing related to conjunctions, disjunctions, and negations, but completely forgot (or did I not know?) about its use for the quantifiers! Here are the laws for conjunction and disjunction:
 $$
 \neg(P \land Q) \vdash (\neg P \lor \neg Q).\\
 \neg(P \lor Q) \vdash (\neg P \land \neg Q).
@@ -158,7 +158,7 @@ $$
 \forall x \, P(x) \equiv \neg [ \exists x \, \neg P(x)]\\
 \exists x \, P(x) \equiv \neg [ \forall x \, \neg P(x)]
 $$
-And it makes total sense when you think about it. "All things hold" is the same as "not (some thing doesn't)". "Some thing holds" is the same as "not (all thing do)".
+And it makes total sense when you think about it. "All things hold" is the same as "not (some thing doesn't)". "Something holds" is the same as "not (all thing do)".
 
 ```haskell
 deMorgan
@@ -177,7 +177,7 @@ This gives us a hint on how to get from "not everyone's drinking" branch to a us
 
 ## Law of Excluded Middle
 
-What's missing is a way to get something out of thin air. The notoriouf law of excluded middle, a constructivist's nightmare:
+What's missing is a way to get something out of thin air. The notorious law of excluded middle, a constructivist's nightmare:
 
 ```haskell
 lem (A : U)
@@ -185,7 +185,7 @@ lem (A : U)
   = undefined
 ```
 
-Using `lem`, we can made our first case-splitting continuation on `allOrCounterex` and finish the proof:
+Using `lem`, we can make our first case-splitting continuation on `allOrCounterex` and finish the proof:
 
 ```haskell
 allOrCounterexC1
