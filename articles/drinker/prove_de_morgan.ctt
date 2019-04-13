@@ -1,0 +1,61 @@
+module prove_de_morgan where
+
+data N0 =
+
+neg (A : U) : U = A -> N0
+
+data or (A B : U)
+  = inl (a : A)
+  | inr (b : B)
+
+lem (A : U)
+  : or A (neg A)
+  = undefined
+
+efq (A : U) : N0 -> A = split {}
+
+-- If property D holds for all A, there exists `x : A` such 
+-- that `D x1` holds
+existIntro (A : U) (D : A -> U)
+  (q : A)
+  (f : (x : A) -> D x)
+  : ((x : A) * (D x))
+  = (q, f q)
+
+-- Similar to "exists"-intro rule, but for negation
+existNotIntro2 (A : U) (D : A -> U)
+  (q : A)
+  : (neg ((x : A) -> D x))
+  -> ((x : A) * (neg (D x)))
+  = undefined
+
+-- Similar to "exists"-intro rule, but for negation
+existNotIntro (A : U) (D : A -> U)
+  : (neg ((x : A) -> D x))
+  -> ((x : A) * (neg (D x)))
+  = undefined
+
+deMorganC1
+  (A : U)
+  (D : A -> U)
+  : (lem : or ((x : A) * (neg (D x)))
+              (neg ((x : A) * (neg (D x)))))
+    -> (neg ((x : A) -> D x))
+    -> ( (x : A)
+       * (neg (D x)))
+  = split
+  inl existsNotD ->
+    \(notF : (neg ((x : A) -> D x))) ->
+      existsNotD
+  inr notExistsNotD ->
+    \(notF : (neg ((x : A) -> D x))) ->
+      efq ((x:A) * neg (D x))
+          (notExistsNotD (existNotIntro A D notF))
+
+deMorgan
+  (A : U)
+  (D : A -> U)
+  : (neg ((x : A) -> D x))
+    -> ( (x : A)
+       * (neg (D x)))
+  = deMorganC1 A D (lem ((x : A) * (neg (D x))))
