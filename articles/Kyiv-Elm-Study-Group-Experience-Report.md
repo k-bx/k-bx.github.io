@@ -20,7 +20,7 @@ At first, I've read the [Practical Elm](https://korban.net/elm/) book, and it tu
 
 Another concern was my general skepticism to "learn by doing" approach, over a potential deception and misunderstanding by making something that works, but in a "monkey see monkey do" approach instead of  having explanation and understanding of an underlying process.
 
-![group](/Users/kb/workspace/k-bx.github.io/articles/elm-study-group/group.jpeg)
+![group](./elm-study-group/group.jpeg)
 
 *Sorry for not capturing the whole group, as usual, I forgot about the photo and only did it at the "afterparty" when some people left already.*
 
