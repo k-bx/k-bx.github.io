@@ -8,6 +8,12 @@ We began on February 28, and the course took seven weeks overall. We went throug
 
 ![KyivElm](./elm-study-group/KyivElm.png)
 
+The logo is a play on our [Haskell Group's logo](https://k-bx.github.io/articles/Kyiv-Haskell-Study-Group-Experience-Report.html).
+
+### Initial Plans and Worries
+
+After running a [Haskell Study Group](https://k-bx.github.io/articles/Kyiv-Haskell-Study-Group-Experience-Report.html) last year, I started planning another one, but had a worry of not getting enough participants. Then, once I discovered Elm, it became clear that it might be a great "gateway drug", to run Elm Study Group first, and get more people on board to Haskell. Initially I thought I could interest a lot of developers from JS community, but that didn't work out well. However, at least two people from the group are already looking forward for the Haskell one, so that can be considered as a success.
+
 
 
 TODO/Outline:
@@ -15,13 +21,13 @@ TODO/Outline:
 - [x] short emotional impression. "experiment"
 
 - [x] when we began, scope, length
-- [ ] Logo
+- [x] Logo
 - [ ] initial worries and plans:
+  - planned to be a gateway drug to Haskell course
   - lack of homework
   - Read "Elm in Action" initially, wasn't a good fit (but a nice book overall)
   - Book being young (and not finished actually)
   - emphasis on practice but not too much in theory, might make false impression of progress
-  - planned to be a gateway drug to Haskell course
 - [ ] photo
 - [ ] meetup.events
 - [ ] advanced materials not covered well, but served as a nice "talk" fill
@@ -32,6 +38,7 @@ TODO/Outline:
   - SPA homework would better be merged in one project that continues being developed instead of new project every week
   - some tasks too hard (like mark Graceful Labeling from week 3), gathering good homework is hard
   - JSON combinators aren't easy, esp pipelining, need better tutorials. good decision to implement our own as a homework
+  - Telegram is horrible, Slack is great
 - [ ] personal satisfaction
 - [ ] Thank:
   - Viktoria
