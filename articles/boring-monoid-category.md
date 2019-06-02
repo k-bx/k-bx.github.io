@@ -110,10 +110,11 @@ It turned out there is no `Category` in `agda-stdlib`. Googling a bit had brough
 
 A Category is a record, so the first thing to do was to make a record with holes instead of field values.`Level`s were done mostly by "try until it works" approach, since I haven't worked with them before, but can imagined them being somewhat trivial for our case. Loading in Emacs via `C-c C-l` fills holes with special labels. Interesting!
 
-<video loop muted playsinline width=400>
+<video loop muted playsinline width=600>
   <source src="./boring-monoid-category/scr01.mp4" type="video/mp4">
   <source src="./boring-monoid-category/scr01.webm" type="video/webm">
 </video>
+
 
 Now I've filled the "more obvious" parts with success:
 
@@ -137,10 +138,11 @@ but left with unfilled laws. And that's where Agda's magic is so useful. On the 
 - played with its parameters until hole fits (check via `C-c C-.`)
 - inserted the solution `C-c SPC` and then refined manually
 
-<video loop muted playsinline width=400>
+<video loop muted playsinline width=600>
   <source src="./boring-monoid-category/scr02.mp4" type="video/mp4">
   <source src="./boring-monoid-category/scr02.webm" type="video/webm">
 </video>
+
 
 I've finished the rest in a similar fashion. Final code can be seen here:
 
