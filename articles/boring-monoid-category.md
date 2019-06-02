@@ -110,16 +110,80 @@ It turned out there is no `Category` in `agda-stdlib`. Googling a bit had brough
 
 A Category is a record, so the first thing to do was to make a record with holes instead of field values.`Level`s were done mostly by "try until it works" approach, since I haven't worked with them before, but can imagined them being somewhat trivial for our case. Loading in Emacs via `C-c C-l` fills holes with special labels. Interesting!
 
-<video autoplay loop muted playsinline width=400>
+<video loop muted playsinline width=400>
   <source src="./boring-monoid-category/scr01.mp4" type="video/mp4">
   <source src="./boring-monoid-category/scr01.webm" type="video/webm">
 </video>
 
-- TODO: Agda libs are local, can be loaded in editor. No TAGS support, but jumping back/forward "just works"
-- TODO: No category theory, but there's a fresh one in agda repos
-- TODO: holes, C-c C-r, C-c C-,, C-c C-., C-c SPC
+Now I've filled the "more obvious" parts with success:
+
+```Agda
+  record
+    { Obj = BoringMonoid o
+    ; _⇒_ = λ bm1 bm2 → Monoid.Carrier m
+    ; _≈_ = Monoid._≈_ m
+    ; id = Monoid.ε m
+    ; _∘_ = Monoid._∙_ m}
+
+```
+
+but left with unfilled laws. And that's where Agda's magic is so useful. On the next video, you can see how I've:
+
+- focused on a hole
+- looked at its local bindings `C-c C-,`
+- auto-populated the lambda skeleton with `C-c C-r`
+- looked at all new local bindings again
+- inserted an additional variable in scope which was my initial guess
+- played with its parameters until hole fits (check via `C-c C-.`)
+- inserted the solution `C-c SPC` and then refined manually
+
+<video loop muted playsinline width=400>
+  <source src="./boring-monoid-category/scr02.mp4" type="video/mp4">
+  <source src="./boring-monoid-category/scr02.webm" type="video/webm">
+</video>
+
+I've finished the rest in a similar fashion. Final code can be seen here:
+
+```agda
+open import Algebra
+open import Algebra.Structures
+open import Categories.Category
+open import Level
+open import Relation.Binary.Core
+
+-- Category Theory by Steve Awodey
+-- Page 12. Example 12:
+-- ...
+-- Equivalently, a monoid is a category with just one object. The arrows of
+-- the category are the elements of the monoid. In particular, the identity
+-- arrow is the unit element u. Composition of arrows is the binary operation
+-- m ∙ n of the monoid.
+
+record BoringMonoid (o : Level) : Set o where
+  constructor MkBoringMonoid
+
+monoidToCategoryEx01 : {o ℓ e : Level} → (m : Monoid ℓ e) → Category o ℓ e
+monoidToCategoryEx01 {o} {ℓ} {e} m =
+  record
+    { Obj = BoringMonoid o
+    ; _⇒_ = λ bm1 bm2 → Monoid.Carrier m
+    ; _≈_ = Monoid._≈_ m
+    ; id = Monoid.ε m
+    ; _∘_ = Monoid._∙_ m
+    ; assoc = λ {A} {B} {C} {D} {f} {g} {h} → IsSemigroup.assoc (IsMonoid.isSemigroup (Monoid.isMonoid m)) h g f
+    ; identityˡ = λ {A} {B} {f} → IsMonoid.identityˡ (Monoid.isMonoid m) f
+    ; identityʳ = λ {A} {B} {f} → IsMonoid.identityʳ (Monoid.isMonoid m) f
+    ; equiv = IsMagma.isEquivalence (IsSemigroup.isMagma (IsMonoid.isSemigroup (Monoid.isMonoid m)))
+    ; ∘-resp-≈ = λ x₁ x₂ → IsMagma.∙-cong (IsSemigroup.isMagma (IsMonoid.isSemigroup (Monoid.isMonoid m))) x₁ x₂
+    }
+
+```
+
+Or viewed in a file [[boring-monoid-category/solution.agda]].
+
+One final note on Agda: I couldn't find TAGS support, but everything you load also integrates with "jump forward/back" in Emacs (`C-.`/`C-,`), so navigating all the symbol definitions for `Monoid` and friends was a blast!
 
 p.s.: in cased you've missed the folklore, check out [the wonderful StackOverflow explanation of the phrase "A monad is just a monoid in the category of endofunctors, what's the problem?"](https://stackoverflow.com/a/3870310/540810)
 
-
+Please send your feedback in Issues or PRs in [this blog's repo](https://github.com/k-bx/k-bx.github.io).
 
