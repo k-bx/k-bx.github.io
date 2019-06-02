@@ -110,7 +110,10 @@ It turned out there is no `Category` in `agda-stdlib`. Googling a bit had brough
 
 A Category is a record, so the first thing to do was to make a record with holes instead of field values.`Level`s were done mostly by "try until it works" approach, since I haven't worked with them before, but can imagined them being somewhat trivial for our case. Loading in Emacs via `C-c C-l` fills holes with special labels. Interesting!
 
-<video autoplay loop muted playsinline width=400 src="./boring-monoid-category/scr01.mp4"></video>
+<video autoplay loop muted playsinline width=400>
+  <source src="./boring-monoid-category/scr01.mp4" type="video/mp4">
+  <source src="./boring-monoid-category/scr01.webm" type="video/webm">
+</video>
 
 - TODO: Agda libs are local, can be loaded in editor. No TAGS support, but jumping back/forward "just works"
 - TODO: No category theory, but there's a fresh one in agda repos
