@@ -1,6 +1,6 @@
 # A Monoid Is a Category With Just One Object. So What's the Problem?
 
-I've finally started studying Category Theory, first step was to rename the directory with materials from "Cathegory" (it was created long time ago). The book I've chosen from [an excellent Quora answer by E. Kmett](https://www.quora.com/What-is-the-best-textbook-for-Category-theory) was "Category Theory" by Steve Awodey.
+I've finally started studying Category Theory, first step was to rename the directory with materials from the name "Cathegory" (it was created long time ago). The book I've chosen from [an excellent Quora answer by E. Kmett](https://www.quora.com/What-is-the-best-textbook-for-Category-theory) was "Category Theory" by Steve Awodey.
 
 Chapter 1 hits you with a Category definition, and then a bunch of examples of a Category, one of which caught my attention. First, the Category definition:
 
@@ -144,44 +144,7 @@ but left with unfilled laws. And that's where Agda's magic is so useful. On the 
 </video>
 
 
-I've finished the rest in a similar fashion. Final code can be seen here:
-
-```agda
-open import Algebra
-open import Algebra.Structures
-open import Categories.Category
-open import Level
-open import Relation.Binary.Core
-
--- Category Theory by Steve Awodey
--- Page 12. Example 12:
--- ...
--- Equivalently, a monoid is a category with just one object. The arrows of
--- the category are the elements of the monoid. In particular, the identity
--- arrow is the unit element u. Composition of arrows is the binary operation
--- m ∙ n of the monoid.
-
-record BoringMonoid (o : Level) : Set o where
-  constructor MkBoringMonoid
-
-monoidToCategoryEx01 : {o ℓ e : Level} → (m : Monoid ℓ e) → Category o ℓ e
-monoidToCategoryEx01 {o} {ℓ} {e} m =
-  record
-    { Obj = BoringMonoid o
-    ; _⇒_ = λ bm1 bm2 → Monoid.Carrier m
-    ; _≈_ = Monoid._≈_ m
-    ; id = Monoid.ε m
-    ; _∘_ = Monoid._∙_ m
-    ; assoc = λ {A} {B} {C} {D} {f} {g} {h} → IsSemigroup.assoc (IsMonoid.isSemigroup (Monoid.isMonoid m)) h g f
-    ; identityˡ = λ {A} {B} {f} → IsMonoid.identityˡ (Monoid.isMonoid m) f
-    ; identityʳ = λ {A} {B} {f} → IsMonoid.identityʳ (Monoid.isMonoid m) f
-    ; equiv = IsMagma.isEquivalence (IsSemigroup.isMagma (IsMonoid.isSemigroup (Monoid.isMonoid m)))
-    ; ∘-resp-≈ = λ x₁ x₂ → IsMagma.∙-cong (IsSemigroup.isMagma (IsMonoid.isSemigroup (Monoid.isMonoid m))) x₁ x₂
-    }
-
-```
-
-Or viewed in a file [[boring-monoid-category/solution.agda]].
+I've finished the rest in a similar fashion. Final code can be seen at [solution.agda](./boring-monoid-category/solution.agda)
 
 One final note on Agda: I couldn't find TAGS support, but everything you load also integrates with "jump forward/back" in Emacs (`C-.`/`C-,`), so navigating all the symbol definitions for `Monoid` and friends was a blast!
 
