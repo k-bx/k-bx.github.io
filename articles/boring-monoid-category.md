@@ -146,6 +146,8 @@ but left with unfilled laws. And that's where Agda's magic is so useful. On the 
 
 I've finished the rest in a similar fashion. Final code can be seen at [solution.agda](./boring-monoid-category/solution.agda)
 
+![final_code](./boring-monoid-category/final_code.jpeg)
+
 One final note on Agda: I couldn't find TAGS support, but everything you load also integrates with "jump forward/back" in Emacs (`C-.`/`C-,`), so navigating all the symbol definitions for `Monoid` and friends was a blast!
 
 p.s.: in cased you've missed the folklore, check out [the beautiful StackOverflow explanation of the phrase "A monad is just a monoid in the category of endofunctors, what's the problem?"](https://stackoverflow.com/a/3870310/540810)
