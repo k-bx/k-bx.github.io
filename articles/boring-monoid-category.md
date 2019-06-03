@@ -31,7 +31,7 @@ As a person coming mostly from the world of Types, I was somewhat confused. Many
 
 Seems bizarre!
 
-So I decided to (try to) encode it. But before that, I needed to come up with iniail picture in my head, which looked something like this:
+So I decided to (try to) encode it. But before that, I needed to come up with initial picture in my head, which looked something like this:
 
 TODO: mysterious object and its morphisms as a picture
 
@@ -108,7 +108,7 @@ First thing I've noticed in Agda, it has its library just laying around on your 
 
 It turned out there is no `Category` in `agda-stdlib`. Googling a bit had brought me to [copumpkin/categories](https://github.com/copumpkin/categories), but just a little later I've accidentally found the [agda/agda-categories](https://github.com/agda/agda-categories) repo created 12 days ago!
 
-A Category is a record, so the first thing to do was to make a record with holes instead of field values.`Level`s were done mostly by "try until it works" approach, since I haven't worked with them before, but can imagined them being somewhat trivial for our case. Loading in Emacs via `C-c C-l` fills holes with special labels. Interesting!
+A Category is a record, so the first thing to do was to make a record with holes instead of field values.`Level`s were done mostly by "try until it works" approach, since I haven't worked with them before, but could imagine them being somewhat trivial for our case. Loading in Emacs via `C-c C-l` fills holes with special labels. Interesting!
 
 <video loop muted controls playsinline width=600>
   <source src="./boring-monoid-category/scr01.mp4" type="video/mp4">
