@@ -1,6 +1,6 @@
 # A Monoid Is a Category With Just One Object. So What's the Problem?
 
-I've finally started studying Category Theory, first step was to rename the directory with materials from the name "Cathegory" (it was created long time ago). The book I've chosen from [an excellent Quora answer by E. Kmett](https://www.quora.com/What-is-the-best-textbook-for-Category-theory) was "Category Theory" by Steve Awodey.
+I've finally started studying Category Theory, and first step was to rename the directory with materials from the name "Cathegory" (I created it a long time ago). The book I've chosen from [an excellent Quora answer by E. Kmett](https://www.quora.com/What-is-the-best-textbook-for-Category-theory) was "Category Theory" by Steve Awodey.
 
 Chapter 1 hits you with a Category definition, and then a bunch of examples of a Category, one of which caught my attention. First, the Category definition:
 
@@ -31,13 +31,13 @@ As a person coming mostly from the world of Types, I was somewhat confused. Many
 
 Seems bizarre!
 
-So I decided to (try to) encode it. But before that, I needed to come up with initial picture in my head, which looked something like this:
+So I decided to (try to) encode it. But before that, I needed to come up with the initial picture in my head, which looked something like this:
 
-TODO: mysterious object and its morphisms as a picture
+![boring-monoid-category](/Users/kb/workspace/k-bx.github.io/articles/boring-monoid-category/boring-monoid-category.jpg)
 
 ## Failed attempt in CubicalTT
 
-Initially, I started with [CubicalTT](https://github.com/mortberg/cubicaltt) because that's what I was familiar with from before and which I adore for its minimalism. Unfortunately, minimalism comes at a price of being too bare-bones. I still find it to be a great source for studying HoTT/MLTT, especially because it has so much implemented in its [examples](https://github.com/mortberg/cubicaltt/tree/master/examples) directory, that I've decided to quote its definitions and my failed attempt here. If you don't understand this and want to see Agda -- don't worry! Just skip along.
+Initially, I started with [CubicalTT](https://github.com/mortberg/cubicaltt) because that's what I was familiar with from before and which I adore for its minimalism. Unfortunately, minimalism comes at the price of being too bare-bones. I still find it to be an excellent source for studying HoTT/MLTT, mainly because it has so much implemented in its [examples](https://github.com/mortberg/cubicaltt/tree/master/examples) directory, that I've decided to quote its definitions and my failed attempt here. If you don't understand this and want to see Agda -- don't worry! Just skip along.
 
 ```Haskell
 -- * monoid part
@@ -75,7 +75,7 @@ precategory : U = (C : categoryData) * isPrecategory C
 categoryData : U = (A : U) * (A -> A -> U)
 ```
 
-I won't quote laws here, but you can see an interesting part here already. Morphisms are represented as a type `A -> A -> U`, e.g. **given two objects**, it will give you a **space of their morphisms**. So, that space of all morphisms should be a type of the elements of our monoid's set. And a type for the object? It should always be the same, no matter what is is really:
+I won't quote laws here, but you can see an interesting part here already. Morphisms are represented as a type `A -> A -> U`, e.g. **given two objects**, it will provide you with a **space of their morphisms**. So, that space of all morphisms should be a type of the elements of our monoid's set. And a type for the object? It should always be the same, no matter what is really:
 
 ```haskell
 data BoringMonoid = MkBoringMonoid
@@ -148,7 +148,7 @@ I've finished the rest in a similar fashion. Final code can be seen at [solution
 
 One final note on Agda: I couldn't find TAGS support, but everything you load also integrates with "jump forward/back" in Emacs (`C-.`/`C-,`), so navigating all the symbol definitions for `Monoid` and friends was a blast!
 
-p.s.: in cased you've missed the folklore, check out [the wonderful StackOverflow explanation of the phrase "A monad is just a monoid in the category of endofunctors, what's the problem?"](https://stackoverflow.com/a/3870310/540810)
+p.s.: in cased you've missed the folklore, check out [the beautiful StackOverflow explanation of the phrase "A monad is just a monoid in the category of endofunctors, what's the problem?"](https://stackoverflow.com/a/3870310/540810)
 
 Please send your feedback in Issues or PRs in [this blog's repo](https://github.com/k-bx/k-bx.github.io).
 
