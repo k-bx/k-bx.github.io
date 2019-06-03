@@ -4,6 +4,7 @@ Twitter [ko_bx](https://twitter.com/ko_bx) Github [k-bx](https://github.com/k-bx
 
 Articles:
 
+- [A Monoid Is a Category With Just One Object. So What's the Problem?](./articles/boring-monoid-category.html) (2019-06-03)
 - [Kyiv Elm Study Group Experience Report](./articles/Kyiv-Elm-Study-Group-Experience-Report.html) (2019-04-13)
 - [Struggling With My Drinker's Problem](./articles/drinker.html) (2019-01-31)
 - [Validating Form Data via Applicative Functors](./articles/Validating-Form-Data-via-Applicative-Functors.html) (2019-01-06)
