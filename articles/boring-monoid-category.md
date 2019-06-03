@@ -33,7 +33,7 @@ Seems bizarre!
 
 So I decided to (try to) encode it. But before that, I needed to come up with the initial picture in my head, which looked something like this:
 
-![boring-monoid-category](/Users/kb/workspace/k-bx.github.io/articles/boring-monoid-category/boring-monoid-category.jpg)
+![boring-monoid-category](./boring-monoid-category/boring-monoid-category.jpg)
 
 ## Failed attempt in CubicalTT
 
