@@ -11,4 +11,8 @@
 
 Детальний опис досвіду минулої групи з вивчення можна знайти в записі з мого блогу [Kyiv Haskell Study Group Experience Report](https://k-bx.github.io/articles/Kyiv-Haskell-Study-Group-Experience-Report.html).
 
+Якщо ваша компанія є зацікавленою – зв'яжіться зі мною за адресою k-bx@k-bx.com. Дякую!'
+
+Костянтин Рибніков
 20 вересня 2019
+

@@ -11,6 +11,3 @@ Articles:
 - [Singleton, Fiber and Equivalence](./articles/singleton_fiber_equivalence.html) (2018-30-12)
 - [Kyiv Haskell Study Group Experience Report](./articles/Kyiv-Haskell-Study-Group-Experience-Report.html) (2018-04-09)
 
-Other:
-
-- [Haskell Study Group Fall 2019 Sponsors Open Letter](./articles/haskell-fall2019-sponsors-open-letter.html) (2019-09-20)
