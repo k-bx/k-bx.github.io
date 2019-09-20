@@ -30,6 +30,7 @@ input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px;
 *, ::after, ::before { box-sizing: border-box; }
 #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
 #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
 h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
 p { orphans: 4; }
 h1 { font-size: 2rem; }
@@ -87,7 +88,6 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
   html.blink-to-pdf { font-size: 13px; }
   .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid-page; }
   .typora-export #write::after { height: 0px; }
-  @page { margin: 20mm 0px; }
 }
 .footnote-line { margin-top: 0.714em; font-size: 0.7em; }
 a img, img a { cursor: pointer; }
@@ -138,10 +138,10 @@ a.md-print-anchor { white-space: pre !important; border: none !important; displa
 .MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
 .MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
 .MathJax_SVG * { transition: none; }
-.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
 .os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
 .md-diagram-panel > svg { max-width: 100%; }
-[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; height: auto; }
 [lang="mermaid"] .node text { font-size: 1rem; }
 table tr th { border-bottom-width: 0px; }
 video { max-width: 100%; display: block; margin: 0px auto; }
@@ -508,6 +508,6 @@ p.mathjax-block,
 </style>
 </head>
 <body class='typora-export' >
-<div  id='write'  class = 'is-mac'><h1><a name='header-n0' class='md-header-anchor '></a>Kostiantyn Rybnikov&#39;s Blog</h1><p>Twitter <a href='https://twitter.com/ko_bx'>ko_bx</a> Github <a href='https://github.com/k-bx'>k-bx</a></p><p>Articles:</p><ul><li><a href='./articles/boring-monoid-category.html'>A Monoid Is a Category With Just One Object. So What&#39;s the Problem?</a> (2019-06-03)</li><li><a href='./articles/Kyiv-Elm-Study-Group-Experience-Report.html'>Kyiv Elm Study Group Experience Report</a> (2019-04-13)</li><li><a href='./articles/drinker.html'>Struggling With My Drinker&#39;s Problem</a> (2019-01-31)</li><li><a href='./articles/Validating-Form-Data-via-Applicative-Functors.html'>Validating Form Data via Applicative Functors</a> (2019-01-06)</li><li><a href='./articles/singleton_fiber_equivalence.html'>Singleton, Fiber and Equivalence</a> (2018-30-12)</li><li><a href='./articles/Kyiv-Haskell-Study-Group-Experience-Report.html'>Kyiv Haskell Study Group Experience Report</a> (2018-04-09)</li></ul><p>&nbsp;</p></div>
+<div  id='write'  class = 'is-mac'><h1><a name="kostiantyn-rybnikovs-blog" class="md-header-anchor"></a><span>Kostiantyn Rybnikov&#39;s Blog</span></h1><p><span>Twitter </span><a href='https://twitter.com/ko_bx'><span>ko_bx</span></a><span> Github </span><a href='https://github.com/k-bx'><span>k-bx</span></a></p><p><span>Articles:</span></p><ul><li><a href='./articles/boring-monoid-category.html'><span>A Monoid Is a Category With Just One Object. So What&#39;s the Problem?</span></a><span> (2019-06-03)</span></li><li><a href='./articles/Kyiv-Elm-Study-Group-Experience-Report.html'><span>Kyiv Elm Study Group Experience Report</span></a><span> (2019-04-13)</span></li><li><a href='./articles/drinker.html'><span>Struggling With My Drinker&#39;s Problem</span></a><span> (2019-01-31)</span></li><li><a href='./articles/Validating-Form-Data-via-Applicative-Functors.html'><span>Validating Form Data via Applicative Functors</span></a><span> (2019-01-06)</span></li><li><a href='./articles/singleton_fiber_equivalence.html'><span>Singleton, Fiber and Equivalence</span></a><span> (2018-30-12)</span></li><li><a href='./articles/Kyiv-Haskell-Study-Group-Experience-Report.html'><span>Kyiv Haskell Study Group Experience Report</span></a><span> (2018-04-09)</span></li></ul><p><span>Other:</span></p><ul><li><a href='./articles/haskell-fall2019-sponsors-open-letter.html'><span>Haskell Study Group Fall 2019 Sponsors Open Letter</span></a><span> (2019-09-20)</span></li></ul></div>
 </body>
 </html>
