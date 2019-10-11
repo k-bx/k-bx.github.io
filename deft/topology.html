@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>/home/kb/Dropbox/Deft/topology.txt</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/home/kb/Dropbox/conf/pandoc/gothic.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="топологія">Топологія</h1>
+<p>Нагадаю деякі означення.</p>
+<ol type="1">
+<li>Топологія на множині X - це сім’я <span class="math inline">\(\tau = {U \subset X}\)</span> підмножин в X, яка:</li>
+</ol>
+<ul>
+<li>містить X та порожню множину</li>
+<li>разом з будь-якою підсім’єю <span class="math inline">\({U_i} \subset \tau\)</span> містить її об’єднання <span class="math inline">\(\cup_i U_i\)</span></li>
+<li>разом з будь-якою СКІНЧЕННОЮ підсім’єю <span class="math inline">\({U_i} \subset \tau\)</span> містить її перетин $ _i U_i$</li>
+</ul>
+<ol start="2" type="1">
+<li><p>Множини, що належать топології <span class="math inline">\(\tau = {U \subset X}\)</span>, називають ВІДКРИТИМИ (відносно <span class="math inline">\(\tau\)</span>) множинами в X</p></li>
+<li><p>Доповнення до відкритих множин (тобто елементів топології) називають ЗАМКНЕНИМИ (відносно <span class="math inline">\(\tau\)</span>) множинами в X</p></li>
+<li><p>Стандартна топологія на числовій прямій R: <span class="math inline">\(\tau = { \cup_i (a_i, b_i) }\)</span> Кожен елемент <span class="math inline">\(\tau\)</span> - це об’єднання ДОВІЛЬНОГО (нульового, скінченного, зліченого, або незліченого) числа інтервалів виду <span class="math inline">\((a,b)\)</span>, де <span class="math inline">\(-infinity &lt;= a &lt; b &lt;= +infinity\)</span>, тобто інтервали можуть бути необмеженими.</p></li>
+<li><p>Нехай <span class="math inline">\(\tau_1\)</span> і <span class="math inline">\(\tau_2\)</span> - дві топології на X (тобто дві сім’ї підмножин з X). Якщо <span class="math inline">\(\tau_1 \subset \tau_2\)</span> то кажуть, що <span class="math inline">\(\tau_1\)</span> СЛАБША ЗА <span class="math inline">\(\tau_2\)</span> (має менше відкритих множин), а <span class="math inline">\(\tau_2\)</span> СИЛЬНІША ЗА <span class="math inline">\(\tau_1\)</span> (має більше відкритих множин).</p></li>
+<li><p>Теорема. Нехай <span class="math inline">\({\tau_j}\)</span> - довільна сім’я топологій на X. Тоді їх перетин <span class="math inline">\(\cap_j \tau_j = \{ U | U \in \tau_j \forall j \}\)</span> також є топологією на X.</p></li>
+<li><p>Для кожної сім’ї <span class="math inline">\(\alpha = {V_j \subset X}\)</span> підмножин з X, ця теорема дозволяє визначити НАЙМЕНШУ ТОПОЛОГІЮ, що містить <span class="math inline">\(\alpha\)</span>, як перетин всіх топологій, що містять <span class="math inline">\(\alpha\)</span>: <span class="math inline">\(\cap_{\alpha\subset\tau} \tau\)</span></p></li>
+<li><p>Підсім’я <span class="math inline">\(\beta = { V_j } \subset \tau\)</span> в X називається БАЗОЮ топології <span class="math inline">\(\tau\)</span>, якщо кожен елемент з <span class="math inline">\(\tau\)</span> є об’єднанням ДЕЯКОГО (нульового, скінченного, зліченого, або незліченого) числа елементів з <span class="math inline">\(\beta\)</span>.</p></li>
+<li><p>Підсім’я <span class="math inline">\(\alpha = { V_j } \subset \tau\)</span> в X називається ПЕРЕДБАЗОЮ топології <span class="math inline">\(\tau\)</span>, якщо сім’я, що складається з перетинів усіх можливих скінченних наборів елементів з <span class="math inline">\(\alpha\)</span>. <span class="math inline">\(\beta = { \cap_{скінч} V_j }\)</span> утворює базу топології <span class="math inline">\(\tau\)</span>.</p></li>
+<li><p>Теорема. Нехай <span class="math inline">\(\alpha = {V_j \subset X}\)</span> сім’я підмножин з X, об’єднання яких дає всю множину X. Тоді сім’я <span class="math inline">\(\tau = { \cup_{довільні} \cap_{скінч} V_j }\)</span> що складається з ДОВІЛЬНИХ ОБ’ЄДНАНЬ ДОВІЛЬНИХ СКІНЧЕННИХ ПЕРЕТИНІВ елементів з <span class="math inline">\(\alpha\)</span> є топологією на X.</p></li>
+</ol>
+</body>
+</html>
