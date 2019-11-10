@@ -57,3 +57,4 @@ TODO:
 
 - union truncation
 - the need for levels in isomorphism definition
+- rename Set to Type
