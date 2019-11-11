@@ -1,6 +1,6 @@
 # Propositions as Types: Some Missing Links
 
-I've recently started studying Topology, which turned out to be a topic filled with set theory and theorems around it. Unfortunately, my brain was well-poisoned by Type Theory by the time I've started, so I couldn't help  but itch my hands in an attempt of encoding things in Type Theory.
+I've recently started studying Topology, which turned out to be a topic filled with set theory and theorems around it. Unfortunately, my brain was well-poisoned with Type Theory by the time I've started, so I couldn't help  but itch my hands in an attempt of encoding things in Type Theory.
 
 In this blog post, I will list the things I consider missing (or rarely mentioned) when people are talking about Propositions-as-Types concerning proving set theory theorems in Type Theory and show a simple proof of a theorem from the book "Topology Without Tears", one merely about Topology but rather a set-theoretic exercise in proofs.
 
