@@ -124,11 +124,11 @@ So we say that `J` is some "index set" on our type `X` and that a union (somewha
 
 I'd like us to stop now with the code snippets describing all that useless conceptual code and do something practical! Let's prove a proposition now. It's going to be an arbitrary-chosen Proposition 2.3.2 from the book [Topology Without Tears](http://www.topologywithouttears.net/). Here it is, together with its "unwrapping" and the proof:
 
-![Proposition statement](./propositions-as-types-missing-links/prop232_1.png)
+![(proposition.png)](./propositions-as-types-missing-links/prop232_1.png)
 
-![Unwrapping of the proposition](./propositions-as-types-missing-links/prop232_2.png)
+![(unwrapping.png)](./propositions-as-types-missing-links/prop232_2.png)
 
-![The Proof](./propositions-as-types-missing-links/prop232_3.png)
+![(theproof.png)](./propositions-as-types-missing-links/prop232_3.png)
 
 We're only going to bother ourselves with the second part of the proof, the "Conversely" one. The first part is left to the reader as an exercise.
 
