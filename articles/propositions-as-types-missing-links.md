@@ -238,7 +238,7 @@ In our proof, this can be seen as `((_≲_.to B≲U b) ≡ x)`. Instead of sayin
 
 ## Conclusion
 
-Doing set-theoretic proofs in Agda is still not an easy task, but it's fun, and I think it gave me a better understanding of precisely what concepts I am dealing with. The most useful one was the notion of Union Truncation, the idea around "what does it mean for two unions to be the same". Type Theory gives us a bit more power here since we can distinguish different unions even if they have the same elements in them.
+Doing set-theoretic proofs in Agda is still not an easy task, but it's fun, and I think it gave me a better understanding of precisely what concepts I am dealing (or *not dealing*) with. The most useful one was the notion of Union Truncation, the idea around "what does it mean for two unions to be the same". Type Theory gives us a bit more power here since we can distinguish different unions even if they have the same elements in them.
 
 I'm pleased that this project didn't fail, and will probably continue exploring Propositions-as-Types approach towards Topology propositions.
 
