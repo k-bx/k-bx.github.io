@@ -44,11 +44,9 @@ Pred X = X → Type₀
 -- Type of a subset
 Subset : ∀ {X : Type₀} → Pred X → Type₀
 Subset {X} P = Σ[ x ∈ X ] (P x)
-
--- To those who don't remember, in the syntax Σ[ x ∈ X ] (P x)
--- the symbol `∈` essentially means "has type". So it reads
--- "for some x that has type X, there exists an element of `P x`"
 ```
+
+(To those who don't remember, in the syntax `Σ[ x ∈ X ] (P x)`, the symbol `∈` essentially means "has type". So it reads "for some x that has type X, there exists an element of `P x`")
 
 The second notion that I was thinking about was to use the notion of Embedding, something very much like Isomorphism, but without one law:
 
