@@ -213,8 +213,8 @@ x \in \bigcup \mathbf{M} \iff \exists A \in \mathbf{M},\ x \in A
 <span id="cb8-31"><a href="#cb8-31"></a>       <span class="ot">(</span>V ≃ <span class="ot">(</span>Union J 𝐵<span class="ot">))</span>   <span class="co">-- and a proof that V is precisely this union</span></span>
 <span id="cb8-32"><a href="#cb8-32"></a>    <span class="ot">)</span></span>
 <span id="cb8-33"><a href="#cb8-33"></a>prop232 X τ 𝐵 given₁ V V≲X V∈sτ unionTruncation</span>
-<span id="cb8-34"><a href="#cb8-34"></a>  <span class="ot">=</span> V</span>
-<span id="cb8-35"><a href="#cb8-35"></a>  , <span class="kw">record</span></span>
+<span id="cb8-34"><a href="#cb8-34"></a>  <span class="ot">=</span> V       <span class="co">-- our index set is V (we index by its elements)</span></span>
+<span id="cb8-35"><a href="#cb8-35"></a>  , <span class="kw">record</span>  <span class="co">-- here goes the proof that V ≃ (Union J 𝐵)</span></span>
 <span id="cb8-36"><a href="#cb8-36"></a>    <span class="ot">{</span> <span class="kw">to</span> <span class="ot">=</span> <span class="ot">λ</span> v <span class="ot">→</span> <span class="kw">let</span> <span class="ot">(</span> Bₓ , B∈s𝐵 , B≲U , b , b→v <span class="ot">)</span> <span class="ot">=</span> given₁ V V≲X V∈sτ v</span>
 <span id="cb8-37"><a href="#cb8-37"></a>                  <span class="kw">in</span> v , Bₓ , B∈s𝐵</span>
 <span id="cb8-38"><a href="#cb8-38"></a>    <span class="ot">;</span> from <span class="ot">=</span> <span class="ot">λ{</span> <span class="ot">(</span>x , Bₓ , Bₓ∈s𝐵<span class="ot">)</span> <span class="ot">→</span> x<span class="ot">}</span></span>

@@ -176,8 +176,8 @@ prop232
        (V ≃ (Union J 𝐵))   -- and a proof that V is precisely this union
     )
 prop232 X τ 𝐵 given₁ V V≲X V∈sτ unionTruncation
-  = V
-  , record
+  = V       -- our index set is V (we index by its elements)
+  , record  -- here goes the proof that V ≃ (Union J 𝐵)
     { to = λ v → let ( Bₓ , B∈s𝐵 , B≲U , b , b→v ) = given₁ V V≲X V∈sτ v
                   in v , Bₓ , B∈s𝐵
     ; from = λ{ (x , Bₓ , Bₓ∈s𝐵) → x}
