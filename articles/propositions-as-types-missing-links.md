@@ -234,7 +234,7 @@ Other things worth noting that are present in set theory:
 
 In our proof, this can be seen as `((_≲_.to B≲U b) ≡ x)`. Instead of saying "x is also in B", we have to say "there is some `b` in `B`, and converted to `U` via isomorphism, it's equal to `x`".
 
-**Dynamic Membership Checking**. Proofs in set theory often go on and say "if x is a member of X then ...". I'm not touching examples of these proofs here, but I think this should be mentioned explicitly. Most situation like this either translate in a "there exists an `x : X`", or involve the Law of Excluded Middle
+**Dynamic Membership Checking**. One last thing worth mentioning. Proofs in set theory often go on and say "if x is a member of X then ..., if it's not then ...". I'm not touching examples of these proofs here, but I think this should be mentioned as well. Most situation like this translate in a simple "there exists an `x : X`", but sometimes, whenever we have the "when it's not" part or some form of it, one usually means to involve the Law of Excluded Middle.
 
 ## Conclusion
 
