@@ -1,8 +1,8 @@
 # Propositions as Types: Some Missing Links
 
-I've recently started studying Topology, which turned out to be a topic filled with set theory and theorems around it. Unfortunately, my brain was well-poisoned by Type Theory by the time I've started, so I couldn't help  but itch my hands in attempt of encoding things in Type Theory.
+I've recently started studying Topology, which turned out to be a topic filled with set theory and theorems around it. Unfortunately, my brain was well-poisoned by Type Theory by the time I've started, so I couldn't help  but itch my hands in an attempt of encoding things in Type Theory.
 
-In this blog post, I will list the things I consider missing (or rarely mentioned) when people are talking about Propositions-as-Types with regards to proving set theory theorems in Type Theory, and will show a simple proof of a theorem from the book "Topology Without Tears", one merely about Topology but rather a set-theoretic exercise in proofs.
+In this blog post, I will list the things I consider missing (or rarely mentioned) when people are talking about Propositions-as-Types concerning proving set theory theorems in Type Theory and show a simple proof of a theorem from the book "Topology Without Tears", one merely about Topology but rather a set-theoretic exercise in proofs.
 
 ## The Missing Links
 
@@ -63,7 +63,7 @@ record _≲_ (A B : Type₀) : Type₀ where
 
 So, for example, we can prove the embedding of `Bool`s to `Nat`s by saying that `True` will map to `1` and `False` will map to `0`. Then `to(from(x)) ≡ x` will hold for both, `x` being `True` or `False`, but the opposite `from(to(x))` would clearly fail for anything `> 1` (`from(to(3)) ≡ 1`).
 
-**Set of subsets.** An interesting one to crack to me was the notion of a "set of subsets" back from when I've studied what a Topology is. So, if a subset is a pair of element of `X` and a proof that it satisfies some predicate `P`, then set of subsets must be a pair of *some predicate describing a subset* and an instance of a *predicate on that predicate*:
+**Set of subsets.** An interesting one to crack to me was the notion of a "set of subsets" back from when I've studied what a Topology is. So, if a subset is a pair of an element of `X` and a proof that it satisfies some predicate `P`, then set of subsets must be a pair of *some predicate describing a subset* and an instance of a *predicate on that predicate*:
 
 ```agda
 PredOnPred : Type₀ → Type₁
@@ -73,7 +73,7 @@ SetOfSubs : {X : Type₀} → (PredOnPred X) → Type₁
 SetOfSubs {X} ℙ = Σ[ P ∈ Pred X ] (ℙ P)
 ```
 
-I don't know the usefullness of this to be honest, but for our purposes it seems ok and doesn't look wrong.
+I don't know the usefulness of this to be honest, but for our purposes it seems ok and doesn't look wrong.
 
 **Set belonging to a Set of Subsets**
 
@@ -88,9 +88,9 @@ _∈s_ {X} S ℙ =
   ( ∀ (x : X) → (P x ≃ S))
 ```
 
-**Unions, Intersections. Finite and Infinite.**. The first thing that you see when you study Topology is that a Topology has a property involving Unions and Intersections, and not just that, but they're also finite and infinite.
+**Unions, Intersections. Finite and Infinite.** The first thing that you see when you study Topology is that a Topology has a property involving Unions and Intersections, and not just that, but they're also finite and infinite.
 
-First, let's deal with infinite ones. They are well-known in Type Theory, and are represented as a Sum type ("or") and a Product type ("and"). So:
+First, let's deal with infinite ones. They are well-known in Type Theory and are represented as a Sum type ("or") and a Product type ("and"). So:
 
 ```agda
 -- This is a Union of A and B: A ⊎ B
@@ -98,13 +98,13 @@ First, let's deal with infinite ones. They are well-known in Type Theory, and ar
 -- This is an Intersection of A and B: A × B
 ```
 
-Now, but what does it take to be an infinite union? Well, if you look not at what an infinite union is exactly, but at [what you can do with it](https://en.wikipedia.org/wiki/Union_(set_theory)#Arbitrary_unions), you'll find that the only useful thing is this:
+Now, but what does it take to be an infinite union? Well, if you look not at what an infinite union is precisely, but at [what you can do with it](https://en.wikipedia.org/wiki/Union_(set_theory)#Arbitrary_unions), you'll find that the only useful thing is this:
 $$
 x \in \bigcup \mathbf{M} \iff \exists A \in \mathbf{M},\ x \in A
 $$
 E.g. to say that x is in some union is the same thing as to say that there exists an element of that union which x belongs to. Great!
 
-Now, for the purposes I've had, I've needed a union of specifically some set of subsets, so I've enriched the notion just mentioned with an additional fact that whatever the element of the union we cat, it's going to be a subset of that set.
+Now, for the purposes I've had, I've needed a union of specifically some set of subsets, so I've enriched the notion just mentioned with an additional fact that whatever the element of the union we can, it's going to be a subset of that set.
 
 ```agda
 Union : {X : Type₀}
@@ -118,7 +118,7 @@ Union J 𝐵 =
   (Bⱼ ∈s 𝐵)
 ```
 
-So we say that `J` is some "index set" on our type `X`, and that a union (somewhat resembling the notion of a subset) is a triple of a specific index, a type for a subset at that index, and a proof that it's a subset of `𝐵`.
+So we say that `J` is some "index set" on our type `X` and that a union (somewhat resembling the notion of a subset) is a triple of a specific index, a type for a subset at that index, and a proof that it's a subset of `𝐵`.
 
 ## Let's Have Some Fun Now
 
@@ -136,9 +136,9 @@ To visualise what we're doing here, here's a fine drawing of mine:
 
 ![prop232_drawing](./propositions-as-types-missing-links/prop232_drawing.jpg)
 
-The proof goes by saying that since for every `x` in `U` we see that it's also in some `B ⊆ U`, then obviously `U` is eqal to a union of all such `B`s. That's exactly what we're going to encode.
+The proof goes by saying that since for every `x` in `U` we see that it's also in some `B ⊆ U`, then "obviously" `U` is equal to a union of all such `B`s. That's precisely what we're going to encode.
 
-I'm going to just throw the code at you here, and then explain few things that were missing from before, and few places I've had to struggle with the most.
+I'm going to just throw the code at you here, and then explain a few things that were missing from before, and few places I've had to struggle with the most.
 
 Full code available at [TheMissingLinks.agda](https://github.com/k-bx/k-bx.github.io/blob/master/articles/propositions-as-types-missing-links/TheMissingLinks.agda):
 
@@ -195,16 +195,16 @@ So, what you can see is that we're proving `Σ[ J ∈ Type₀ ] (V ≃ (Union J 
 
 Few things to note here.
 
-**Union Truncation**. You've probably noticed that I've smuggled some `unionTruncation` stuff. What is that exactly? Well, as I've been trying to prove the forementioned isomorphism, I was able to prove the `from∘to` part easily, but had struggles with the `to∘from` one. Somehow, going from an element of union into `V` and then back, didn't necessary give me back exactly the same element of the Union. This was my "goal" back in the days:
+**Union Truncation**. You've probably noticed that I've smuggled some `unionTruncation` stuff. What is that exactly? Well, as I've been trying to prove the forementioned isomorphism, I was able to prove the `from∘to` part easily, but had struggles with the `to∘from` one. Somehow, going from an element of the union into `V` and then back, didn't necessary give me back exactly the same element of the Union. This was my "goal" back in the day:
 
 ```
   (x , proj₁ (given₁ V V≲X V∈sτ x) , proj₁ (proj₂ (given₁ V V≲X V∈sτ x)))
 ≡ (x , Bₓ , Bₓ∈S𝐵)
 ```
 
-After giving it a thought, I've figured that this isn't necessarily the case, actually. An element of a Union, as it's currently defined, is a triple, giving you an element, a subst it belongs to and a proof of that being subset. But nothing guarantees you that the subset of an element will always be the same!
+After giving it a thought, I've figured that this isn't necessarily the case. An element of a Union, as it's currently defined, is a triple, giving you an element, a subset it belongs to and a proof of that being subset. But nothing guarantees you that the subset of an element will always be the same!
 
-But we really don't care. All we care here is that the elements of `V` are the same as the elements of the union. So, I needed to come up with a notion very similar to Truncation from the HoTT book, but that would keep the element (don't truncate `x`), but truncate both the subset (always pick same subset for an element) and the proof (proofs are all the same). Here's how it looks like:
+But we really don't care. All we care here is that the elements of `V` are the same as the elements of the union. So, I needed to come up with a notion very similar to Truncation from the HoTT book, but that would keep the element (don't truncate `x`), but truncate both the subset (always pick the same subset for an element) and the proof (proofs are all the same). Here's how it looks like:
 
 ```agda
 UnionTruncation
@@ -219,7 +219,7 @@ UnionTruncation J 𝐵 =
 
 With this, the proof was complete.
 
-**Level-polymorphic Isomorphism**. Another thing you might mention is that the isomorphism code has been converted to be level-polymorphic. Not a big deal, but I thought it's worth noting:
+**Level-polymorphic Isomorphism**. Another thing you might notice is that the isomorphism code has been converted to be level-polymorphic. Not a big deal, but I thought it's worth noting:
 
 ```agda
 record _≃_ {l m} (A : Type l) (B : Type m) : Type (l ⊔ m) where
@@ -229,11 +229,11 @@ record _≃_ {l m} (A : Type l) (B : Type m) : Type (l ⊔ m) where
 
 Other things worth noting that are present in set theory:
 
-**Dynamic Membership Checking**. Proofs in set theory often go on and say "if x is a member of X then ...". I'm not touching examples of these proofs here, but I think this should be mentioned explicitly. Most situation like this either translate in a "there exists an `x : X`", or involve the Law of Excluded Middle
-
 **Sameness of an element**. It's often said that "if an element x is a member if U, it's also a member of V", but if U and V are distinct types, `x` can't have both types. In Type Theory, this has to have a bit more structure.
 
 In our proof, this can be seen as `((_≲_.to B≲U b) ≡ x)`. Instead of saying "x is also in B", we have to say "there is some `b` in `B`, and converted to `U` via isomorphism, it's equal to `x`".
+
+**Dynamic Membership Checking**. Proofs in set theory often go on and say "if x is a member of X then ...". I'm not touching examples of these proofs here, but I think this should be mentioned explicitly. Most situation like this either translate in a "there exists an `x : X`", or involve the Law of Excluded Middle
 
 ## Conclusion
 
