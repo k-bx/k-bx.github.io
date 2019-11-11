@@ -133,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-3"><a href="#cb4-3"></a></span>
 <span id="cb4-4"><a href="#cb4-4"></a>SetOfSubs <span class="ot">:</span> <span class="ot">{</span>X <span class="ot">:</span> Type₀<span class="ot">}</span> <span class="ot">→</span> <span class="ot">(</span>PredOnPred X<span class="ot">)</span> <span class="ot">→</span> Type₁</span>
 <span id="cb4-5"><a href="#cb4-5"></a>SetOfSubs <span class="ot">{</span>X<span class="ot">}</span> ℙ <span class="ot">=</span> Σ[ P ∈ Pred X ] <span class="ot">(</span>ℙ P<span class="ot">)</span></span></code></pre></div>
-<p>I don’t know the usefulness of this to be honest, but for our purposes it seems ok and doesn’t look wrong.</p>
+<p>I’m not sure if this is going to be sufficient over the wider range of proofs, there might be some crucial structure missing in this definition, but it was sufficient for our proofs.</p>
 <p><strong>Set belonging to a Set of Subsets</strong></p>
 <p>How do we say that something is present in a given set of subsets? Probably give back the predicate and show all elements satisfying it are isomorphic to S</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb5-1"><a href="#cb5-1"></a><span class="ot">_</span>∈s<span class="ot">_</span> <span class="ot">:</span> <span class="ot">{</span>X <span class="ot">:</span> Type₀<span class="ot">}</span></span>
