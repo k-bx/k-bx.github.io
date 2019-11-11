@@ -58,7 +58,7 @@ record _≲_ (A B : Type₀) : Type₀ where
     from∘to : ∀ (x : A) → from (to x) ≡ x
 ```
 
-So, for example, we can prove the embedding of `Bool`s to `Nat`s by saying that `True` will map to `1` and `False` will map to `0`. Then `to(from(x)) ≡ x` will hold for both, `x` being `True` or `False`, but the opposite `from(to(x))` would clearly fail for anything `> 1` (`from(to(3)) ≡ 1`).
+So, for example, we can prove the embedding of `Bool`s to `Nat`s by saying that `True` will map to `1` and `False` will map to `0`. Then `from(to(x)) ≡ x` will hold for both, `x` being `True` or `False`, but the opposite `to(from(x))` would clearly fail for anything `> 1` (`to(from(3)) ≡ 1`).
 
 **Set of subsets.** An interesting one to crack to me was the notion of a "set of subsets" back from when I've studied what a Topology is. So, if a subset is a pair of an element of `X` and a proof that it satisfies some predicate `P`, then set of subsets must be a pair of *some predicate describing a subset* and an instance of a *predicate on that predicate*:
 
