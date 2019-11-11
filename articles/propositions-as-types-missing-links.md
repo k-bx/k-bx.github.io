@@ -90,7 +90,7 @@ _∈s_ {X} S ℙ =
 
 **Unions, Intersections. Finite and Infinite.** The first thing that you see when you study Topology is that a Topology has a property involving Unions and Intersections, and not just that, but they're also finite and infinite.
 
-First, let's deal with infinite ones. They are well-known in Type Theory and are represented as a Sum type ("or") and a Product type ("and"). So:
+First, let's deal with finite ones. They are well-known in Type Theory and are represented as a Sum type ("or") and a Product type ("and"). So:
 
 ```agda
 -- This is a Union of A and B: A ⊎ B
