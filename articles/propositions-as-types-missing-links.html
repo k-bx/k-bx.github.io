@@ -150,7 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now, but what does it take to be an infinite union? Well, if you look not at what an infinite union is precisely, but at <a href="https://en.wikipedia.org/wiki/Union_(set_theory)#Arbitrary_unions">what you can do with it</a>, you’ll find that the only useful thing is this: <span class="math display">\[
 x \in \bigcup \mathbf{M} \iff \exists A \in \mathbf{M},\ x \in A
 \]</span> E.g. to say that x is in some union is the same thing as to say that there exists an element of that union which x belongs to. Great!</p>
-<p>Now, for the purposes I’ve had, I’ve needed a union of specifically some set of subsets, so I’ve enriched the notion just mentioned with an additional fact that whatever the element of the union we can, it’s going to be a subset of that set.</p>
+<p>Now, for the purposes I’ve had, I’ve needed a union of specifically some set of subsets, so I’ve enriched the notion just mentioned with an additional fact that whatever the element of the union we get, it’s going to be a subset of that set.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb7-1"><a href="#cb7-1"></a>Union <span class="ot">:</span> <span class="ot">{</span>X <span class="ot">:</span> Type₀<span class="ot">}</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>      <span class="ot">→</span> <span class="ot">{</span>ℙ <span class="ot">:</span> PredOnPred X<span class="ot">}</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>      <span class="ot">→</span> <span class="ot">(</span>J <span class="ot">:</span> Type₀<span class="ot">)</span></span>

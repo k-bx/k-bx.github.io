@@ -104,7 +104,7 @@ x \in \bigcup \mathbf{M} \iff \exists A \in \mathbf{M},\ x \in A
 $$
 E.g. to say that x is in some union is the same thing as to say that there exists an element of that union which x belongs to. Great!
 
-Now, for the purposes I've had, I've needed a union of specifically some set of subsets, so I've enriched the notion just mentioned with an additional fact that whatever the element of the union we can, it's going to be a subset of that set.
+Now, for the purposes I've had, I've needed a union of specifically some set of subsets, so I've enriched the notion just mentioned with an additional fact that whatever the element of the union we get, it's going to be a subset of that set.
 
 ```agda
 Union : {X : Type₀}
