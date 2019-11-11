@@ -231,7 +231,7 @@ Other things worth noting that are present in set theory:
 
 **Sameness of an element**. It's often said that "if an element x is a member if U, it's also a member of V", but if U and V are distinct types, `x` can't have both types. In Type Theory, this has to have a bit more structure.
 
-In our proof, this can be seen as `((_≲_.to B≲U b) ≡ x)`. Instead of saying "x is also in B", we have to say "there is some `b` in `B`, and converted to `U` via isomorphism, it's equal to `x`".
+In our proof, this can be seen as `((_≲_.to B≲U b) ≡ x)`. Instead of saying "x is also in B", we have to say "there is some `b` in `B`, and converted to `U` via embedding, it's equal to `x`".
 
 **Dynamic Membership Checking**. One last thing worth mentioning. Proofs in set theory often go on and say "if x is a member of X then ..., if it's not then ...". I'm not touching examples of these proofs here, but I think this should be mentioned as well. Most situation like this translate in a simple "there exists an `x : X`", but sometimes, whenever we have the "when it's not" part or some form of it, one usually means to involve the Law of Excluded Middle.
 
