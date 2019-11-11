@@ -73,7 +73,7 @@ SetOfSubs : {X : Type₀} → (PredOnPred X) → Type₁
 SetOfSubs {X} ℙ = Σ[ P ∈ Pred X ] (ℙ P)
 ```
 
-I'm not sure if this is going to be sufficient over the wider range of proofs, there might be some crucial structure missing in this definition, but it was sufficient for our proofs.
+I'm not sure if this is going to be sufficient over the wider range of proofs, there might be some crucial structure missing in this definition, but it was sufficient for our purposes.
 
 **Set belonging to a Set of Subsets**
 
