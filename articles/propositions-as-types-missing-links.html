@@ -106,20 +106,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Subsets</strong>. There are actually two distinct approaches I’ve encountered with regard to subsets, and we’re going to use both. One is a.k.a. the HoTT book, Chapter 3.5, encoding a subset of some set <code>A</code> of elements satisfying some predicate <code>P</code> (<code>{ x ∈ A | P(x)}</code>) as: <span class="math display">\[
 \Sigma_{x : A}P(x)
 \]</span> So, a type describing a pair of element <code>x : A</code> and a proof that that element satisfies some predicate <code>P</code> is describing all the values which are members of this subset.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">-- Btw to not confuse sets and types, we&#39;ll use Type₀ and Type₁</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="co">-- instead of the usual Agda&#39;s `Set` and `Set₁` types</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co">-- Type of some predicate</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>Pred <span class="ot">:</span> Type₀ <span class="ot">→</span> Type₁</span>
-<span id="cb2-6"><a href="#cb2-6"></a>Pred X <span class="ot">=</span> X <span class="ot">→</span> Type₀</span>
-<span id="cb2-7"><a href="#cb2-7"></a></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="co">-- Type of a subset</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>Subset <span class="ot">:</span> <span class="ot">∀</span> <span class="ot">{</span>X <span class="ot">:</span> Type₀<span class="ot">}</span> <span class="ot">→</span> Pred X <span class="ot">→</span> Type₀</span>
-<span id="cb2-10"><a href="#cb2-10"></a>Subset <span class="ot">{</span>X<span class="ot">}</span> P <span class="ot">=</span> Σ[ x ∈ X ] <span class="ot">(</span>P x<span class="ot">)</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="co">-- To those who don&#39;t remember, in the syntax Σ[ x ∈ X ] (P x)</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="co">-- the symbol `∈` essentially means &quot;has type&quot;. So it reads</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="co">-- &quot;for some x that has type X, there exists an element of `P x`&quot;</span></span></code></pre></div>
+<p>(Btw to not confuse sets and types, we’ll use <code>Type₀</code> and <code>Type₁</code>, instead of the usual Agda’s <code>Set</code> and <code>Set₁</code> types)</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">-- Type of some predicate</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>Pred <span class="ot">:</span> Type₀ <span class="ot">→</span> Type₁</span>
+<span id="cb2-3"><a href="#cb2-3"></a>Pred X <span class="ot">=</span> X <span class="ot">→</span> Type₀</span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">-- Type of a subset</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>Subset <span class="ot">:</span> <span class="ot">∀</span> <span class="ot">{</span>X <span class="ot">:</span> Type₀<span class="ot">}</span> <span class="ot">→</span> Pred X <span class="ot">→</span> Type₀</span>
+<span id="cb2-7"><a href="#cb2-7"></a>Subset <span class="ot">{</span>X<span class="ot">}</span> P <span class="ot">=</span> Σ[ x ∈ X ] <span class="ot">(</span>P x<span class="ot">)</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">-- To those who don&#39;t remember, in the syntax Σ[ x ∈ X ] (P x)</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co">-- the symbol `∈` essentially means &quot;has type&quot;. So it reads</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co">-- &quot;for some x that has type X, there exists an element of `P x`&quot;</span></span></code></pre></div>
 <p>The second notion that I was thinking about was to use the notion of Embedding, something very much like Isomorphism, but without one law:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">record</span> <span class="ot">_</span>≲<span class="ot">_</span> <span class="ot">(</span>A B <span class="ot">:</span> Type₀<span class="ot">)</span> <span class="ot">:</span> Type₀ <span class="kw">where</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>  <span class="kw">field</span></span>

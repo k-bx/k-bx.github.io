@@ -34,10 +34,9 @@ $$
 $$
 So, a type describing a pair of element `x : A` and a proof that that element satisfies some predicate `P` is describing all the values which are members of this subset.
 
-```agda
--- Btw to not confuse sets and types, we'll use Type₀ and Type₁
--- instead of the usual Agda's `Set` and `Set₁` types
+(Btw to not confuse sets and types, we'll use `Type₀` and `Type₁`, instead of the usual Agda's `Set` and `Set₁` types)
 
+```agda
 -- Type of some predicate
 Pred : Type₀ → Type₁
 Pred X = X → Type₀
