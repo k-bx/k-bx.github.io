@@ -205,7 +205,7 @@ Few things to note here.
 
 After giving it a thought, I've figured that this isn't necessarily the case. An element of a Union, as it's currently defined, is a triple, giving you an element, a subset it belongs to and a proof of that being subset. But nothing guarantees you that the subset of an element will always be the same!
 
-But we really don't care. All we care here is that the elements of `V` are the same as the elements of the union. So, I needed to come up with a notion very similar to Truncation from the HoTT book, but that would keep the element (don't truncate `x`), but truncate both the subset (always pick the same subset for an element) and the proof (proofs are all the same). Here's how it looks like:
+But we really don't care. All we care here is that the elements of `V` are the same as the elements of the union. So, I needed to come up with a notion very similar to Truncation from the HoTT book (Chapter 3.7), but that would keep the element (don't truncate `x`), but truncate both the subset (always pick the same subset for an element) and the proof (proofs are all the same). Here's how it looks like:
 
 ```agda
 UnionTruncation
