@@ -140,12 +140,105 @@ The proof goes by saying that since for every `x` in `U` we see that it's also i
 
 I'm going to just throw the code at you here, and then explain few things that were missing from before, and few places I've had to struggle with the most.
 
-Full code available at [TheMissingLink.agda](TODO)
+Full code available at [TheMissingLinks.agda](https://github.com/k-bx/k-bx.github.io/blob/master/articles/propositions-as-types-missing-links/TheMissingLinks.agda):
 
-TODO:
+```agda
+-- "Topology without tears" 2.3.2 constructively
+--
+-- 2.3.2 Let (X, τ) be a topological space. A family B of open subsets
+-- of X is a basis for τ if and only if for any point x belonging to
+-- any open set U , there is a B ∈ B such that x ∈ B ⊆ U.
+--
+-- This only proves the second part (given ... proves that 𝐵 is a basis)
+--
+prop232
+  : (X : Type₀)
+  → {ℙ₁ : PredOnPred X}
+  → {ℙ₂ : PredOnPred X}
+  → (τ : SetOfSubs ℙ₁)  -- we don't use the whole structure of Topology here
+  → (𝐵 : SetOfSubs ℙ₂)
+  → (given₁ : ∀ (U : Type₀)
+            → (U ≲ X)
+            → (U ∈s τ)
+            → (x : U)
+            → Σ[ B ∈ Type₀ ]
+              Σ[ _ ∈ (B ∈s 𝐵) ]
+              Σ[ B≲U ∈ B ≲ U ]
+              Σ[ b ∈ B ]
+              ((_≲_.to B≲U b) ≡ x)
+              )
+  → (∀ (V : Type₀)
+     → (V ≲ X)
+     → V ∈s τ
+     → UnionTruncation V 𝐵
+     → Σ[ J ∈ Type₀ ]
+       (V ≃ (Union J 𝐵))
+    )
+prop232 X τ 𝐵 given₁ V V≲X V∈sτ unionTruncation
+  = V
+  , record
+    { to = λ v → let ( Bₓ , B∈s𝐵 , B≲U , b , b→v ) = given₁ V V≲X V∈sτ v
+                  in v , Bₓ , B∈s𝐵
+    ; from = λ{ (x , Bₓ , Bₓ∈s𝐵) → x}
+    ; from∘to = λ x → refl
+    ; to∘from = λ y → unionTruncation
+                         ( proj₁ y
+                         , proj₁ (given₁ V V≲X V∈sτ (proj₁ y))
+                         , proj₁ (proj₂ (given₁ V V≲X V∈sτ (proj₁ y))))
+                         y
+                         refl
+    }
 
-- "Dynamic Membership Checking". Proofs in set theory often go on and say "if x is a member of X then ...". I'm not touching examples of these proofs here, but I think this should be mentioned explicitly. Most situation like this either translate in a "there exists an `x : X`", or involve the Law of Excluded Middle
-- Sameness of an element. It's often said that "if an element x is a member if U, it's also a member of V", but if U and V are distinct types, `x` can't have both types. In Type Theory, this has to have a bit more structure. For example, 
-- union truncation
-- the need for levels in isomorphism definition
-- rename Set to Type
+```
+
+So, what you can see is that we're proving `Σ[ J ∈ Type₀ ] (V ≃ (Union J 𝐵))` here, meaning that we'll provide what the index of the union is, and we'll prove that `V` is isomorphic to that union.
+
+Few things to note here.
+
+**Union Truncation**. You've probably noticed that I've smuggled some `unionTruncation` stuff. What is that exactly? Well, as I've been trying to prove the forementioned isomorphism, I was able to prove the `from∘to` part easily, but had struggles with the `to∘from` one. Somehow, going from an element of union into `V` and then back, didn't necessary give me back exactly the same element of the Union. This was my "goal" back in the days:
+
+```
+  (x , proj₁ (given₁ V V≲X V∈sτ x) , proj₁ (proj₂ (given₁ V V≲X V∈sτ x)))
+≡ (x , Bₓ , Bₓ∈S𝐵)
+```
+
+After giving it a thought, I've figured that this isn't necessarily the case, actually. An element of a Union, as it's currently defined, is a triple, giving you an element, a subst it belongs to and a proof of that being subset. But nothing guarantees you that the subset of an element will always be the same!
+
+But we really don't care. All we care here is that the elements of `V` are the same as the elements of the union. So, I needed to come up with a notion very similar to Truncation from the HoTT book, but that would keep the element (don't truncate `x`), but truncate both the subset (always pick same subset for an element) and the proof (proofs are all the same). Here's how it looks like:
+
+```agda
+UnionTruncation
+  : {X : Type₀}
+  → {ℙ : PredOnPred X}
+  → (J : Type₀)
+  → (𝐵 : SetOfSubs ℙ)
+  → Type₁
+UnionTruncation J 𝐵 =
+  (j : Union J 𝐵) → (k : Union J 𝐵) → (proj₁ j ≡ proj₁ k) → j ≡ k
+```
+
+With this, the proof was complete.
+
+**Level-polymorphic Isomorphism**. Another thing you might mention is that the isomorphism code has been converted to be level-polymorphic. Not a big deal, but I thought it's worth noting:
+
+```agda
+record _≃_ {l m} (A : Type l) (B : Type m) : Type (l ⊔ m) where
+```
+
+## Other things
+
+Other things worth noting that are present in set theory:
+
+**Dynamic Membership Checking**. Proofs in set theory often go on and say "if x is a member of X then ...". I'm not touching examples of these proofs here, but I think this should be mentioned explicitly. Most situation like this either translate in a "there exists an `x : X`", or involve the Law of Excluded Middle
+
+**Sameness of an element**. It's often said that "if an element x is a member if U, it's also a member of V", but if U and V are distinct types, `x` can't have both types. In Type Theory, this has to have a bit more structure.
+
+In our proof, this can be seen as `((_≲_.to B≲U b) ≡ x)`. Instead of saying "x is also in B", we have to say "there is some `b` in `B`, and converted to `U` via isomorphism, it's equal to `x`".
+
+## Conclusion
+
+Doing set-theoretic proofs in Agda is still not an easy task, but it's fun and I think it gave me a better understanding of precisely what concepts I am dealing with. The most useful one was the notion of Union Truncation, the idea around "what does it mean for two unions to be the same". Type Theory gives us a bit more power here, since we can distinguish different unions even if they have the same elements in them.
+
+I'm really happy that this project didn't fail, and will probably continue exploring Propositions-as-Types approach towards Topology propositions.
+
+Please send your feedback in Issues or PRs in [this blog's repo](https://github.com/k-bx/k-bx.github.io).

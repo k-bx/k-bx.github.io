@@ -11,3 +11,11 @@ do
            --css https://k-bx.github.io/gothic.css \
            $f -o ./deft/$(basename ${f%.*}).html
 done
+
+for f in ./articles/propositions-as-types-missing-links.md
+do
+    pandoc --standalone --mathjax -f markdown -t html \
+           --metadata pagetitle="$f" \
+           --css https://k-bx.github.io/gothic.css \
+           $f -o ./articles/$(basename ${f%.*}).html
+done

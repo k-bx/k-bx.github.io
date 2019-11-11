@@ -80,7 +80,6 @@ Union J 𝐵 =
   Σ[ Bⱼ ∈ Type₀ ]
   (Bⱼ ∈s 𝐵)
 
--- More on this later
 UnionTruncation
   : {X : Type₀}
   → {ℙ : PredOnPred X}
@@ -96,7 +95,7 @@ UnionTruncation J 𝐵 =
 -- of X is a basis for τ if and only if for any point x belonging to
 -- any open set U , there is a B ∈ B such that x ∈ B ⊆ U.
 --
--- This only proves the second part (given ... proves that B is a basis)
+-- This only proves the second part (given ... proves that 𝐵 is a basis)
 --
 prop232
   : (X : Type₀)
