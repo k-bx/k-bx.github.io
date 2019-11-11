@@ -157,7 +157,7 @@ prop232
   → {ℙ₂ : PredOnPred X}
   → (τ : SetOfSubs ℙ₁)  -- we don't use the whole structure of Topology here
   → (𝐵 : SetOfSubs ℙ₂)  -- For some set of subsets of X
-  → (given₁ : ∀ (U : Type₀)  -- Given for some set U
+  → (given₁ : (U : Type₀)    -- Given for some set U
             → (U ≲ X)        -- Being subset of X
             → (U ∈s τ)       -- belonging to τ
             → (x : U)        -- for any element x

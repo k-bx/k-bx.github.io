@@ -103,7 +103,7 @@ prop232
   → {ℙ₂ : PredOnPred X}
   → (τ : SetOfSubs ℙ₁)  -- we don't use the whole structure of Topology here
   → (𝐵 : SetOfSubs ℙ₂)
-  → (given₁ : ∀ (U : Type₀)
+  → (given₁ : (U : Type₀)
             → (U ≲ X)
             → (U ∈s τ)
             → (x : U)
