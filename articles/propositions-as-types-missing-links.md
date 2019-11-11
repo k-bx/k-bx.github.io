@@ -152,27 +152,28 @@ Full code available at [TheMissingLinks.agda](https://github.com/k-bx/k-bx.githu
 -- This only proves the second part (given ... proves that 𝐵 is a basis)
 --
 prop232
-  : (X : Type₀)
+  : (X : Type₀)         -- For some set X
   → {ℙ₁ : PredOnPred X}
   → {ℙ₂ : PredOnPred X}
   → (τ : SetOfSubs ℙ₁)  -- we don't use the whole structure of Topology here
-  → (𝐵 : SetOfSubs ℙ₂)
-  → (given₁ : ∀ (U : Type₀)
-            → (U ≲ X)
-            → (U ∈s τ)
-            → (x : U)
-            → Σ[ B ∈ Type₀ ]
-              Σ[ _ ∈ (B ∈s 𝐵) ]
-              Σ[ B≲U ∈ B ≲ U ]
-              Σ[ b ∈ B ]
-              ((_≲_.to B≲U b) ≡ x)
+  → (𝐵 : SetOfSubs ℙ₂)  -- For some set of subsets of X
+  → (given₁ : ∀ (U : Type₀)  -- Given for some set U
+            → (U ≲ X)        -- Being subset of X
+            → (U ∈s τ)       -- belonging to τ
+            → (x : U)        -- for any element x
+            → Σ[ B ∈ Type₀ ]     -- you'll get a set B
+              Σ[ _ ∈ (B ∈s 𝐵) ]  -- a proof it's a subset of 𝐵
+              Σ[ B≲U ∈ B ≲ U ]   -- a proof it's a subset of U
+              Σ[ b ∈ B ]         -- an element in B
+              ((_≲_.to B≲U b) ≡ x)  -- a proof it's the same as x 
+                                    -- (more on this later)
               )
-  → (∀ (V : Type₀)
-     → (V ≲ X)
-     → V ∈s τ
-     → UnionTruncation V 𝐵
-     → Σ[ J ∈ Type₀ ]
-       (V ≃ (Union J 𝐵))
+  → (∀ (V : Type₀)  -- then for any set V
+     → (V ≲ X)      -- being a subset of X
+     → V ∈s τ       -- in τ
+     → UnionTruncation V 𝐵   -- (more on this later)
+     → Σ[ J ∈ Type₀ ]      -- I'll give you index set
+       (V ≃ (Union J 𝐵))   -- and a proof that V is precisely this union
     )
 prop232 X τ 𝐵 given₁ V V≲X V∈sτ unionTruncation
   = V

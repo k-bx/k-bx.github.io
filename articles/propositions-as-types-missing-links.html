@@ -189,42 +189,43 @@ x \in \bigcup \mathbf{M} \iff \exists A \in \mathbf{M},\ x \in A
 <span id="cb8-7"><a href="#cb8-7"></a><span class="co">-- This only proves the second part (given ... proves that 𝐵 is a basis)</span></span>
 <span id="cb8-8"><a href="#cb8-8"></a><span class="co">--</span></span>
 <span id="cb8-9"><a href="#cb8-9"></a>prop232</span>
-<span id="cb8-10"><a href="#cb8-10"></a>  <span class="ot">:</span> <span class="ot">(</span>X <span class="ot">:</span> Type₀<span class="ot">)</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a>  <span class="ot">:</span> <span class="ot">(</span>X <span class="ot">:</span> Type₀<span class="ot">)</span>         <span class="co">-- For some set X</span></span>
 <span id="cb8-11"><a href="#cb8-11"></a>  <span class="ot">→</span> <span class="ot">{</span>ℙ₁ <span class="ot">:</span> PredOnPred X<span class="ot">}</span></span>
 <span id="cb8-12"><a href="#cb8-12"></a>  <span class="ot">→</span> <span class="ot">{</span>ℙ₂ <span class="ot">:</span> PredOnPred X<span class="ot">}</span></span>
 <span id="cb8-13"><a href="#cb8-13"></a>  <span class="ot">→</span> <span class="ot">(</span>τ <span class="ot">:</span> SetOfSubs ℙ₁<span class="ot">)</span>  <span class="co">-- we don&#39;t use the whole structure of Topology here</span></span>
-<span id="cb8-14"><a href="#cb8-14"></a>  <span class="ot">→</span> <span class="ot">(</span>𝐵 <span class="ot">:</span> SetOfSubs ℙ₂<span class="ot">)</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a>  <span class="ot">→</span> <span class="ot">(</span>given₁ <span class="ot">:</span> <span class="ot">∀</span> <span class="ot">(</span>U <span class="ot">:</span> Type₀<span class="ot">)</span></span>
-<span id="cb8-16"><a href="#cb8-16"></a>            <span class="ot">→</span> <span class="ot">(</span>U ≲ X<span class="ot">)</span></span>
-<span id="cb8-17"><a href="#cb8-17"></a>            <span class="ot">→</span> <span class="ot">(</span>U ∈s τ<span class="ot">)</span></span>
-<span id="cb8-18"><a href="#cb8-18"></a>            <span class="ot">→</span> <span class="ot">(</span>x <span class="ot">:</span> U<span class="ot">)</span></span>
-<span id="cb8-19"><a href="#cb8-19"></a>            <span class="ot">→</span> Σ[ B ∈ Type₀ ]</span>
-<span id="cb8-20"><a href="#cb8-20"></a>              Σ[ <span class="ot">_</span> ∈ <span class="ot">(</span>B ∈s 𝐵<span class="ot">)</span> ]</span>
-<span id="cb8-21"><a href="#cb8-21"></a>              Σ[ B≲U ∈ B ≲ U ]</span>
-<span id="cb8-22"><a href="#cb8-22"></a>              Σ[ b ∈ B ]</span>
-<span id="cb8-23"><a href="#cb8-23"></a>              <span class="ot">((_</span>≲<span class="ot">_.</span><span class="kw">to</span> B≲U b<span class="ot">)</span> ≡ x<span class="ot">)</span></span>
-<span id="cb8-24"><a href="#cb8-24"></a>              <span class="ot">)</span></span>
-<span id="cb8-25"><a href="#cb8-25"></a>  <span class="ot">→</span> <span class="ot">(∀</span> <span class="ot">(</span>V <span class="ot">:</span> Type₀<span class="ot">)</span></span>
-<span id="cb8-26"><a href="#cb8-26"></a>     <span class="ot">→</span> <span class="ot">(</span>V ≲ X<span class="ot">)</span></span>
-<span id="cb8-27"><a href="#cb8-27"></a>     <span class="ot">→</span> V ∈s τ</span>
-<span id="cb8-28"><a href="#cb8-28"></a>     <span class="ot">→</span> UnionTruncation V 𝐵</span>
-<span id="cb8-29"><a href="#cb8-29"></a>     <span class="ot">→</span> Σ[ J ∈ Type₀ ]</span>
-<span id="cb8-30"><a href="#cb8-30"></a>       <span class="ot">(</span>V ≃ <span class="ot">(</span>Union J 𝐵<span class="ot">))</span></span>
-<span id="cb8-31"><a href="#cb8-31"></a>    <span class="ot">)</span></span>
-<span id="cb8-32"><a href="#cb8-32"></a>prop232 X τ 𝐵 given₁ V V≲X V∈sτ unionTruncation</span>
-<span id="cb8-33"><a href="#cb8-33"></a>  <span class="ot">=</span> V</span>
-<span id="cb8-34"><a href="#cb8-34"></a>  , <span class="kw">record</span></span>
-<span id="cb8-35"><a href="#cb8-35"></a>    <span class="ot">{</span> <span class="kw">to</span> <span class="ot">=</span> <span class="ot">λ</span> v <span class="ot">→</span> <span class="kw">let</span> <span class="ot">(</span> Bₓ , B∈s𝐵 , B≲U , b , b→v <span class="ot">)</span> <span class="ot">=</span> given₁ V V≲X V∈sτ v</span>
-<span id="cb8-36"><a href="#cb8-36"></a>                  <span class="kw">in</span> v , Bₓ , B∈s𝐵</span>
-<span id="cb8-37"><a href="#cb8-37"></a>    <span class="ot">;</span> from <span class="ot">=</span> <span class="ot">λ{</span> <span class="ot">(</span>x , Bₓ , Bₓ∈s𝐵<span class="ot">)</span> <span class="ot">→</span> x<span class="ot">}</span></span>
-<span id="cb8-38"><a href="#cb8-38"></a>    <span class="ot">;</span> from∘to <span class="ot">=</span> <span class="ot">λ</span> x <span class="ot">→</span> refl</span>
-<span id="cb8-39"><a href="#cb8-39"></a>    <span class="ot">;</span> to∘from <span class="ot">=</span> <span class="ot">λ</span> y <span class="ot">→</span> unionTruncation</span>
-<span id="cb8-40"><a href="#cb8-40"></a>                         <span class="ot">(</span> proj₁ y</span>
-<span id="cb8-41"><a href="#cb8-41"></a>                         , proj₁ <span class="ot">(</span>given₁ V V≲X V∈sτ <span class="ot">(</span>proj₁ y<span class="ot">))</span></span>
-<span id="cb8-42"><a href="#cb8-42"></a>                         , proj₁ <span class="ot">(</span>proj₂ <span class="ot">(</span>given₁ V V≲X V∈sτ <span class="ot">(</span>proj₁ y<span class="ot">))))</span></span>
-<span id="cb8-43"><a href="#cb8-43"></a>                         y</span>
-<span id="cb8-44"><a href="#cb8-44"></a>                         refl</span>
-<span id="cb8-45"><a href="#cb8-45"></a>    <span class="ot">}</span></span></code></pre></div>
+<span id="cb8-14"><a href="#cb8-14"></a>  <span class="ot">→</span> <span class="ot">(</span>𝐵 <span class="ot">:</span> SetOfSubs ℙ₂<span class="ot">)</span>  <span class="co">-- For some set of subsets of X</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a>  <span class="ot">→</span> <span class="ot">(</span>given₁ <span class="ot">:</span> <span class="ot">∀</span> <span class="ot">(</span>U <span class="ot">:</span> Type₀<span class="ot">)</span>  <span class="co">-- Given for some set U</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a>            <span class="ot">→</span> <span class="ot">(</span>U ≲ X<span class="ot">)</span>        <span class="co">-- Being subset of X</span></span>
+<span id="cb8-17"><a href="#cb8-17"></a>            <span class="ot">→</span> <span class="ot">(</span>U ∈s τ<span class="ot">)</span>       <span class="co">-- belonging to τ</span></span>
+<span id="cb8-18"><a href="#cb8-18"></a>            <span class="ot">→</span> <span class="ot">(</span>x <span class="ot">:</span> U<span class="ot">)</span>        <span class="co">-- for any element x</span></span>
+<span id="cb8-19"><a href="#cb8-19"></a>            <span class="ot">→</span> Σ[ B ∈ Type₀ ]     <span class="co">-- you&#39;ll get a set B</span></span>
+<span id="cb8-20"><a href="#cb8-20"></a>              Σ[ <span class="ot">_</span> ∈ <span class="ot">(</span>B ∈s 𝐵<span class="ot">)</span> ]  <span class="co">-- a proof it&#39;s a subset of 𝐵</span></span>
+<span id="cb8-21"><a href="#cb8-21"></a>              Σ[ B≲U ∈ B ≲ U ]   <span class="co">-- a proof it&#39;s a subset of U</span></span>
+<span id="cb8-22"><a href="#cb8-22"></a>              Σ[ b ∈ B ]         <span class="co">-- an element in B</span></span>
+<span id="cb8-23"><a href="#cb8-23"></a>              <span class="ot">((_</span>≲<span class="ot">_.</span><span class="kw">to</span> B≲U b<span class="ot">)</span> ≡ x<span class="ot">)</span>  <span class="co">-- a proof it&#39;s the same as x </span></span>
+<span id="cb8-24"><a href="#cb8-24"></a>                                    <span class="co">-- (more on this later)</span></span>
+<span id="cb8-25"><a href="#cb8-25"></a>              <span class="ot">)</span></span>
+<span id="cb8-26"><a href="#cb8-26"></a>  <span class="ot">→</span> <span class="ot">(∀</span> <span class="ot">(</span>V <span class="ot">:</span> Type₀<span class="ot">)</span>  <span class="co">-- then for any set V</span></span>
+<span id="cb8-27"><a href="#cb8-27"></a>     <span class="ot">→</span> <span class="ot">(</span>V ≲ X<span class="ot">)</span>      <span class="co">-- being a subset of X</span></span>
+<span id="cb8-28"><a href="#cb8-28"></a>     <span class="ot">→</span> V ∈s τ       <span class="co">-- in τ</span></span>
+<span id="cb8-29"><a href="#cb8-29"></a>     <span class="ot">→</span> UnionTruncation V 𝐵   <span class="co">-- (more on this later)</span></span>
+<span id="cb8-30"><a href="#cb8-30"></a>     <span class="ot">→</span> Σ[ J ∈ Type₀ ]      <span class="co">-- I&#39;ll give you index set</span></span>
+<span id="cb8-31"><a href="#cb8-31"></a>       <span class="ot">(</span>V ≃ <span class="ot">(</span>Union J 𝐵<span class="ot">))</span>   <span class="co">-- and a proof that V is precisely this union</span></span>
+<span id="cb8-32"><a href="#cb8-32"></a>    <span class="ot">)</span></span>
+<span id="cb8-33"><a href="#cb8-33"></a>prop232 X τ 𝐵 given₁ V V≲X V∈sτ unionTruncation</span>
+<span id="cb8-34"><a href="#cb8-34"></a>  <span class="ot">=</span> V</span>
+<span id="cb8-35"><a href="#cb8-35"></a>  , <span class="kw">record</span></span>
+<span id="cb8-36"><a href="#cb8-36"></a>    <span class="ot">{</span> <span class="kw">to</span> <span class="ot">=</span> <span class="ot">λ</span> v <span class="ot">→</span> <span class="kw">let</span> <span class="ot">(</span> Bₓ , B∈s𝐵 , B≲U , b , b→v <span class="ot">)</span> <span class="ot">=</span> given₁ V V≲X V∈sτ v</span>
+<span id="cb8-37"><a href="#cb8-37"></a>                  <span class="kw">in</span> v , Bₓ , B∈s𝐵</span>
+<span id="cb8-38"><a href="#cb8-38"></a>    <span class="ot">;</span> from <span class="ot">=</span> <span class="ot">λ{</span> <span class="ot">(</span>x , Bₓ , Bₓ∈s𝐵<span class="ot">)</span> <span class="ot">→</span> x<span class="ot">}</span></span>
+<span id="cb8-39"><a href="#cb8-39"></a>    <span class="ot">;</span> from∘to <span class="ot">=</span> <span class="ot">λ</span> x <span class="ot">→</span> refl</span>
+<span id="cb8-40"><a href="#cb8-40"></a>    <span class="ot">;</span> to∘from <span class="ot">=</span> <span class="ot">λ</span> y <span class="ot">→</span> unionTruncation</span>
+<span id="cb8-41"><a href="#cb8-41"></a>                         <span class="ot">(</span> proj₁ y</span>
+<span id="cb8-42"><a href="#cb8-42"></a>                         , proj₁ <span class="ot">(</span>given₁ V V≲X V∈sτ <span class="ot">(</span>proj₁ y<span class="ot">))</span></span>
+<span id="cb8-43"><a href="#cb8-43"></a>                         , proj₁ <span class="ot">(</span>proj₂ <span class="ot">(</span>given₁ V V≲X V∈sτ <span class="ot">(</span>proj₁ y<span class="ot">))))</span></span>
+<span id="cb8-44"><a href="#cb8-44"></a>                         y</span>
+<span id="cb8-45"><a href="#cb8-45"></a>                         refl</span>
+<span id="cb8-46"><a href="#cb8-46"></a>    <span class="ot">}</span></span></code></pre></div>
 <p>So, what you can see is that we’re proving <code>Σ[ J ∈ Type₀ ] (V ≃ (Union J 𝐵))</code> here, meaning that we’ll provide what the index of the union is, and we’ll prove that <code>V</code> is isomorphic to that union.</p>
 <p>Few things to note here.</p>
 <p><strong>Union Truncation</strong>. You’ve probably noticed that I’ve smuggled some <code>unionTruncation</code> stuff. What is that exactly? Well, as I’ve been trying to prove the forementioned isomorphism, I was able to prove the <code>from∘to</code> part easily, but had struggles with the <code>to∘from</code> one. Somehow, going from an element of the union into <code>V</code> and then back, didn’t necessary give me back exactly the same element of the Union. This was my “goal” back in the day:</p>
