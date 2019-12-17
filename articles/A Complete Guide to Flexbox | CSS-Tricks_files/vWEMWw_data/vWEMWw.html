@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+<meta name="apple-mobile-web-app-title" content="CodePen">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+<title>CodePen - Demo Flexbox 3</title>
+<link rel="stylesheet" href="../aOoGVz_data/aOoGVz_data/normalize.css">
+<style>
+  .wrapper {
+  display: flex;  
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
+}
+
+.wrapper > * {
+  padding: 10px;
+  flex: 1 100%;
+}
+
+.header {
+  background: tomato;
+}
+
+.footer {
+  background: lightgreen;
+}
+
+.main {
+  text-align: left;
+  background: deepskyblue;
+}
+
+.aside-1 {
+  background: gold;
+}
+
+.aside-2 {
+  background: hotpink;
+}
+
+@media all and (min-width: 600px) {
+  .aside { flex: 1 0 0; }
+}
+
+@media all and (min-width: 800px) {
+  .main    { flex: 3 0px; }
+  .aside-1 { order: 1; } 
+  .main    { order: 2; }
+  .aside-2 { order: 3; }
+  .footer  { order: 4; }
+}
+
+body {
+  padding: 2em; 
+}
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+<meta class="CryptoPluginExtensionLoaded" content="1.0.2"></head>
+<body translate="no">
+<div class="wrapper">
+<header class="header">Header</header>
+<article class="main">
+<p>Pellentesque habitant morbi tristique senectus et netus et malesuada 
+fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, 
+ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam 
+egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend 
+leo.</p>
+</article>
+<aside class="aside aside-1">Aside 1</aside>
+<aside class="aside aside-2">Aside 2</aside>
+<footer class="footer">Footer</footer>
+</div>
+<script src="vWEMWw_data/jquery.js"></script>
+<script src="vWEMWw_data/modernizr.js"></script>
+<script src="../LVpoGK_data/LVpoGK_data/css_reload-5619dc0905a68b2e6298901de54f73cefe4e079f65a7540685.js"></script>
+
+
+</body></html>
