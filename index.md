@@ -1,4 +1,4 @@
-# Kostiantyn Rybnikov's Blog
+# Konstantine Rybnikov's Blog
 
 Twitter [ko_bx](https://twitter.com/ko_bx) Github [k-bx](https://github.com/k-bx)
 

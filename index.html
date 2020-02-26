@@ -1,22 +1,22 @@
 <!doctype html>
-<html>
+<html style='font-size:14px !important'>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>index</title><link href='https://fonts.loli.net/css?family=Didact+Gothic&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+<title>index</title><link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic' rel='stylesheet' type='text/css' /><link href='https://fonts.googleapis.com/css?family=Raleway:600,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit inherit; background-repeat: inherit inherit; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
 iframe { margin: auto; }
 a.url { word-break: break-all; }
 a:active, a:hover { outline: 0px; }
 .in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
 #write.first-line-indent p { text-indent: 2em; }
 #write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
 #write.first-line-indent li { margin-left: 2em; }
 .for-image #write { padding-left: 8px; padding-right: 8px; }
 body.typora-export { padding-left: 30px; padding-right: 30px; }
 .typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
-@media screen and (max-width: 500px) { 
+@media screen and (max-width: 500px) {
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
   .CodeMirror-sizer { margin-left: 0px !important; }
@@ -25,7 +25,7 @@ body.typora-export { padding-left: 30px; padding-right: 30px; }
 #write li > figure:last-child { margin-bottom: 0.5rem; }
 #write ol, #write ul { position: relative; }
 img { max-width: 100%; vertical-align: middle; }
-button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+button, input, select, textarea { color: inherit; font: inherit; }
 input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
 *, ::after, ::before { box-sizing: border-box; }
 #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
@@ -43,7 +43,7 @@ h6 { font-size: 1rem; }
 .hidden { display: none; }
 .md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
 a { cursor: pointer; }
-sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
 sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
@@ -52,8 +52,8 @@ tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
 table.md-table td { min-width: 32px; }
-.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
-.CodeMirror-linenumber { }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
 .CodeMirror { text-align: left; }
 .CodeMirror-placeholder { opacity: 0.3; }
 .CodeMirror pre { padding: 0px 4px; }
@@ -63,7 +63,7 @@ div.hr:focus { cursor: none; }
 #write.fences-no-line-wrapping pre { white-space: pre; }
 #write pre.ty-contain-cm { white-space: normal; }
 .CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
 .md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
 #write .md-fences.mock-cm { white-space: pre-wrap; }
 .md-fences.md-fences-with-lineno { padding-left: 0px; }
@@ -72,7 +72,7 @@ div.hr:focus { cursor: none; }
 .CodeMirror-line, twitterwidget { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
 .footnotes + .footnotes { margin-top: 0px; }
-.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
 li div { padding-top: 0px; }
 blockquote { margin: 1rem 0px; }
 li .mathjax-block, li p { margin: 0.5rem 0px; }
@@ -81,17 +81,17 @@ blockquote > :last-child { margin-bottom: 0px; }
 blockquote > :first-child, li > :first-child { margin-top: 0px; }
 .footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
 #write .footnote-line { white-space: pre-wrap; }
-@media print { 
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
   #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
   .typora-export * { -webkit-print-color-adjust: exact; }
   html.blink-to-pdf { font-size: 13px; }
-  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid-page; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
   .typora-export #write::after { height: 0px; }
 }
 .footnote-line { margin-top: 0.714em; font-size: 0.7em; }
 a img, img a { cursor: pointer; }
-pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
 p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
 p > .md-image:only-child { display: inline-block; width: 100%; }
 #write .MathJax_Display { margin: 0.8em 0px 0px; }
@@ -102,7 +102,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 .task-list-item.md-task-list-item { padding-left: 0px; }
 .md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
 .math { font-size: 1rem; }
-.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
 .md-toc-content { position: relative; margin-left: 0px; }
 .md-toc-content::after, .md-toc::after { display: none; }
 .md-toc-item { display: block; color: rgb(65, 131, 196); }
@@ -115,7 +115,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 .md-toc-h4 .md-toc-inner { margin-left: 6em; }
 .md-toc-h5 .md-toc-inner { margin-left: 8em; }
 .md-toc-h6 .md-toc-inner { margin-left: 10em; }
-@media screen and (max-width: 48em) { 
+@media screen and (max-width: 48em) {
   .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
   .md-toc-h4 .md-toc-inner { margin-left: 5em; }
   .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
@@ -126,34 +126,37 @@ a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; 
 .md-attr { display: none; }
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
-kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
 .md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
-code { text-align: left; }
-a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
 .md-inline-math .MathJax_SVG .noError { display: none !important; }
 .html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
 .md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
 .MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
 .MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
 .MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
-.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
-.MathJax_SVG * { transition: none; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
 .MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
 .os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
 .md-diagram-panel > svg { max-width: 100%; }
 [lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; height: auto; }
 [lang="mermaid"] .node text { font-size: 1rem; }
-table tr th { border-bottom-width: 0px; }
+table tr th { border-bottom: 0px; }
 video { max-width: 100%; display: block; margin: 0px auto; }
 iframe { max-width: 100%; width: 100%; border: none; }
 .highlight td, .highlight tr { border: 0px; }
 svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
 
 
-@include-when-export url(https://fonts.loli.net/css?family=Didact+Gothic&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext);
+@include-when-export url(https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic);
+@include-when-export url(https://fonts.googleapis.com/css?family=Raleway:600,400&subset=latin,latin-ext);
 
-/* cyrillic-ext */
-/* cyrillic */
+;
 :root {
 	--window-border: none;
 	--typora-center-window-title: true;
@@ -163,7 +166,7 @@ svg[id^="mermaidChart"] { line-height: 1em; }
 }
 
 .mac-seamless-mode #typora-sidebar {
-	top: 20px;
+	top: var(--mac-title-bar-height);
 	padding-top: 0;
 	height: auto;
 }
@@ -172,8 +175,7 @@ html,
 body,
 #write{
 	background: #fcfcfc;
-	background: var(--bg-color);
-	font-family: 'TeXGyreAdventor', "Century Gothic", "Didact Gothic", "Yu Gothic", sans-serif;
+	font-family: 'TeXGyreAdventor', "Century Gothic", 'Yu Gothic', 'Raleway', "STHeiti", sans-serif;
 	font-weight: 300;
 }
 h1,
@@ -183,7 +185,7 @@ h4,
 h5,
 h6 {
 	color: #111;
-	font-family: 'TeXGyreAdventor', "Century Gothic", "Didact Gothic", "Yu Gothic", sans-serif;
+	font-family: 'TeXGyreAdventor', "Century Gothic", 'Yu Gothic', 'Ubuntu', "STHeiti", sans-serif;
 }
 
 html {
@@ -265,6 +267,44 @@ p {
 	top: .125rem;
 	padding: 2px;
 }
+/*@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before {
+		top: 1px;
+	}
+	p {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}*/
 @media screen and (max-width: 48em) {
 	blockquote {
 		margin-left: 1rem;
@@ -354,16 +394,9 @@ code, .md-fences {
 	padding-left:2.125rem;
 }
 
-input {
-	border-style: ridge;
-}
-
 .task-list-item input {
 	top: 3px;
-}
 
-.md-task-list-item input {
-	margin-left: -1.5em;
 }
 
 .task-list-item input:before {
@@ -376,21 +409,15 @@ input {
 	border: 1px solid gray;
 	background-color: #fdfdfd;
 	margin-left: 0;
-	-webkit-appearance: none;
-	margin-top: -1rem;
+	margin-top: -0.8rem;
 }
-
-.typora-node .task-list-item input:before {
-	top: 0.3ex;
-	position: absolute;
-}
-
 .task-list-item input:checked:before,
 .task-list-item input[checked]:before{
 	content: '\25FC';
 	/*◘*/
 	font-size: 0.8125rem;
 	line-height: 0.9375rem;
+	margin-top: -1rem;
 }
 
 /* Chrome 29+ */
@@ -498,18 +525,10 @@ p.mathjax-block,
 	line-height: 20px;
 }
 
-.ty-table-edit {
-	background: #ededed;
-}
-
-.dropdown-menu .divider {
-	border-color: #e5e5e5;
-}
-
  .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
 </style>
 </head>
 <body class='typora-export' >
-<div  id='write'  class = 'is-mac'><h1><a name="kostiantyn-rybnikovs-blog" class="md-header-anchor"></a><span>Kostiantyn Rybnikov&#39;s Blog</span></h1><p><span>Twitter </span><a href='https://twitter.com/ko_bx'><span>ko_bx</span></a><span> Github </span><a href='https://github.com/k-bx'><span>k-bx</span></a></p><p><span>Articles:</span></p><ul><li><a href='./articles/propositions-as-types-missing-links.html'><span>Propositions as Types: Some Missing Links</span></a><span> (2019-11-11)</span></li><li><a href='./articles/boring-monoid-category.html'><span>A Monoid Is a Category With Just One Object. So What&#39;s the Problem?</span></a><span> (2019-06-03)</span></li><li><a href='./articles/Kyiv-Elm-Study-Group-Experience-Report.html'><span>Kyiv Elm Study Group Experience Report</span></a><span> (2019-04-13)</span></li><li><a href='./articles/drinker.html'><span>Struggling With My Drinker&#39;s Problem</span></a><span> (2019-01-31)</span></li><li><a href='./articles/Validating-Form-Data-via-Applicative-Functors.html'><span>Validating Form Data via Applicative Functors</span></a><span> (2019-01-06)</span></li><li><a href='./articles/singleton_fiber_equivalence.html'><span>Singleton, Fiber and Equivalence</span></a><span> (2018-30-12)</span></li><li><a href='./articles/Kyiv-Haskell-Study-Group-Experience-Report.html'><span>Kyiv Haskell Study Group Experience Report</span></a><span> (2018-04-09)</span></li></ul><p>&nbsp;</p></div>
+<div  id='write'  class = 'is-node'><h1><a name="konstantine-rybnikovs-blog" class="md-header-anchor"></a><span>Konstantine Rybnikov&#39;s Blog</span></h1><p><span>Twitter </span><a href='https://twitter.com/ko_bx'><span>ko_bx</span></a><span> Github </span><a href='https://github.com/k-bx'><span>k-bx</span></a></p><p><span>Articles:</span></p><ul><li><a href='./articles/propositions-as-types-missing-links.html'><span>Propositions as Types: Some Missing Links</span></a><span> (2019-11-11)</span></li><li><a href='./articles/boring-monoid-category.html'><span>A Monoid Is a Category With Just One Object. So What&#39;s the Problem?</span></a><span> (2019-06-03)</span></li><li><a href='./articles/Kyiv-Elm-Study-Group-Experience-Report.html'><span>Kyiv Elm Study Group Experience Report</span></a><span> (2019-04-13)</span></li><li><a href='./articles/drinker.html'><span>Struggling With My Drinker&#39;s Problem</span></a><span> (2019-01-31)</span></li><li><a href='./articles/Validating-Form-Data-via-Applicative-Functors.html'><span>Validating Form Data via Applicative Functors</span></a><span> (2019-01-06)</span></li><li><a href='./articles/singleton_fiber_equivalence.html'><span>Singleton, Fiber and Equivalence</span></a><span> (2018-30-12)</span></li><li><a href='./articles/Kyiv-Haskell-Study-Group-Experience-Report.html'><span>Kyiv Haskell Study Group Experience Report</span></a><span> (2018-04-09)</span></li></ul><p>&nbsp;</p></div>
 </body>
 </html>
