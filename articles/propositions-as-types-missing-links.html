@@ -6,78 +6,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>./articles/propositions-as-types-missing-links.md</title>
   <style>
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <style>
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="https://k-bx.github.io/gothic.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -89,12 +89,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 id="the-missing-links">The Missing Links</h2>
 <p>List of things I don’t see mentioned very often:</p>
 <p><strong>Equality of Sets</strong>. If sets are types, then what would their equality look like? I think there are two options here: first is to use the notion of Isomorphism, the second is to assume Univalence and get equality-via-isomorphism “for free”. In this post’s example, I’ll take the former approach. So if we are required to prove that sets <code>A</code> and <code>B</code> are equal, we will be building an element of type <code>A ≃ B</code>. Just to remind ourselves what an Isomorphism is. For some types <code>A</code> and <code>B</code>, an isomorphism between them is defined as:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">record</span> <span class="ot">_</span>≃<span class="ot">_</span> <span class="ot">(...)</span> <span class="kw">where</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>  <span class="kw">field</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>    <span class="kw">to</span>   <span class="ot">:</span> A <span class="ot">→</span> B</span>
-<span id="cb1-4"><a href="#cb1-4"></a>    from <span class="ot">:</span> B <span class="ot">→</span> A</span>
-<span id="cb1-5"><a href="#cb1-5"></a>    from∘to <span class="ot">:</span> <span class="ot">∀</span> <span class="ot">(</span>x <span class="ot">:</span> A<span class="ot">)</span> <span class="ot">→</span> from <span class="ot">(</span><span class="kw">to</span> x<span class="ot">)</span> ≡ x</span>
-<span id="cb1-6"><a href="#cb1-6"></a>    to∘from <span class="ot">:</span> <span class="ot">∀</span> <span class="ot">(</span>y <span class="ot">:</span> B<span class="ot">)</span> <span class="ot">→</span> <span class="kw">to</span> <span class="ot">(</span>from y<span class="ot">)</span> ≡ y</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">record</span> <span class="ot">_</span>≃<span class="ot">_</span> <span class="ot">(...)</span> <span class="kw">where</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">field</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">to</span>   <span class="ot">:</span> A <span class="ot">→</span> B</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    from <span class="ot">:</span> B <span class="ot">→</span> A</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    from∘to <span class="ot">:</span> <span class="ot">∀</span> <span class="ot">(</span>x <span class="ot">:</span> A<span class="ot">)</span> <span class="ot">→</span> from <span class="ot">(</span><span class="kw">to</span> x<span class="ot">)</span> ≡ x</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    to∘from <span class="ot">:</span> <span class="ot">∀</span> <span class="ot">(</span>y <span class="ot">:</span> B<span class="ot">)</span> <span class="ot">→</span> <span class="kw">to</span> <span class="ot">(</span>from y<span class="ot">)</span> ≡ y</span></code></pre></div>
 <p>An Isomorphism is a record of four fields:</p>
 <ul>
 <li>a function taking us from <code>A</code> to <code>B</code></li>
@@ -107,120 +107,120 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \Sigma_{x : A}P(x)
 \]</span> So, a type describing a pair of element <code>x : A</code> and a proof that that element satisfies some predicate <code>P</code> is describing all the values which are members of this subset.</p>
 <p>(Btw to not confuse sets and types, we’ll use <code>Type₀</code> and <code>Type₁</code>, instead of the usual Agda’s <code>Set</code> and <code>Set₁</code> types)</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">-- Type of some predicate</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>Pred <span class="ot">:</span> Type₀ <span class="ot">→</span> Type₁</span>
-<span id="cb2-3"><a href="#cb2-3"></a>Pred X <span class="ot">=</span> X <span class="ot">→</span> Type₀</span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="co">-- Type of a subset</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>Subset <span class="ot">:</span> <span class="ot">∀</span> <span class="ot">{</span>X <span class="ot">:</span> Type₀<span class="ot">}</span> <span class="ot">→</span> Pred X <span class="ot">→</span> Type₀</span>
-<span id="cb2-7"><a href="#cb2-7"></a>Subset <span class="ot">{</span>X<span class="ot">}</span> P <span class="ot">=</span> Σ[ x ∈ X ] <span class="ot">(</span>P x<span class="ot">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Type of some predicate</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Pred <span class="ot">:</span> Type₀ <span class="ot">→</span> Type₁</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Pred X <span class="ot">=</span> X <span class="ot">→</span> Type₀</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- Type of a subset</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>Subset <span class="ot">:</span> <span class="ot">∀</span> <span class="ot">{</span>X <span class="ot">:</span> Type₀<span class="ot">}</span> <span class="ot">→</span> Pred X <span class="ot">→</span> Type₀</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Subset <span class="ot">{</span>X<span class="ot">}</span> P <span class="ot">=</span> Σ[ x ∈ X ] <span class="ot">(</span>P x<span class="ot">)</span></span></code></pre></div>
 <p>(To those who don’t remember, in the syntax <code>Σ[ x ∈ X ] (P x)</code>, the symbol <code>∈</code> essentially means “has type”. So it reads “for some x that has type X, there exists an element of <code>P x</code>”)</p>
 <p>The second notion that I was thinking about was to use the notion of Embedding, something very much like Isomorphism, but without one law:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">record</span> <span class="ot">_</span>≲<span class="ot">_</span> <span class="ot">(</span>A B <span class="ot">:</span> Type₀<span class="ot">)</span> <span class="ot">:</span> Type₀ <span class="kw">where</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="kw">field</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>    <span class="kw">to</span>      <span class="ot">:</span> A <span class="ot">→</span> B</span>
-<span id="cb3-4"><a href="#cb3-4"></a>    from    <span class="ot">:</span> B <span class="ot">→</span> A</span>
-<span id="cb3-5"><a href="#cb3-5"></a>    from∘to <span class="ot">:</span> <span class="ot">∀</span> <span class="ot">(</span>x <span class="ot">:</span> A<span class="ot">)</span> <span class="ot">→</span> from <span class="ot">(</span><span class="kw">to</span> x<span class="ot">)</span> ≡ x</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">record</span> <span class="ot">_</span>≲<span class="ot">_</span> <span class="ot">(</span>A B <span class="ot">:</span> Type₀<span class="ot">)</span> <span class="ot">:</span> Type₀ <span class="kw">where</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">field</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">to</span>      <span class="ot">:</span> A <span class="ot">→</span> B</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    from    <span class="ot">:</span> B <span class="ot">→</span> A</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    from∘to <span class="ot">:</span> <span class="ot">∀</span> <span class="ot">(</span>x <span class="ot">:</span> A<span class="ot">)</span> <span class="ot">→</span> from <span class="ot">(</span><span class="kw">to</span> x<span class="ot">)</span> ≡ x</span></code></pre></div>
 <p>So, for example, we can prove the embedding of <code>Bool</code>s to <code>Nat</code>s by saying that <code>True</code> will map to <code>1</code> and <code>False</code> will map to <code>0</code>. Then <code>from(to(x)) ≡ x</code> will hold for both, <code>x</code> being <code>True</code> or <code>False</code>, but the opposite <code>to(from(x))</code> would clearly fail for anything <code>&gt; 1</code> (<code>to(from(3)) ≡ 1</code>).</p>
 <p><strong>Set of subsets.</strong> An interesting one to crack to me was the notion of a “set of subsets” back from when I’ve studied what a Topology is. So, if a subset is a pair of an element of <code>X</code> and a proof that it satisfies some predicate <code>P</code>, then set of subsets must be a pair of <em>some predicate describing a subset</em> and an instance of a <em>predicate on that predicate</em>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb4-1"><a href="#cb4-1"></a>PredOnPred <span class="ot">:</span> Type₀ <span class="ot">→</span> Type₁</span>
-<span id="cb4-2"><a href="#cb4-2"></a>PredOnPred X <span class="ot">=</span> <span class="ot">(</span>X <span class="ot">→</span> Type₀<span class="ot">)</span> <span class="ot">→</span> Type₀</span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a>SetOfSubs <span class="ot">:</span> <span class="ot">{</span>X <span class="ot">:</span> Type₀<span class="ot">}</span> <span class="ot">→</span> <span class="ot">(</span>PredOnPred X<span class="ot">)</span> <span class="ot">→</span> Type₁</span>
-<span id="cb4-5"><a href="#cb4-5"></a>SetOfSubs <span class="ot">{</span>X<span class="ot">}</span> ℙ <span class="ot">=</span> Σ[ P ∈ Pred X ] <span class="ot">(</span>ℙ P<span class="ot">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>PredOnPred <span class="ot">:</span> Type₀ <span class="ot">→</span> Type₁</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>PredOnPred X <span class="ot">=</span> <span class="ot">(</span>X <span class="ot">→</span> Type₀<span class="ot">)</span> <span class="ot">→</span> Type₀</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>SetOfSubs <span class="ot">:</span> <span class="ot">{</span>X <span class="ot">:</span> Type₀<span class="ot">}</span> <span class="ot">→</span> <span class="ot">(</span>PredOnPred X<span class="ot">)</span> <span class="ot">→</span> Type₁</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>SetOfSubs <span class="ot">{</span>X<span class="ot">}</span> ℙ <span class="ot">=</span> Σ[ P ∈ Pred X ] <span class="ot">(</span>ℙ P<span class="ot">)</span></span></code></pre></div>
 <p>I’m not sure if this is going to be sufficient over the wider range of proofs, there might be some crucial structure missing in this definition, but it was sufficient for our purposes.</p>
 <p><strong>Set belonging to a Set of Subsets</strong></p>
 <p>How do we say that something is present in a given set of subsets? Probably give back the predicate and show all elements satisfying it are isomorphic to S</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb5-1"><a href="#cb5-1"></a><span class="ot">_</span>∈s<span class="ot">_</span> <span class="ot">:</span> <span class="ot">{</span>X <span class="ot">:</span> Type₀<span class="ot">}</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>     <span class="ot">→</span> <span class="ot">{</span>ℙ <span class="ot">:</span> PredOnPred X<span class="ot">}</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>     <span class="ot">→</span> <span class="ot">(</span>S <span class="ot">:</span> Type₀<span class="ot">)</span> <span class="ot">→</span> <span class="ot">(</span>SetOfSubs ℙ<span class="ot">)</span> <span class="ot">→</span> Type₁</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="ot">_</span>∈s<span class="ot">_</span> <span class="ot">{</span>X<span class="ot">}</span> S ℙ <span class="ot">=</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>  Σ[ P ∈ Pred X ]</span>
-<span id="cb5-6"><a href="#cb5-6"></a>  <span class="ot">(</span> <span class="ot">∀</span> <span class="ot">(</span>x <span class="ot">:</span> X<span class="ot">)</span> <span class="ot">→</span> <span class="ot">(</span>P x ≃ S<span class="ot">))</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ot">_</span>∈s<span class="ot">_</span> <span class="ot">:</span> <span class="ot">{</span>X <span class="ot">:</span> Type₀<span class="ot">}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>     <span class="ot">→</span> <span class="ot">{</span>ℙ <span class="ot">:</span> PredOnPred X<span class="ot">}</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     <span class="ot">→</span> <span class="ot">(</span>S <span class="ot">:</span> Type₀<span class="ot">)</span> <span class="ot">→</span> <span class="ot">(</span>SetOfSubs ℙ<span class="ot">)</span> <span class="ot">→</span> Type₁</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ot">_</span>∈s<span class="ot">_</span> <span class="ot">{</span>X<span class="ot">}</span> S ℙ <span class="ot">=</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  Σ[ P ∈ Pred X ]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="ot">(</span> <span class="ot">∀</span> <span class="ot">(</span>x <span class="ot">:</span> X<span class="ot">)</span> <span class="ot">→</span> <span class="ot">(</span>P x ≃ S<span class="ot">))</span></span></code></pre></div>
 <p><strong>Unions, Intersections. Finite and Infinite.</strong> The first thing that you see when you study Topology is that a Topology has a property involving Unions and Intersections, and not just that, but they’re also finite and infinite.</p>
 <p>First, let’s deal with the finite ones. They are well-known in Type Theory and are represented as a Sum type (“or”) and a Product type (“and”). So:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">-- This is a Union of A and B: A ⊎ B</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="co">-- This is an Intersection of A and B: A × B</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- This is a Union of A and B: A ⊎ B</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- This is an Intersection of A and B: A × B</span></span></code></pre></div>
 <p>Now, but what does it take to be an infinite union? Well, if you look not at what an infinite union is precisely, but at <a href="https://en.wikipedia.org/wiki/Union_(set_theory)#Arbitrary_unions">what you can do with it</a>, you’ll find that the only useful thing is this: <span class="math display">\[
 x \in \bigcup \mathbf{M} \iff \exists A \in \mathbf{M},\ x \in A
 \]</span> E.g. to say that x is in some union is the same thing as to say that there exists an element of that union which x belongs to. Great!</p>
 <p>Now, for the purposes I’ve had, I’ve needed a union of specifically some set of subsets, so I’ve enriched the notion just mentioned with an additional fact that whatever the element of the union we get, it’s going to be a subset of that set.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb7-1"><a href="#cb7-1"></a>Union <span class="ot">:</span> <span class="ot">{</span>X <span class="ot">:</span> Type₀<span class="ot">}</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>      <span class="ot">→</span> <span class="ot">{</span>ℙ <span class="ot">:</span> PredOnPred X<span class="ot">}</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>      <span class="ot">→</span> <span class="ot">(</span>J <span class="ot">:</span> Type₀<span class="ot">)</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>      <span class="ot">→</span> <span class="ot">(</span>𝐵 <span class="ot">:</span> SetOfSubs ℙ<span class="ot">)</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>      <span class="ot">→</span> Type₁</span>
-<span id="cb7-6"><a href="#cb7-6"></a>Union J 𝐵 <span class="ot">=</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>  Σ[ j ∈ J ]</span>
-<span id="cb7-8"><a href="#cb7-8"></a>  Σ[ Bⱼ ∈ Type₀ ]</span>
-<span id="cb7-9"><a href="#cb7-9"></a>  <span class="ot">(</span>Bⱼ ∈s 𝐵<span class="ot">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Union <span class="ot">:</span> <span class="ot">{</span>X <span class="ot">:</span> Type₀<span class="ot">}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>      <span class="ot">→</span> <span class="ot">{</span>ℙ <span class="ot">:</span> PredOnPred X<span class="ot">}</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>      <span class="ot">→</span> <span class="ot">(</span>J <span class="ot">:</span> Type₀<span class="ot">)</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>      <span class="ot">→</span> <span class="ot">(</span>𝐵 <span class="ot">:</span> SetOfSubs ℙ<span class="ot">)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      <span class="ot">→</span> Type₁</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>Union J 𝐵 <span class="ot">=</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  Σ[ j ∈ J ]</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  Σ[ Bⱼ ∈ Type₀ ]</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="ot">(</span>Bⱼ ∈s 𝐵<span class="ot">)</span></span></code></pre></div>
 <p>So we say that <code>J</code> is some “index set” on our type <code>X</code> and that a union (somewhat resembling the notion of a subset) is a triple of a specific index, a type for a subset at that index, and a proof that it’s a subset of <code>𝐵</code>.</p>
 <h2 id="lets-have-some-fun-now">Let’s Have Some Fun Now</h2>
 <p>I’d like us to stop now with the code snippets describing all that useless conceptual code and do something practical! Let’s prove a proposition now. It’s going to be an arbitrary-chosen Proposition 2.3.2 from the book <a href="http://www.topologywithouttears.net/">Topology Without Tears</a>. Here it is, together with its “unwrapping” and the proof:</p>
 <figure>
-<img src="./propositions-as-types-missing-links/prop232_1.png" alt="" /><figcaption>(proposition.png)</figcaption>
+<img src="./propositions-as-types-missing-links/prop232_1.png" alt="(proposition.png)" /><figcaption aria-hidden="true">(proposition.png)</figcaption>
 </figure>
 <figure>
-<img src="./propositions-as-types-missing-links/prop232_2.png" alt="" /><figcaption>(unwrapping.png)</figcaption>
+<img src="./propositions-as-types-missing-links/prop232_2.png" alt="(unwrapping.png)" /><figcaption aria-hidden="true">(unwrapping.png)</figcaption>
 </figure>
 <figure>
-<img src="./propositions-as-types-missing-links/prop232_3.png" alt="" /><figcaption>(theproof.png)</figcaption>
+<img src="./propositions-as-types-missing-links/prop232_3.png" alt="(theproof.png)" /><figcaption aria-hidden="true">(theproof.png)</figcaption>
 </figure>
 <p>We’re only going to bother ourselves with the second part of the proof, the “Conversely” one. The first part is left to the reader as an exercise.</p>
 <p>To visualise what we’re doing here, here’s a fine drawing of mine:</p>
 <figure>
-<img src="./propositions-as-types-missing-links/prop232_drawing.jpg" alt="" /><figcaption>prop232_drawing</figcaption>
+<img src="./propositions-as-types-missing-links/prop232_drawing.jpg" alt="prop232_drawing" /><figcaption aria-hidden="true">prop232_drawing</figcaption>
 </figure>
 <p>The proof goes by saying that since for every <code>x</code> in <code>U</code> we see that it’s also in some <code>B ⊆ U</code>, then “obviously” <code>U</code> is equal to a union of all such <code>B</code>s. That’s precisely what we’re going to encode.</p>
 <p>I’m going to just throw the code at you here, and then explain a few things that were missing from before, and few places I’ve had to struggle with the most.</p>
 <p>Full code available at <a href="https://github.com/k-bx/k-bx.github.io/blob/master/articles/propositions-as-types-missing-links/TheMissingLinks.agda">TheMissingLinks.agda</a>:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">-- &quot;Topology without tears&quot; 2.3.2 constructively</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="co">--</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="co">-- 2.3.2 Let (X, τ) be a topological space. A family B of open subsets</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="co">-- of X is a basis for τ if and only if for any point x belonging to</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="co">-- any open set U , there is a B ∈ B such that x ∈ B ⊆ U.</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="co">--</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="co">-- This only proves the second part (given ... proves that 𝐵 is a basis)</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="co">--</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a>prop232</span>
-<span id="cb8-10"><a href="#cb8-10"></a>  <span class="ot">:</span> <span class="ot">(</span>X <span class="ot">:</span> Type₀<span class="ot">)</span>         <span class="co">-- For some set X</span></span>
-<span id="cb8-11"><a href="#cb8-11"></a>  <span class="ot">→</span> <span class="ot">{</span>ℙ₁ <span class="ot">:</span> PredOnPred X<span class="ot">}</span></span>
-<span id="cb8-12"><a href="#cb8-12"></a>  <span class="ot">→</span> <span class="ot">{</span>ℙ₂ <span class="ot">:</span> PredOnPred X<span class="ot">}</span></span>
-<span id="cb8-13"><a href="#cb8-13"></a>  <span class="ot">→</span> <span class="ot">(</span>τ <span class="ot">:</span> SetOfSubs ℙ₁<span class="ot">)</span>  <span class="co">-- we don&#39;t use the whole structure of Topology here</span></span>
-<span id="cb8-14"><a href="#cb8-14"></a>  <span class="ot">→</span> <span class="ot">(</span>𝐵 <span class="ot">:</span> SetOfSubs ℙ₂<span class="ot">)</span>  <span class="co">-- For some set of subsets of X</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a>  <span class="ot">→</span> <span class="ot">(</span>given₁ <span class="ot">:</span> <span class="ot">(</span>U <span class="ot">:</span> Type₀<span class="ot">)</span>    <span class="co">-- Given for some set U</span></span>
-<span id="cb8-16"><a href="#cb8-16"></a>            <span class="ot">→</span> <span class="ot">(</span>U ≲ X<span class="ot">)</span>        <span class="co">-- Being subset of X</span></span>
-<span id="cb8-17"><a href="#cb8-17"></a>            <span class="ot">→</span> <span class="ot">(</span>U ∈s τ<span class="ot">)</span>       <span class="co">-- belonging to τ</span></span>
-<span id="cb8-18"><a href="#cb8-18"></a>            <span class="ot">→</span> <span class="ot">(</span>x <span class="ot">:</span> U<span class="ot">)</span>        <span class="co">-- for any element x</span></span>
-<span id="cb8-19"><a href="#cb8-19"></a>            <span class="ot">→</span> Σ[ B ∈ Type₀ ]     <span class="co">-- you&#39;ll get a set B</span></span>
-<span id="cb8-20"><a href="#cb8-20"></a>              Σ[ <span class="ot">_</span> ∈ <span class="ot">(</span>B ∈s 𝐵<span class="ot">)</span> ]  <span class="co">-- a proof it&#39;s a subset of 𝐵</span></span>
-<span id="cb8-21"><a href="#cb8-21"></a>              Σ[ B≲U ∈ B ≲ U ]   <span class="co">-- a proof it&#39;s a subset of U</span></span>
-<span id="cb8-22"><a href="#cb8-22"></a>              Σ[ b ∈ B ]         <span class="co">-- an element in B</span></span>
-<span id="cb8-23"><a href="#cb8-23"></a>              <span class="ot">((_</span>≲<span class="ot">_.</span><span class="kw">to</span> B≲U b<span class="ot">)</span> ≡ x<span class="ot">)</span>  <span class="co">-- a proof it&#39;s the same as x </span></span>
-<span id="cb8-24"><a href="#cb8-24"></a>                                    <span class="co">-- (more on this later)</span></span>
-<span id="cb8-25"><a href="#cb8-25"></a>              <span class="ot">)</span></span>
-<span id="cb8-26"><a href="#cb8-26"></a>  <span class="ot">→</span> <span class="ot">(∀</span> <span class="ot">(</span>V <span class="ot">:</span> Type₀<span class="ot">)</span>  <span class="co">-- then for any set V</span></span>
-<span id="cb8-27"><a href="#cb8-27"></a>     <span class="ot">→</span> <span class="ot">(</span>V ≲ X<span class="ot">)</span>      <span class="co">-- being a subset of X</span></span>
-<span id="cb8-28"><a href="#cb8-28"></a>     <span class="ot">→</span> V ∈s τ       <span class="co">-- in τ</span></span>
-<span id="cb8-29"><a href="#cb8-29"></a>     <span class="ot">→</span> UnionTruncation V 𝐵   <span class="co">-- (more on this later)</span></span>
-<span id="cb8-30"><a href="#cb8-30"></a>     <span class="ot">→</span> Σ[ J ∈ Type₀ ]      <span class="co">-- I&#39;ll give you index set</span></span>
-<span id="cb8-31"><a href="#cb8-31"></a>       <span class="ot">(</span>V ≃ <span class="ot">(</span>Union J 𝐵<span class="ot">))</span>   <span class="co">-- and a proof that V is precisely this union</span></span>
-<span id="cb8-32"><a href="#cb8-32"></a>    <span class="ot">)</span></span>
-<span id="cb8-33"><a href="#cb8-33"></a>prop232 X τ 𝐵 given₁ V V≲X V∈sτ unionTruncation</span>
-<span id="cb8-34"><a href="#cb8-34"></a>  <span class="ot">=</span> V       <span class="co">-- our index set is V (we index by its elements)</span></span>
-<span id="cb8-35"><a href="#cb8-35"></a>  , <span class="kw">record</span>  <span class="co">-- here goes the proof that V ≃ (Union J 𝐵)</span></span>
-<span id="cb8-36"><a href="#cb8-36"></a>    <span class="ot">{</span> <span class="kw">to</span> <span class="ot">=</span> <span class="ot">λ</span> v <span class="ot">→</span> <span class="kw">let</span> <span class="ot">(</span> Bₓ , B∈s𝐵 , B≲U , b , b→v <span class="ot">)</span> <span class="ot">=</span> given₁ V V≲X V∈sτ v</span>
-<span id="cb8-37"><a href="#cb8-37"></a>                  <span class="kw">in</span> v , Bₓ , B∈s𝐵</span>
-<span id="cb8-38"><a href="#cb8-38"></a>    <span class="ot">;</span> from <span class="ot">=</span> <span class="ot">λ{</span> <span class="ot">(</span>x , Bₓ , Bₓ∈s𝐵<span class="ot">)</span> <span class="ot">→</span> x<span class="ot">}</span></span>
-<span id="cb8-39"><a href="#cb8-39"></a>    <span class="ot">;</span> from∘to <span class="ot">=</span> <span class="ot">λ</span> x <span class="ot">→</span> refl</span>
-<span id="cb8-40"><a href="#cb8-40"></a>    <span class="ot">;</span> to∘from <span class="ot">=</span> <span class="ot">λ</span> y <span class="ot">→</span> unionTruncation</span>
-<span id="cb8-41"><a href="#cb8-41"></a>                         <span class="ot">(</span> proj₁ y</span>
-<span id="cb8-42"><a href="#cb8-42"></a>                         , proj₁ <span class="ot">(</span>given₁ V V≲X V∈sτ <span class="ot">(</span>proj₁ y<span class="ot">))</span></span>
-<span id="cb8-43"><a href="#cb8-43"></a>                         , proj₁ <span class="ot">(</span>proj₂ <span class="ot">(</span>given₁ V V≲X V∈sτ <span class="ot">(</span>proj₁ y<span class="ot">))))</span></span>
-<span id="cb8-44"><a href="#cb8-44"></a>                         y</span>
-<span id="cb8-45"><a href="#cb8-45"></a>                         refl</span>
-<span id="cb8-46"><a href="#cb8-46"></a>    <span class="ot">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- &quot;Topology without tears&quot; 2.3.2 constructively</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">--</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- 2.3.2 Let (X, τ) be a topological space. A family B of open subsets</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- of X is a basis for τ if and only if for any point x belonging to</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- any open set U , there is a B ∈ B such that x ∈ B ⊆ U.</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">--</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- This only proves the second part (given ... proves that 𝐵 is a basis)</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">--</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>prop232</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="ot">:</span> <span class="ot">(</span>X <span class="ot">:</span> Type₀<span class="ot">)</span>         <span class="co">-- For some set X</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="ot">→</span> <span class="ot">{</span>ℙ₁ <span class="ot">:</span> PredOnPred X<span class="ot">}</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="ot">→</span> <span class="ot">{</span>ℙ₂ <span class="ot">:</span> PredOnPred X<span class="ot">}</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="ot">→</span> <span class="ot">(</span>τ <span class="ot">:</span> SetOfSubs ℙ₁<span class="ot">)</span>  <span class="co">-- we don&#39;t use the whole structure of Topology here</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="ot">→</span> <span class="ot">(</span>𝐵 <span class="ot">:</span> SetOfSubs ℙ₂<span class="ot">)</span>  <span class="co">-- For some set of subsets of X</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="ot">→</span> <span class="ot">(</span>given₁ <span class="ot">:</span> <span class="ot">(</span>U <span class="ot">:</span> Type₀<span class="ot">)</span>    <span class="co">-- Given for some set U</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>            <span class="ot">→</span> <span class="ot">(</span>U ≲ X<span class="ot">)</span>        <span class="co">-- Being subset of X</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>            <span class="ot">→</span> <span class="ot">(</span>U ∈s τ<span class="ot">)</span>       <span class="co">-- belonging to τ</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>            <span class="ot">→</span> <span class="ot">(</span>x <span class="ot">:</span> U<span class="ot">)</span>        <span class="co">-- for any element x</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>            <span class="ot">→</span> Σ[ B ∈ Type₀ ]     <span class="co">-- you&#39;ll get a set B</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>              Σ[ <span class="ot">_</span> ∈ <span class="ot">(</span>B ∈s 𝐵<span class="ot">)</span> ]  <span class="co">-- a proof it&#39;s a subset of 𝐵</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>              Σ[ B≲U ∈ B ≲ U ]   <span class="co">-- a proof it&#39;s a subset of U</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>              Σ[ b ∈ B ]         <span class="co">-- an element in B</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>              <span class="ot">((_</span>≲<span class="ot">_.</span><span class="kw">to</span> B≲U b<span class="ot">)</span> ≡ x<span class="ot">)</span>  <span class="co">-- a proof it&#39;s the same as x </span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>                                    <span class="co">-- (more on this later)</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>              <span class="ot">)</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  <span class="ot">→</span> <span class="ot">(∀</span> <span class="ot">(</span>V <span class="ot">:</span> Type₀<span class="ot">)</span>  <span class="co">-- then for any set V</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>     <span class="ot">→</span> <span class="ot">(</span>V ≲ X<span class="ot">)</span>      <span class="co">-- being a subset of X</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>     <span class="ot">→</span> V ∈s τ       <span class="co">-- in τ</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>     <span class="ot">→</span> UnionTruncation V 𝐵   <span class="co">-- (more on this later)</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>     <span class="ot">→</span> Σ[ J ∈ Type₀ ]      <span class="co">-- I&#39;ll give you index set</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>       <span class="ot">(</span>V ≃ <span class="ot">(</span>Union J 𝐵<span class="ot">))</span>   <span class="co">-- and a proof that V is precisely this union</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="ot">)</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>prop232 X τ 𝐵 given₁ V V≲X V∈sτ unionTruncation</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> V       <span class="co">-- our index set is V (we index by its elements)</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  , <span class="kw">record</span>  <span class="co">-- here goes the proof that V ≃ (Union J 𝐵)</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>    <span class="ot">{</span> <span class="kw">to</span> <span class="ot">=</span> <span class="ot">λ</span> v <span class="ot">→</span> <span class="kw">let</span> <span class="ot">(</span> Bₓ , B∈s𝐵 , B≲U , b , b→v <span class="ot">)</span> <span class="ot">=</span> given₁ V V≲X V∈sτ v</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>                  <span class="kw">in</span> v , Bₓ , B∈s𝐵</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>    <span class="ot">;</span> from <span class="ot">=</span> <span class="ot">λ{</span> <span class="ot">(</span>x , Bₓ , Bₓ∈s𝐵<span class="ot">)</span> <span class="ot">→</span> x<span class="ot">}</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>    <span class="ot">;</span> from∘to <span class="ot">=</span> <span class="ot">λ</span> x <span class="ot">→</span> refl</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>    <span class="ot">;</span> to∘from <span class="ot">=</span> <span class="ot">λ</span> y <span class="ot">→</span> unionTruncation</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>                         <span class="ot">(</span> proj₁ y</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>                         , proj₁ <span class="ot">(</span>given₁ V V≲X V∈sτ <span class="ot">(</span>proj₁ y<span class="ot">))</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>                         , proj₁ <span class="ot">(</span>proj₂ <span class="ot">(</span>given₁ V V≲X V∈sτ <span class="ot">(</span>proj₁ y<span class="ot">))))</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>                         y</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>                         refl</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>    <span class="ot">}</span></span></code></pre></div>
 <p>So, what you can see is that we’re proving <code>Σ[ J ∈ Type₀ ] (V ≃ (Union J 𝐵))</code> here, meaning that we’ll provide what the index of the union is, and we’ll prove that <code>V</code> is isomorphic to that union.</p>
 <p>Few things to note here.</p>
 <p><strong>Union Truncation</strong>. You’ve probably noticed that I’ve smuggled some <code>unionTruncation</code> stuff. What is that exactly? Well, as I’ve been trying to prove the forementioned isomorphism, I was able to prove the <code>from∘to</code> part easily, but had struggles with the <code>to∘from</code> one. Somehow, going from an element of the union into <code>V</code> and then back, didn’t necessary give me back exactly the same element of the Union. This was my “goal” back in the day:</p>
@@ -229,17 +229,17 @@ x \in \bigcup \mathbf{M} \iff \exists A \in \mathbf{M},\ x \in A
 <p>After giving it a thought, I’ve figured that this isn’t necessarily the case. An element of a Union, as it’s currently defined, is a triple, giving you an element, a subset it belongs to and a proof of that being subset. But nothing guarantees you that the subset of an element will always be the same!</p>
 <p><strong>There are many ways to gather a union, and we don’t care from which subset any given element was picked</strong></p>
 <p>All we care here is that the elements of <code>V</code> are the same as the elements of the union. So, I needed to come up with a notion very similar to Truncation from the HoTT book (Chapter 3.7), but that would keep the element (don’t truncate <code>x</code>), but truncate both the subset (always pick the same subset for an element) and the proof (proofs are all the same). Here’s how it looks like:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb10-1"><a href="#cb10-1"></a>UnionTruncation</span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="ot">:</span> <span class="ot">{</span>X <span class="ot">:</span> Type₀<span class="ot">}</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>  <span class="ot">→</span> <span class="ot">{</span>ℙ <span class="ot">:</span> PredOnPred X<span class="ot">}</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a>  <span class="ot">→</span> <span class="ot">(</span>J <span class="ot">:</span> Type₀<span class="ot">)</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a>  <span class="ot">→</span> <span class="ot">(</span>𝐵 <span class="ot">:</span> SetOfSubs ℙ<span class="ot">)</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a>  <span class="ot">→</span> Type₁</span>
-<span id="cb10-7"><a href="#cb10-7"></a>UnionTruncation J 𝐵 <span class="ot">=</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a>  <span class="ot">(</span>j <span class="ot">:</span> Union J 𝐵<span class="ot">)</span> <span class="ot">→</span> <span class="ot">(</span>k <span class="ot">:</span> Union J 𝐵<span class="ot">)</span> <span class="ot">→</span> <span class="ot">(</span>proj₁ j ≡ proj₁ k<span class="ot">)</span> <span class="ot">→</span> j ≡ k</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>UnionTruncation</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">:</span> <span class="ot">{</span>X <span class="ot">:</span> Type₀<span class="ot">}</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="ot">→</span> <span class="ot">{</span>ℙ <span class="ot">:</span> PredOnPred X<span class="ot">}</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="ot">→</span> <span class="ot">(</span>J <span class="ot">:</span> Type₀<span class="ot">)</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="ot">→</span> <span class="ot">(</span>𝐵 <span class="ot">:</span> SetOfSubs ℙ<span class="ot">)</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="ot">→</span> Type₁</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>UnionTruncation J 𝐵 <span class="ot">=</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="ot">(</span>j <span class="ot">:</span> Union J 𝐵<span class="ot">)</span> <span class="ot">→</span> <span class="ot">(</span>k <span class="ot">:</span> Union J 𝐵<span class="ot">)</span> <span class="ot">→</span> <span class="ot">(</span>proj₁ j ≡ proj₁ k<span class="ot">)</span> <span class="ot">→</span> j ≡ k</span></code></pre></div>
 <p>With this, the proof was complete.</p>
 <p><strong>Level-polymorphic Isomorphism</strong>. Another thing you might notice is that the isomorphism code has been converted to be level-polymorphic. Not a big deal, but I thought it’s worth noting:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">record</span> <span class="ot">_</span>≃<span class="ot">_</span> <span class="ot">{</span>l m<span class="ot">}</span> <span class="ot">(</span>A <span class="ot">:</span> Type l<span class="ot">)</span> <span class="ot">(</span>B <span class="ot">:</span> Type m<span class="ot">)</span> <span class="ot">:</span> Type <span class="ot">(</span>l ⊔ m<span class="ot">)</span> <span class="kw">where</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">record</span> <span class="ot">_</span>≃<span class="ot">_</span> <span class="ot">{</span>l m<span class="ot">}</span> <span class="ot">(</span>A <span class="ot">:</span> Type l<span class="ot">)</span> <span class="ot">(</span>B <span class="ot">:</span> Type m<span class="ot">)</span> <span class="ot">:</span> Type <span class="ot">(</span>l ⊔ m<span class="ot">)</span> <span class="kw">where</span></span></code></pre></div>
 <h2 id="other-things">Other things</h2>
 <p>Other things worth noting that are present in set theory:</p>
 <p><strong>Sameness of an element</strong>. It’s often said that “if an element x is a member if U, it’s also a member of V”, but if U and V are distinct types, <code>x</code> can’t have both types. In Type Theory, this has to have a bit more structure.</p>
